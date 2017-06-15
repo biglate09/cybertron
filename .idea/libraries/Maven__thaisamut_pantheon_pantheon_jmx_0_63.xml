@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: thaisamut.pantheon:pantheon-jmx:0.63">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/pantheon/pantheon-jmx/0.63/pantheon-jmx-0.63.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/pantheon/pantheon-jmx/0.63/pantheon-jmx-0.63-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/pantheon/pantheon-jmx/0.63/pantheon-jmx-0.63-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

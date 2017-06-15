@@ -1,0 +1,92 @@
+Project Template Version
+========================
+
+    Based on : https://svnserver.thaisamut.co.th/svn/03-LegacySystems/MavenBase/oceanwebarchetype/trunk/
+    Version : 0.18-SNAPSHOT
+
+
+cybertron
+=====
+
+    cybertron (Ἐλπίς), spirit of hope and expectation
+    cybertron : Goddess or Spirit of Hope
+
+
+How to setup Database
+=====================
+
+follow following commands
+
+    sudo -u postgres psql -c "CREATE DATABASE cybertron template=template0 encoding='unicode' lc_collate='th_TH.UTF8' lc_ctype='th_TH.UTF8'"
+    sudo -u postgres psql -c "CREATE USER cybertron WITH PASSWORD 'nopass';" cybertron
+    sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE cybertron to cybertron;" cybertron
+
+
+Compile project and start wildfly
+=================================
+
+    [~/svn/code/cybertron]:$ mvn -Pdev clean install
+    [~/svn/code/cybertron]:$ (cd ear && mvn wildfly:run)
+
+
+Compile project and deploy ear to running wildfly
+=================================================
+
+    [~/svn/code/cybertron]:$ mvn -Pdev clean install && (cd ear && mvn wildfly:deploy)
+
+
+Build assembly
+==============
+
+    [~/svn/code/cybertron]:$ (cd assembly && mvn clean assembly:assembly)
+
+
+Testing in Browser
+==================
+
+    http://localhost:9058/cybertron
+
+
+Application Port
+================
+
++-----------+----------+-----------------+------------+-----------+
+| HTTP Port | AJP Port | Management Port | HTTPS Port | JDWP Port |
++-----------+----------+-----------------+------------+-----------+
+|       9058|      9158|             9258|        9358|       9458|
++-----------+----------+-----------------+------------+-----------+
+
+
+Config Git
+====
+
+Config ssh
+
+    [~]$ vi ~/.ssh/config
+
+
+Add following entry
+
+      Host oligit
+          HostKeyAlias oligit
+          HostName 10.100.2.187
+          User <your username>
+          Port 29418
+
+
+Add SSH Key to Account
+
+    [~]$ cat ~/.ssh/id_rsa.pub | ssh -l <username> -p 29418 10.100.2.187 keys add
+
+
+Clone repo
+
+    [~/git/code]$ git clone ssh://oligit/cybertron.git
+
+
+
+Git Tutorial
+===
+
+    http://git-scm.com/docs/gittutorial
+

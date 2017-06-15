@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="/UserService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="userServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.nbs.core.remote.UserService"/>
+    </bean>
+
+    <bean name="/ExampleService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="exampleServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.ExampleService"/>
+    </bean>
+    
+    <bean name="/CssMemberService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="cssMemberServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssMemberService"/>
+    </bean>
+    
+    <bean name="/CssMasterService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="cssMasterServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssMasterService"/>
+    </bean>
+
+	 <bean name="/CssEFormService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="cssEFormServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssEFormService"/>
+    </bean>
+    
+     <bean name="/BranchesService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="branchesServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.BranchesService"/>
+    </bean>
+    
+   <bean name="/CssPaymentCardTempService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="cssPaymentCardTempServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssPaymentCardTempService"/>
+    </bean>
+    
+    <bean name="/CssPaymentService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="cssPaymentServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssPaymentService"/>
+    </bean>
+    
+    <bean name="/EasyLoanInfoService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="easyLoanInfoServiceImpl"/>
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.EasyLoanInfoService"/>
+    </bean>
+    
+    <bean name="/MarkChoicesService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+    	<property name="service" ref="MarkChoicesServiceImpl"/>
+    	<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.MarkChoicesService"/>
+    </bean>
+    
+    <bean name="/ChoicesService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+    	<property name="service" ref="ChoicesServiceImpl"/>
+    	<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.ChoicesService"/>
+    </bean>
+    
+    <bean name="/PlaceService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+    	<property name="service" ref="PlaceServiceImpl"/>
+    	<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.PlaceService"/>
+    </bean>
+    
+    <bean name="/PlaceTypeService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+    	<property name="service" ref="PlaceTypeServiceImpl"/>
+    	<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.PlaceTypeService"/>
+    </bean>
+    
+    <bean name="/ProvinceService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+    	<property name="service" ref="ProvinceServiceImpl"/>
+    	<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.ProvinceService"/>
+    </bean>
+    
+    <bean name="/CampaignReserveService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+    	<property name="service" ref="CampaignReserveServiceImpl"/>
+    	<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CampaignReserveService"/>
+    </bean> 
+    
+    <bean name="/CampaignService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+    	<property name="service" ref="campaignServiceImpl"/>
+    	<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CampaignService"/>
+    </bean>
+    
+    <bean name="/BranchService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+    	<property name="service" ref="BranchServiceImpl"/>
+    	<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.BranchService"/>
+    </bean>
+   
+</beans>

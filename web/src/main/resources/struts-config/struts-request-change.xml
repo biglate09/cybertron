@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="request" extends="secure" namespace="/secure/request/change">
+		<action name="choice" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-main.ftl
+			</result>
+		</action>
+		<action name="installment" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="installment">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-installment.ftl</result>
+   		 </action>
+   		 <action name="printRecord" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="printRecord">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="pdf" type="stream">
+				<param name="contentType">application/pdf</param>
+				<param name="inputStream">inputStream</param>
+				<param name="contentDisposition">inline;filename="report.pdf"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+   		 </action>
+		<action name="assured" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="assured">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-assured.ftl
+			</result>
+		</action>
+		<action name="address" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="address">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-address.ftl
+			</result>
+		</action>
+		<action name="receive" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="receive">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-receive.ftl
+			</result>
+		</action>
+		
+		<action name="saveInstallment" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="saveInstallment">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-success.ftl
+			</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/secure/personal-info.ftl
+			</result>
+		</action>
+		
+		<action name="saveAssured" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="saveAssured">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-success.ftl
+			</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/secure/personal-info.ftl
+			</result>
+		</action>
+		
+		<action name="saveAddress" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="saveAddress">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-success.ftl
+			</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/secure/personal-info.ftl
+			</result>
+		</action>
+		
+		<action name="saveReceive" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="saveReceive">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/request/request-success.ftl
+			</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/secure/personal-info.ftl
+			</result>
+		</action>
+		
+		<action name="checkPolicyTypeOrd" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="checkPolicyTypeOrd">
+			<interceptor-ref name="secureStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="checkPolicyTypeAll" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="checkPolicyTypeAll">
+			<interceptor-ref name="secureStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="changePaymentModeChecking" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="changePaymentModeChecking">
+			<interceptor-ref name="secureStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="changeProvince" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="changeProvince">
+			<interceptor-ref name="secureStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="changeDistrict" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="changeDistrict">
+			<interceptor-ref name="secureStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="changeReceiveChecking" class="thaisamut.nbs.css.request.action.RequestChangeAction" method="changeReceiveChecking">
+			<interceptor-ref name="secureStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+	</package>
+</struts>

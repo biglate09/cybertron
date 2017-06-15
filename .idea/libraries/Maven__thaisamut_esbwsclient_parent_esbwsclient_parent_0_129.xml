@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: thaisamut.esbwsclient-parent:esbwsclient-parent:0.129">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/esbwsclient-parent/esbwsclient-parent/0.129/esbwsclient-parent-0.129.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/esbwsclient-parent/esbwsclient-parent/0.129/esbwsclient-parent-0.129-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/esbwsclient-parent/esbwsclient-parent/0.129/esbwsclient-parent-0.129-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

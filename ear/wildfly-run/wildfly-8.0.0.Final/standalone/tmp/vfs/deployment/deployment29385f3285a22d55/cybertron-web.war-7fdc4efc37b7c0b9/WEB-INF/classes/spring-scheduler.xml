@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+	   xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+ 	
+  	
+  	<jee:jndi-lookup id="generateAddressTempFile" jndi-name="java:global/corn/policy/address-sync" />
+  	<jee:jndi-lookup id="readAddressSend" jndi-name="java:global/corn/policy/read-address-send" />
+  	<jee:jndi-lookup id="clearExpiredToken" jndi-name="java:global/corn/token/clear-expired-token" />
+  	<jee:jndi-lookup id="monitorPath" jndi-name="java:global/config/cybertron/monitorPath" />
+  	<jee:jndi-lookup id="monitorDelay" jndi-name="java:global/config/cybertron/monitor/delay" />
+  	
+	<util:properties id="propConfiguration">
+		<prop key="generateAddressTempFile">#{generateAddressTempFile}</prop>
+		<prop key="readAddressSend">#{readAddressSend}</prop>
+		<prop key="clearExpiredToken">#{clearExpiredToken}</prop>
+		<prop key="monitorPath">#{monitorPath}</prop>
+		<prop key="monitorDelay">#{monitorDelay}</prop>
+ 	</util:properties>
+  	
+ 	<camel:camelContext id="camel-scheduler-cybertronapp" xmlns="http://camel.apache.org/schema/spring" > 
+ 		<propertyPlaceholder id="properties" location="ref:propConfiguration" />
+		<route id="quartz-generateAddressTempFile">
+			<from uri="quartz://cybertron-SCHEDULE/GenerateAddressTempFile?cron={{generateAddressTempFile}}"/>
+			<bean ref="GenerateTextFileComponent" method="generateAddressTempFile"/>
+		</route>
+		<route id="quartz-updateAddressSend">
+			<from uri="quartz://cybertron-SCHEDULE/ReadAddressSend?cron={{readAddressSend}}"/>
+			<bean ref="GenerateTextFileComponent" method="readAddressSend"/>
+		</route>
+		<route id="quartz-clearExpiredToken">
+			<from uri="quartz://cybertron-SCHEDULE/ClearExpiredToken?cron={{clearExpiredToken}}"/>
+			<bean ref="ClearDataComponent" method="clearExpiredToken"/>
+		</route>
+		<route  id="quartz-manualTrigger">
+			<from uri="file:{{monitorPath}}?delay={{monitorDelay}}&amp;filter=#CustomerfileFilter" />
+			<bean ref="GenerateTextFileComponent" method="manualTrigger"/>
+		</route>
+		<route  id="quartz-manual-update-send">
+			<from uri="file:{{monitorPath}}?delay={{monitorDelay}}&amp;filter=#CustomerfileUpdateFilter" />
+			<bean ref="GenerateTextFileComponent" method="manualUpdateTrigger"/>
+		</route>
+	</camel:camelContext>
+	<!-- CUSTOMER FILE -->
+	<bean id="CustomerfileFilter" class="org.apache.camel.component.file.AntPathMatcherGenericFileFilter">
+        <property name="includes" value="*.prepare"/>
+        <property name="caseSensitive" value="false" />
+	</bean>
+	<bean id="CustomerfileUpdateFilter" class="org.apache.camel.component.file.AntPathMatcherGenericFileFilter">
+        <property name="includes" value="*.compare"/>
+        <property name="caseSensitive" value="false" />
+	</bean>
+	
+	<bean id="GenerateTextFileComponent" class="thaisamut.css.camel.component.GenerateTextFileComponent" />
+	<bean id="ClearDataComponent" class="thaisamut.css.camel.component.ClearDataComponent" />
+</beans>

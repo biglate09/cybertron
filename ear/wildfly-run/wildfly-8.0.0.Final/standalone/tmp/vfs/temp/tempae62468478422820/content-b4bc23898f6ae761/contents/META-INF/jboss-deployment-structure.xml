@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+    <ear-subdeployments-isolated>false</ear-subdeployments-isolated>
+    <sub-deployment name="cybertron-ejbweb.war">
+        <dependencies>
+            <module name="thaisamut.cybertron">
+                <imports>
+                    <include path="META-INF"/>
+                    <include path="META-INF/**"/>
+                </imports>
+            </module>
+        </dependencies>
+    </sub-deployment>
+    <sub-deployment name="cybertron-web.war">
+        <dependencies>
+            <module name="thaisamut.cybertron">
+                <imports>
+                    <include path="META-INF"/>
+                    <include path="META-INF/**"/>
+                </imports>
+            </module>
+        </dependencies>
+    </sub-deployment>
+    <sub-deployment name="cybertron-ws.war">
+        <dependencies>
+            <module name="thaisamut.cybertron">
+                <imports>
+                    <include path="META-INF"/>
+                    <include path="META-INF/**"/>
+                </imports>
+            </module>
+        </dependencies>
+    </sub-deployment>
+</jboss-deployment-structure>

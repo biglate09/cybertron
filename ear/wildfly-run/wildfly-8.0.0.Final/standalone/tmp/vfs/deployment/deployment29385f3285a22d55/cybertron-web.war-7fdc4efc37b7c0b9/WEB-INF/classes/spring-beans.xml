@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:jee="http://www.springframework.org/schema/jee"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+
+         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+        default-autowire="byName"
+        default-lazy-init="false">
+
+  <context:annotation-config />
+  <context:component-scan base-package="thaisamut.css.easyloan.service" />
+  <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+  <jee:jndi-lookup id="jsYuiHome" jndi-name="java:global/nbs/javascript/yui/home" />
+  <jee:jndi-lookup id="jsYuiGallery" jndi-name="java:global/nbs/javascript/yui/gallery" />
+  <jee:jndi-lookup id="jsPrototypeHome" jndi-name="java:global/nbs/javascript/prototype/home" />
+  
+  <jee:jndi-lookup id="ldapServer" jndi-name="java:global/ldap/server" />
+  <jee:jndi-lookup id="ldapAuthentication" jndi-name="java:global/ldap/authentication" />
+  <jee:jndi-lookup id="ldapPrincipal" jndi-name="java:global/ldap/principal" />
+  <jee:jndi-lookup id="ldapCandidate" jndi-name="java:global/ldap/credentials" />
+  <jee:jndi-lookup id="ldapOuUser" jndi-name="java:global/ldap/ou/user" />
+  <jee:jndi-lookup id="localAddressFilePath" jndi-name="java:global/config/cybertron/addressFilePath" />
+  <jee:jndi-lookup id="payment2c2pResultUrl1" jndi-name="java:global/config/cybertron/payment2c2pResultUrl1" />
+  <jee:jndi-lookup id="payment2c2pResultUrl2" jndi-name="java:global/config/cybertron/payment2c2pResultUrl2" />
+  <jee:jndi-lookup id="payment2c2pAction" jndi-name="java:global/config/cybertron/payment2c2pAction" />
+  <jee:jndi-lookup id="payment2c2pSecretKey" jndi-name="java:global/config/cybertron/payment2c2pSecretKey" />
+  <jee:jndi-lookup id="payment2c2pMerchantId" jndi-name="java:global/config/cybertron/payment2c2pMerchantId" />
+  <jee:jndi-lookup id="localEasyLoanFilePath" jndi-name="java:global/config/cybertron/easyLoanFilePath" />
+    <bean name="UserService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/UserService"/>
+        <property name="serviceInterface" value="thaisamut.nbs.core.remote.UserService"/>
+        <property name="overloadEnabled" value="true" />
+    </bean>
+	<bean name="CssMemberService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssMemberService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssMemberService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	<bean name="CssMasterService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssMasterService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssMasterService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	<bean name="AdsService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/AdsService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.AdsService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	<bean name="CssEFormService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssEFormService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssEFormService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	<bean name="BranchesService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/BranchesService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.BranchesService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+    <bean name="CssPaymentCardTempService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssPaymentCardTempService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssPaymentCardTempService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	 <bean name="CssPaymentService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssPaymentService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssPaymentService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+    <bean name="EasyLoanInfoService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/EasyLoanInfoService" />
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.EasyLoanInfoService" />
+        <property name="overloadEnabled" value="true" />
+    </bean>
+    <bean name="MarkChoicesService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/MarkChoicesService" />
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.MarkChoicesService" />
+        <property name="overloadEnabled" value="true" />
+    </bean>
+	
+	<bean name="CampaignService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CampaignService" />
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CampaignService" />
+        <property name="overloadEnabled" value="true" />
+	</bean>
+	
+	<bean name="PlaceService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/PlaceService" />
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.PlaceService" />
+        <property name="overloadEnabled" value="true" />
+	</bean>
+	
+	<bean name="BranchService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/BranchService" />
+        <property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.BranchService" />
+        <property name="overloadEnabled" value="true" />
+	</bean>
+
+  <jee:jndi-lookup
+    id="jmsConnectionFactory"
+    jndi-name="java:/ConnectionFactory"
+    expected-type="javax.jms.ConnectionFactory" />
+
+  <bean class="thaisamut.nbs.core.HttpUserSession" scope="prototype" init-method="initialize">
+    <property name="defaultPermissions" value="#{systemProperties['nbsweb.defaultPermissions']}" />
+    <property name="defaultAccessPermitTime" value="2147483647" />
+  </bean>
+
+  <bean class="thaisamut.commons.struts2.SpringUtils" scope="singleton" lazy-init="false" />
+  
+  <bean id="LDAPConnectionService" class="thaisamut.css.ldap.LDAPConnectionService" >
+  	 	<property name="url" ref="ldapServer" />
+	    <property name="userDn" ref="ldapPrincipal" />
+	    <property name="password" ref="ldapCandidate" />
+	    <property name="authentication" ref="ldapAuthentication"></property>
+	    <property name="ouUser" ref="ldapOuUser" />
+  </bean>
+  
+  <bean id="DataWarehouseService" class="thaisamut.css.dwh.service.impl.DataWarehouseServiceImpl" />
+  <bean id="CssMasterDataService" class="thaisamut.css.data.service.impl.CssMasterDataServiceImpl" scope="singleton"/>
+  <bean id="CssPolicyDataService" class="thaisamut.css.data.service.impl.CssPolicyDataServiceImpl" />
+  <bean id="GenerateFileService" class="thaisamut.css.data.service.impl.GenerateFileServiceImpl" />
+  <bean id="OTPHandler" class="thaisamut.css.otp.OTPHandler" scope="singleton"/>
+  <bean id="CssClearDataService" class="thaisamut.css.data.service.impl.CssClearDataServiceImpl" scope="singleton"/>
+  <bean id="EformService" class="thaisamut.css.eform.service.impl.EformServiceImpl" />
+  <bean id="CssEmailConnectionService" class="thaisamut.css.email.CssEmailConnectionService"/>
+  <bean id="CssSMSConnectionService" class="thaisamut.css.sms.CssSMSConnectionService"/>
+  <bean class="thaisamut.commons.AutowireHelper" lazy-init="false" />
+</beans>

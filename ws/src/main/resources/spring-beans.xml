@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:jee="http://www.springframework.org/schema/jee"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+
+         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+        default-autowire="byName"
+        default-lazy-init="false">
+
+  <context:annotation-config />
+
+  <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+    <bean name="UserService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/UserService"/>
+        <property name="serviceInterface" value="thaisamut.nbs.core.remote.UserService"/>
+        <property name="overloadEnabled" value="true" />
+    </bean>
+	<bean name="CssMemberService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssMemberService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssMemberService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	<bean name="CssMasterService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssMasterService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssMasterService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	<bean name="AdsService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/AdsService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.AdsService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	<bean name="CssEFormService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssEFormService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssEFormService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	<bean name="BranchesService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/BranchesService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.BranchesService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+    <bean name="CssPaymentCardTempService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssPaymentCardTempService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssPaymentCardTempService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	 <bean name="CssPaymentService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CssPaymentService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CssPaymentService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+	
+	<bean name="CampaignService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:9058/cybertronejbweb/remote/CampaignService" />
+		<property name="serviceInterface" value="thaisamut.cybertron.ejbweb.remote.CampaignService" />
+		<property name="overloadEnabled" value="true" />
+	</bean>
+
+  <bean class="thaisamut.commons.struts2.SpringUtils" scope="singleton" lazy-init="false" />
+  
+</beans>

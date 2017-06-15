@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="personal-info" extends="secure" namespace="/secure/member/personal">
+		<action name="info" class="thaisamut.nbs.css.person.action.PersonalInfoAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/personal-info.ftl
+			</result>
+		</action>
+		<action name="edit" class="thaisamut.nbs.css.person.action.PersonalInfoAction" method="edit">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/personal-edit.ftl
+			</result>
+		</action>
+		<action name="save" class="thaisamut.nbs.css.person.action.PersonalInfoAction" method="save">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/secure-otp.ftl
+			</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/secure/personal-edit.ftl
+			</result>
+		</action>
+		<action name="confirmOtp" class="thaisamut.nbs.css.person.action.PersonalInfoAction" method="confirmotp">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		<action name="resetOtp" class="thaisamut.nbs.css.person.action.PersonalInfoAction" method="resetotp">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+	</package>
+</struts>

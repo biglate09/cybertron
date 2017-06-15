@@ -1,0 +1,123 @@
+<modules xmlns="http://smartics.de/ns/jboss-modules-descriptor/1">
+    <!--
+       ORDER here does matter !
+    -->
+    <module name="org.jdbc.postgresql" slot="main">
+        <match>
+            <includes>
+                <include>
+                    <artifactId>postgresql.*</artifactId>
+                </include>
+            </includes>
+        </match>
+
+        <apply-to-module>
+            <dependencies>
+                <module name="javax.api" />
+                <module name="javax.transaction.api" />
+            </dependencies>
+        </apply-to-module>
+    </module>
+    <module name="net.sf.jt400" slot="main">
+        <match>
+            <includes>
+                <include>
+                    <artifactId>jt400</artifactId>
+                </include>
+            </includes>
+        </match>
+
+        <apply-to-module>
+            <dependencies>
+                <module name="javax.api" />
+                <module name="javax.transaction.api" />
+            </dependencies>
+        </apply-to-module>
+    </module>
+    <!-- commons-lang3 is used by both main deps and thaisamut.jboss.security.auth
+        , this has to be shared and promoted as a separate module until fix the jboss module plugin
+     -->
+    <module name="org.apache.commons.commons-lang3" slot="main">
+        <match>
+            <includes>
+                <include>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </include>
+            </includes>
+        </match>
+    </module>
+    <module name="thaisamut.jboss.security.auth" slot="main">
+        <match>
+            <includes>
+                <include>
+                    <groupId>thaisamut.jboss.security.auth</groupId>
+                    <artifactId>thaisamut-auth-spi</artifactId>
+                </include>
+                <include>
+                    <groupId>org.picketbox</groupId>
+                    <artifactId>picketbox</artifactId>
+                </include>
+                <include>
+                    <groupId>com.novell.ldap</groupId>
+                    <artifactId>jldap</artifactId>
+                </include>
+            </includes>
+        </match>
+
+        <apply-to-module>
+            <dependencies>
+                <module name="javax.api" />
+                <module name="org.slf4j"/>
+                <module name="org.jboss.logging" />
+                <module name="io.undertow.servlet" />
+                <module name="javax.servlet.api" />
+                <module name="org.apache.commons.commons-lang3" slot="main"/>
+            </dependencies>
+        </apply-to-module>
+    </module>
+
+    <module name="thaisamut.cybertron">
+        <match>
+            <includes>
+                <include>
+                    <groupId>.*</groupId>
+                </include>
+            </includes>
+        </match>
+
+        <apply-to-module>
+            <dependencies>
+                <module name="ch.qos.cal10n"/>
+                <module name="com.google.guava"/>
+                <module name="sun.jdk" />
+                <module name="javax.api"/>
+                <module name="javax.mail.api"/>
+                <module name="javax.annotation.api"/>
+                <module name="javax.el.api"/>
+                <module name="javax.enterprise.api"/>
+                <module name="javax.ejb.api"/>
+                <module name="javax.jms.api"/>
+                <module name="javax.faces.api"/>
+                <module name="javax.interceptor.api"/>
+                <module name="javax.persistence.api"/>
+                <module name="javax.servlet.api"/>
+                <module name="javax.servlet.jsp.api"/>
+                <module name="javax.transaction.api"/>
+                <module name="javax.xml.ws.api"/>
+                <module name="javax.jws.api" />
+                <module name="javax.xml.bind.api"/>
+                <module name="org.apache.commons.logging" export="true"/>
+                <module name="org.jboss.vfs"/>
+                <module name="org.slf4j"/>
+                <module name="org.slf4j.ext"/>
+                <module name="org.apache.cxf" export="true" />
+                <module name="org.apache.cxf.impl" export="true" />
+                <module name="org.codehaus.woodstox" export="true" />
+                <module name="thaisamut.jboss.security.auth" export="true" />
+                <module name="org.apache.commons.commons-lang3" slot="main" export="true"/>
+            </dependencies>
+        </apply-to-module>
+    </module>
+
+</modules>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="claim" extends="secure" namespace="/secure/claim">
+		<action name="history" class="thaisamut.nbs.css.claim.action.ClaimAction" method="history">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/claim/claim-history.ftl
+			</result>
+		</action>
+		
+		<action name="detail" class="thaisamut.nbs.css.claim.action.ClaimAction" method="detail">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/claim/claim-detail.ftl
+			</result>
+		</action>
+	</package>
+</struts>

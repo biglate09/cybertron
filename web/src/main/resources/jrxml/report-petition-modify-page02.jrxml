@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-08-16T14:35:14 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report-petition-modify-page02" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="5f889b29-1bb8-4d80-ba9e-64daab248682">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<parameter name="radio" class="java.lang.String"/>
+	<parameter name="Insureds" class="java.lang.String"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="typeRequet" class="java.lang.Integer"/>
+	<parameter name="bankName" class="java.lang.String"/>
+	<parameter name="bankNo" class="java.lang.String"/>
+	<parameter name="bank" class="java.lang.String"/>
+	<parameter name="bankBarnch" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<variable name="typeRequet" class="java.lang.String"/>
+	<variable name="bankName" class="java.lang.String"/>
+	<variable name="bankNo" class="java.lang.String"/>
+	<variable name="bank" class="java.lang.String"/>
+	<variable name="bankBarnch" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="792" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="0" width="22" height="18" uuid="35b233ca-cb5a-458e-8bd4-a029b4ed4920">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  เพิ่ม]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="56" y="0" width="22" height="18" uuid="68bc0e92-85d8-4f2c-8620-b1523e76f6b7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ลด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="15" y="18" width="22" height="18" uuid="77ac74e4-15e2-46bf-915f-952762146f19"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  เพิ่ม]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="55" y="18" width="22" height="18" uuid="42ad68f6-31c8-40ce-b649-7890031f30c9">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ลด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="135" y="0" width="129" height="18" uuid="69a46950-b281-4fe7-b3ec-9c44042879b6"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  สัญญาเพิ่มเติมคุ้มครองสุขภาพ(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="135" y="18" width="27" height="18" uuid="d3b1701a-b60f-4a57-8c0e-69194631ab98">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  อื่นๆ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="158" y="32" width="148" height="1" uuid="d78e4df2-d6db-4fa2-b0ae-0776d87bb1ab"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="442" y="-1" width="47" height="18" uuid="d1a2aa2c-c9c4-4449-a32e-6357ecb1567f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isUnderline="false"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[จากเดิมเป็น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="537" y="0" width="18" height="18" uuid="5daf0573-f8ce-4f31-8300-e55c928fabfc"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isUnderline="false"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[บาท]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="442" y="17" width="47" height="18" uuid="b76ed47d-8202-4f3a-a956-ef0ee29361f5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isUnderline="false"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[จากเดิมเป็น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="537" y="18" width="18" height="18" uuid="76ad5839-8a64-43dd-b382-482a0d55dbd5"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isUnderline="false"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[บาท]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="36" width="160" height="18" uuid="290d65f2-8542-4cf8-894d-f4565abe11b5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ขอเปลี่ยนแปลงกรมธรรม์ประกันภัยเป็น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="209" y="36" width="148" height="18" uuid="a9898e5d-8010-4c7c-a56d-c6b07f3598f2"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  แบบขยายระยะเวลา(ไม่มีเงินปันผล)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="390" y="36" width="164" height="18" uuid="e6a6ebbf-3241-4c4b-a75b-d82775f866e1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isUnderline="false"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  แบบกรมธรรม์ใช้เงินสำเร็จ(ไม่มีเงินปันผล)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="54" width="390" height="18" uuid="231fd7a3-c39a-4d91-8e2c-ca99142a75d2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ขอกลับคืนสู่สภาพเดิมของกรมธรรม์ และได้แนบคำแถลงสุขภาพของข้าพเจ้า มาพร้อมคำร้องนี้]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="91" width="239" height="18" uuid="d71daee3-9968-4d37-ba88-371057c99e5e"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isBold="true"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ขอเปลี่ยนแปลงแก้ไขรายละเอียดวิธีรับเงินผลประโยชน์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="110" width="539" height="18" uuid="5a185469-6c18-44d9-9311-ccb2aed03e5f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[   ขอเปลี่ยนแปลงวิธีรับเงินผลประโยชน์ตามเงื่อนไขกรมธรรม์ ด้วยวิธีรับเงินผลประโยชน์ผ่านบัญชีเงินฝากธนาคาร]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="128" width="40" height="18" uuid="0e2eb9cf-e365-412f-9b1c-f2571472aa61"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[   ชื่อบัญชี]]></text>
+			</staticText>
+			<line>
+				<reportElement x="54" y="143" width="179" height="1" uuid="673efb4c-bd25-419a-8117-e97e1816fa0b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="227" y="128" width="50" height="18" uuid="aef22128-45b5-4d4b-8784-c617723052fb"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  เลขที่บัญชี]]></text>
+			</staticText>
+			<line>
+				<reportElement x="271" y="143" width="284" height="1" uuid="ffb68315-8f33-49be-9fe3-088b5050c3a8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="146" width="40" height="18" uuid="c5c097e7-ec66-47a5-b639-ffb5ccf729ac"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[   ธนาคาร]]></text>
+			</staticText>
+			<line>
+				<reportElement x="53" y="161" width="180" height="1" uuid="8118b747-00ba-433c-9b90-ca17a2672b50"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="227" y="146" width="26" height="18" uuid="4bcb7c2f-b0f1-49d7-ae97-534b2efcbfb9"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  สาขา]]></text>
+			</staticText>
+			<line>
+				<reportElement x="253" y="161" width="302" height="1" uuid="0a051ffa-e882-45a2-9853-8146a8dc238d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="164" width="518" height="18" uuid="362d9e20-d04a-4c92-8616-fdf9f58df3bf">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[   ทั้งนี้ได้แนบสำเนาบัตรประชาชน และสำเนาหน้าสมุดบัญชีธนาคาร ประเภทบัญชีสะสมทรัพย์ (ชื่อบัญชีตรงกับชื่อผู้เอาประกัน)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="182" width="140" height="18" uuid="02534687-b773-4121-a946-4a5dbe40e68d"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[   (หากมีกรมธรรม์ฉบับอื่น โปรดระบุ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="152" y="197" width="398" height="1" uuid="6d05aa58-46f8-4d47-a7b1-1465bab97d02"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="546" y="182" width="9" height="18" uuid="9674964f-8103-4f13-bb69-05977021b442">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="200" width="539" height="18" uuid="ad864932-f78a-45ae-a333-7a918e3cb72e"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[   และในกรณีที่บริษัทฯ ไม่สามารถนำเงินเข้าบัญชีตามที่ระบุไว้ข้างต้นได้ ข้าพเจ้ายินดีที่จะรับเงินผลประโยชน์เป็นเช็คตามขั้นตอนปรกติ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="238" width="230" height="18" uuid="7b59dd8f-8f4b-467e-87d7-b54bbf36245d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isBold="true"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ขอเปลี่ยนแปลงแก้ไขรายละเอียดผู้รับผลประโยชน์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="258" width="410" height="18" uuid="e82f38dc-fa40-4559-9255-d21067749987"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ขอเปลี่ยนแปลงผู้รับผลประโยชน์ภายใต้กรมธรรม์ฉบับนี้ จากเดิมเป็น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="45" y="276" width="50" height="18" uuid="6da72eb4-d193-4d27-8238-e5e4a19829dc"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ชื่อ/ชื่อสกุล]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="149" y="276" width="114" height="18" uuid="0b43c34b-8c9f-4258-981f-050e8db8892b"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[เลขบัตรประจำตัวประชาชน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="289" y="276" width="32" height="18" uuid="f9627121-a4aa-4c4a-b740-ddf1375778a0"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[อายุ (ปี)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="348" y="276" width="58" height="18" uuid="f65ec10c-e476-4d93-b378-06aec28eb8c8"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ความสัมพันธ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="436" y="276" width="78" height="18" uuid="cb613d2e-d943-435e-ae00-b51ad6cdf996"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[หมายเลขโทรศัพท์]]></text>
+			</staticText>
+			<line>
+				<reportElement x="27" y="310" width="85" height="1" uuid="5335da75-3cce-4961-94cf-14b489696d41"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="27" y="332" width="85" height="1" uuid="7e49d340-dc97-4cbf-b788-579d5ee4eedd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="27" y="356" width="85" height="1" uuid="fcf92bcc-a93f-4130-a5e6-5b5b58059b0f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="28" y="380" width="85" height="1" uuid="11da7c7e-d113-48fa-b8c5-b9dd83083ffe"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="130" y="310" width="140" height="1" uuid="3e9d14ba-d949-4ad0-aa05-e95167e87f43"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="130" y="332" width="140" height="1" uuid="15a6193d-5026-43a8-81d6-6547256e533f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="130" y="356" width="140" height="1" uuid="d962c8b5-bb98-4d0c-9c57-88652c35e15b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="130" y="380" width="140" height="1" uuid="9ec51cc5-02c5-4016-b7e7-ce362f7f8bdb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="282" y="310" width="47" height="1" uuid="a3ec5a59-3d31-4d5a-8c7c-8af3c6a8662a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="282" y="332" width="47" height="1" uuid="a25c7aaf-1a8d-4a76-b629-11b864a80621"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="282" y="356" width="47" height="1" uuid="c9943515-205c-467b-b270-8de00f223101"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="282" y="380" width="47" height="1" uuid="f5851ef7-cf8c-48a3-8522-8448883a7801"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="338" y="310" width="70" height="1" uuid="60dc8e8f-12ef-4c19-bd02-09b68349366d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="338" y="332" width="70" height="1" uuid="b265aee0-5fd8-4916-939e-3bf5ab91d144"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="338" y="356" width="70" height="1" uuid="8e7a7007-ca6f-4c3e-a272-45004df02466"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="338" y="380" width="70" height="1" uuid="3a10f722-768e-4ed8-bba8-6e095c749363"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="430" y="310" width="90" height="1" uuid="6a10282c-d86a-4c31-9b31-ae7d621a3b7c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="430" y="332" width="90" height="1" uuid="9ef5e262-c274-40d2-853f-073223fc87f0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="430" y="356" width="90" height="1" uuid="dba3f736-6d7d-4432-a3d2-fb384c112ef8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="431" y="380" width="90" height="1" uuid="d6906fe0-0eff-42e3-9537-6eb6fa3fdb3b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="403" width="24" height="18" uuid="424b3ee8-19a9-4307-b325-8833aa191d96">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isBold="true"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[อื่นๆ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="17" y="422" width="110" height="18" uuid="087a319a-3c60-4f38-9598-690040d2de75"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ขอออกบัตรประกันสุขภาพ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="238" y="422" width="36" height="18" uuid="d0f96c70-f18a-4304-b3d4-c8dd5535d4eb"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  สูญหาย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="314" y="422" width="36" height="18" uuid="2165133f-d661-4135-b80a-d97fdf77c4a7"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ชำรุด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="394" y="422" width="36" height="18" uuid="f6936ed7-8e97-4f29-af07-265f38e0a413"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  อื่นๆ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="417" y="436" width="138" height="1" uuid="62c3d239-80ff-464e-97fd-673854719afa"/>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="13" y="447" width="186" height="18" uuid="c80fcd39-7373-451a-a485-f4810b0ba704"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14" isBold="true"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[สำหรับคำขอเปลี่ยนแปลงก่อนออกกรมธรรม์]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-1" y="447" width="1" height="98" uuid="1d8a2eba-6c5f-4fe9-9179-72cfc9c30413"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="555" y="447" width="1" height="98" uuid="63e5c784-9b49-4a77-8606-5ae69f603216"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-1" y="545" width="557" height="1" uuid="97acbe1c-2e7c-430e-a738-cef6c80daf02"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-1" y="448" width="557" height="1" uuid="6eedcb09-bf84-434f-93c9-8749835872e2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="28" y="465" width="526" height="18" uuid="59d03584-2c3b-4d8e-ae1a-03635a5a54e4"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ข้าพเจ้าขอรับรองว่าสุขภาพของข้าพเจ้า ไม่มีการเปลี่ยนแปลง และข้าพเจ้าไม่ได้รับการรักษาโรค การปรึกษา หรือ การตรวจโรคแต่อย่างใด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="28" y="483" width="526" height="18" uuid="06745be1-21e7-4924-ae40-071b46fc3127"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ตั้งแต่วันที่ยื่นใบคำขอเอาประกันชีวิตดังกล่าว และขอรับรองว่า คำตอบท้ั้งหมดของข้าพเจ้าที่เขียนไว้ในใบคำขอเอาประกันชีวิตดังกล่าว]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="28" y="501" width="526" height="18" uuid="7c71f53a-8dfc-46ce-b579-a90013b05dcf"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[รวมทั้งเรื่องราวทั้งหลายที่เกี่ยวข้องกับการประกอบอาชีพของข้าพเจ้าด้วยว่า ยังคงเป็นความจริงตามเดิมทุกประการโดยเริ่มมีผลบังคับ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="28" y="519" width="526" height="18" uuid="bc040da2-6959-4fa1-a205-22092ed68a41"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ตามวันที่ของกรมธรรม์ประกันภัย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="576" width="43" height="18" uuid="60c746da-843a-4aeb-b676-78b3ed0822c7"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อ ณ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="32" y="591" width="244" height="1" uuid="5514ef4b-2ffc-422a-b912-e661638685e0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="276" y="576" width="30" height="18" uuid="67f66a9d-a59d-4435-927c-377f8091cd49">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[วันที่]]></text>
+			</staticText>
+			<line>
+				<reportElement x="292" y="591" width="27" height="1" uuid="85c8cceb-f806-457b-8298-09a9baec164d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="319" y="576" width="30" height="18" uuid="1eb291fc-9b10-44a6-a110-ee7c875ffe48"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[เดือน]]></text>
+			</staticText>
+			<line>
+				<reportElement x="340" y="591" width="99" height="1" uuid="e0fee81f-9df8-46d0-ab2c-0706246c01d7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="439" y="576" width="30" height="18" uuid="546db813-5a5c-4ebb-9c5a-5f7d4d5a26ef"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[พ.ศ.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="456" y="591" width="99" height="1" uuid="95006548-a40e-4ae7-b8d2-473f8e48deea"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="373" y="630" width="176" height="1" uuid="d4d2e927-037c-4543-816e-46ea52ad61ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="20" y="665" width="170" height="1" uuid="403f988c-6d98-429b-8d72-b2d416a351fa"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="191" y="631" width="60" height="18" uuid="4af59fd8-44ef-458a-8961-9bd0c2c31cfe">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[พยาน/ตัวแทน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="372" y="631" width="10" height="18" uuid="47868656-cd1a-4f90-beee-5fcb0b29037e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="549" y="631" width="6" height="18" uuid="7edfd9ff-5263-44bd-b0e9-ebcbad7039e1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="375" y="648" width="174" height="1" uuid="e59147db-ec6e-4422-9bcf-56bd948cddc1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="360" y="650" width="195" height="18" uuid="190e75a0-ff7d-44bb-b561-1c452f8e8778"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ลายมือชื่อของผู้ขอเอาประกันชีวิต/ผู้เอาประกันภัย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="13" y="761" width="176" height="18" uuid="1b586f56-ec6b-484c-a42c-57f3da945355"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[สำหรับบริษัทลงบันทึก : ผู้พิจารณา / ผู้อนุมัติ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="754" width="1" height="38" uuid="a9a5e808-323b-4846-b700-a8d585169812"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="555" y="753" width="1" height="39" uuid="d4904c75-f27f-46b7-bcd1-3c50c3b6cfa4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="791" width="555" height="1" uuid="c10890aa-0c3c-4ae4-8e1b-69c9fd50f137"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="309" y="761" width="30" height="18" uuid="0731c06b-45ab-4b1a-97cb-42d3899cc0b6"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[วันที่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="366" y="761" width="24" height="18" uuid="1efe0a3b-f0b1-4aa5-8f97-f8b2659a795f"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[เดือน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="461" y="761" width="24" height="18" uuid="276b2dc3-7c68-4a7c-af37-5428f0178be8"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[พ.ศ.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="182" y="777" width="128" height="1" uuid="667c0ef8-8497-4eac-b502-d7562685777f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="327" y="777" width="39" height="1" uuid="4b151405-33ad-4653-8006-226fac23aca9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="386" y="777" width="75" height="1" uuid="a466f928-1e64-4ab7-9601-433e56ed24b0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="478" y="777" width="74" height="1" uuid="dfe55dab-e39b-4276-a1e7-133138f285ef"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="96" y="0" width="32" height="18" uuid="622ff9c9-4492-4445-9ffa-726c45708c54">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ยกเลิก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="95" y="18" width="32" height="18" uuid="68f10300-d184-4212-99ae-7852782afe76">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[  ยกเลิก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="631" width="30" height="18" uuid="43bdb1dd-b3b9-4c1b-a1a6-b19e07ad6962">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อ ณ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="649" width="10" height="18" uuid="c39b6471-1349-47b0-b925-e60e6d5c1980">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<line>
+				<reportElement x="21" y="646" width="170" height="1" uuid="df4e2b80-6637-4101-a6a9-689f83cdd448"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="191" y="649" width="6" height="18" uuid="ce81665b-e954-4c03-b604-7898e93da0c0"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="374" y="710" width="10" height="18" uuid="a28351d8-f5f9-418e-b918-6df5133f5e94">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<line>
+				<reportElement x="377" y="727" width="172" height="1" uuid="ff957ed4-6f43-4858-986e-d8721c79c9b5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="753" width="556" height="1" uuid="023b8c9d-323b-4631-b289-691f7270504a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="3" y="3" width="13" height="13" uuid="4b899d30-772d-40bc-b92a-7e0655763ec0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="20" width="13" height="13" uuid="9d0b4046-84b9-4b23-ae69-cbf80f63571c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="488" y="14" width="49" height="1" uuid="1b4215d8-98b2-4243-ae58-1470b13842bf"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="488" y="32" width="49" height="1" uuid="34b00bae-5b01-42aa-bc02-4b42cf97fc0e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="3" y="39" width="13" height="13" uuid="0f225b39-2bc7-4168-9db8-8edbffb72603"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="57" width="13" height="13" uuid="946bf5ce-875c-4b02-9c1b-60cdbb74d84f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="43" y="3" width="13" height="13" uuid="c9db6a44-773a-48fa-9b30-9dd3158e5a3f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="43" y="21" width="13" height="13" uuid="95cf1964-793a-4b57-8bc8-da03b5a0f3a9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="83" y="4" width="13" height="13" uuid="7249fc6a-d16b-47fa-ba02-4ac8fea309ef"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="83" y="21" width="13" height="13" uuid="2937135a-463e-4ab2-92dd-5ddfd9f8ca1e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="196" y="40" width="13" height="13" uuid="e4984eb6-11b0-4153-aed0-c166e76a721e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="377" y="40" width="13" height="13" uuid="5d47ba69-64b6-446a-ab0b-2b8006383746"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="4" y="113" width="13" height="13" uuid="27e2cc62-a035-4777-9a41-6d81786decbe"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="4" y="261" width="13" height="13" uuid="56217525-f169-436d-ae45-c4959390b1ba"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="4" y="425" width="13" height="13" uuid="027229ba-3900-457d-9733-b4d9e0bc499f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="225" y="425" width="13" height="13" uuid="9da607f8-1f41-4fa3-a77d-1e420127c593"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="301" y="425" width="13" height="13" uuid="2035e00b-02f7-4c33-962c-24c56429eef5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="381" y="425" width="13" height="13" uuid="98f19cd3-9edd-4c1f-8cee-5b1f70e60a3d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="377" y="729" width="177" height="18" uuid="8125e181-0c05-458d-8905-11ea09fa7f0c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[    ผู้ใช้อำนาจปกครองผู้แทนโดยชอบธรรม]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="549" y="710" width="6" height="18" uuid="3f58bd48-8651-4401-a9ba-08cc0e42c871">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="374" y="709" width="176" height="1" uuid="056c2842-e21e-43b4-a05c-919c0bc2388f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="20" y="744" width="170" height="1" uuid="84b57063-3a35-474b-8ebf-2bd1932ea8df"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="191" y="710" width="60" height="18" uuid="e8c55b9c-3d56-4b33-925d-69f7f06811d2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[พยาน/ตัวแทน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="710" width="30" height="18" uuid="f59fad5c-232a-44d3-93ed-c60a1b24b9a9">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อ ณ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="16" y="728" width="10" height="18" uuid="0ebe8700-6cf6-46d6-b2fe-4315a3b5d664">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<line>
+				<reportElement x="21" y="725" width="170" height="1" uuid="d4d27be4-a9f2-4610-b8e0-0d64e21c42bd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="191" y="728" width="6" height="18" uuid="9d97e5d8-d8c7-49da-aec2-8517d7304c81"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="276" y="0" width="42" height="18" uuid="bf861d39-6a62-44d9-abd7-1138d34de1f6"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Codetta" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[เหมาจ่าย)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="261" y="0" width="18" height="18" uuid="854dc424-10c3-4961-9b78-402c2244fdf9"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[HC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="124" y="422" width="86" height="18" uuid="c02b853a-1887-43c8-b103-5d21f067c378"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Cordia New" size="14"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<text><![CDATA[Ocean Core Card]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="43" y="576" width="196" height="18" uuid="8ef3ff5b-62a8-41a6-b770-d67d93464165">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Codetta" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Insureds}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="576" width="78" height="18" uuid="68b66f67-e572-417d-97fb-e986d2fede03">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Codetta" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="576" width="92" height="18" uuid="02e522c3-c28b-4554-ac41-d83cae73e13b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Codetta" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="576" width="27" height="18" uuid="3f349525-bbda-475b-b29d-cf5e3cde1c6f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Codetta" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="103" width="25" height="30" uuid="49cec09d-44fb-4382-806c-de65cb98d41e"/>
+				<textElement>
+					<font fontName="Cordia New" size="25" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{typeRequet} == 4 ? "x" : " "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="129" width="164" height="18" uuid="68700ae7-4ed0-4644-8456-79a2aef6fd2d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Codetta" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{typeRequet} == 4 ? $P{bankName} : " "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="129" width="272" height="18" uuid="d8b03171-c939-4835-a990-a2bae74d5150">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Codetta" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{typeRequet} == 4 ? $P{bankNo} : " "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="147" width="166" height="18" uuid="dbc56453-75d6-4e66-baa1-407c871d1f58">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Codetta" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{typeRequet} == 4 ? $P{bank} : " "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="147" width="294" height="18" uuid="c40daa93-d791-421d-b6c4-07b6bc7a474e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Codetta" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{typeRequet} == 4 ? $P{bankBarnch} : " "]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

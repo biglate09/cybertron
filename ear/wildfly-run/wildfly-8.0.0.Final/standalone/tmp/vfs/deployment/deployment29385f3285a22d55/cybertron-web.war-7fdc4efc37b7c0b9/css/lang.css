@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+/* Start language controle styles */
+body[lang='en'] a[lang='en']{
+	text-decoration: overline;
+}
+body[lang='th'] a[lang='th']{
+	text-decoration: overline;
+}
+body[lang] l{
+	display:none;
+}
+body[lang='en'] l[en]{
+	display:inherit;
+}
+body[lang='th'] l[th]{
+	display:inherit;
+}
+/* end language controle styles */
+body[lang='en'] input.placeholder-username:before{
+	content: 'Username';
+}
+body[lang='th'] input.placeholder-username:before{
+	content: 'บัญชีผู้ใช้งาน';
+}

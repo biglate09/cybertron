@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="cybertron-ejbweb:war exploded">
+    <output-path>$PROJECT_DIR$/ejbweb/target/cybertron-ejbweb-0.13.2-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="cybertron-ejbweb" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/ejbweb/target/cybertron-ejbweb-0.13.2-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="cybertron-ejbweb/web/Web" />
+    </root>
+  </artifact>
+</component>

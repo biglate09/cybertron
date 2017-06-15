@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+  "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!--<constant name="struts.enable.DynamicMethodInvocation" value="false" />-->
+	<constant name="struts.devMode" value="${struts.devMode}" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.action.extension" value="html" />
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+  <constant name="struts.freemarker.manager.classname"
+      value="thaisamut.pantheon.servlet.struts2.ExternalLoaderFreemarkerManager" />
+	<!-- Security update -->
+	<constant name="struts.ognl.enableOGNLEvalExpression" value="false" />
+	<constant name="struts.allowed.action.names" value="[a-zA-Z]*" />
+	<constant name="struts.mapper.action.prefix.enabled" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+
+	<package name="base" extends="json-default">
+		<global-results>
+			<result name="access-denied">/WEB-INF/pages/access-denied.jsp</result>
+			<result name="forbidden" type="redirectAction">
+				<param name="namespace">/secure</param>
+				<param name="actionName">activatedUser</param>
+			</result>
+			<result name="activatedUser" type="redirectAction">
+				<param name="namespace">/secure</param>
+				<param name="actionName">activatedUser</param>
+			</result>
+			<result name="none" type="redirectAction">
+				<param name="namespace">/secure</param>
+				<param name="actionName">home</param>
+			</result>
+			<result name="fail" type="redirectAction">
+				<param name="namespace">/secure</param>
+				<param name="actionName">home</param>
+			</result>
+			<result name="signup_zero" type="redirectAction">
+				<param name="namespace">/pub/page</param>
+				<param name="actionName">signup</param>
+			</result>
+			<result name="address_zero" type="redirectAction">
+				<param name="namespace">/pub/page</param>
+				<param name="actionName">signup</param>
+			</result>
+		</global-results>
+	</package>
+
+	<package name="error" extends="base" namespace="/error">
+
+		<interceptors>
+			<interceptor name="requestParamsInfo" class="thaisamut.commons.struts2.interceptor.RequestParamsInfoInterceptor" />
+			<interceptor name="auditTrail" class="thaisamut.commons.struts2.interceptor.AuditTrailInterceptor" />
+			<interceptor-stack name="publicStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="requestParamsInfo" />
+				<interceptor-ref name="auditTrail" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="publicStack" />
+		<action name="error" class="thaisamut.nbs.struts.action.AuthAction" method="internalServerError">
+			<interceptor-ref name="publicStack" />
+			<result name="success">/WEB-INF/pages/error/500.jsp</result>
+		</action>
+	</package>
+	<package name="public" extends="base" namespace="/pub">
+
+		<interceptors>
+			<interceptor name="requestParamsInfo" class="thaisamut.commons.struts2.interceptor.RequestParamsInfoInterceptor" />
+			<interceptor name="auditTrail" class="thaisamut.commons.struts2.interceptor.AuditTrailInterceptor" />
+			<interceptor-stack name="publicStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="requestParamsInfo" />
+				<interceptor-ref name="auditTrail" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="publicStack" />
+		
+		<action name="login" class="thaisamut.nbs.struts.action.AuthAction" method="login">
+			<interceptor-ref name="publicStack" />
+			<result name="success">/WEB-INF/pages/auth/login.jsp</result>
+			<result name="loginError" type="freemarker">/WEB-INF/pages/auth/login-once-error.ftl</result>
+		</action>
+		<action name="nigol" class="thaisamut.nbs.struts.action.AuthAction" method="loginNew">
+			<interceptor-ref name="publicStack" />
+			<result name="success">/WEB-INF/pages/auth/login-new.ftl</result>
+		</action>
+		<action name="loginError" class="thaisamut.nbs.struts.action.AuthAction" method="loginError">
+			<interceptor-ref name="publicStack" />
+			<result name="success">/WEB-INF/pages/auth/login.jsp</result>
+			<result name="loginError">/WEB-INF/pages/auth/login.jsp</result>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+
+	</package>
+
+	<package name="secure" extends="base" namespace="/secure">
+
+		<interceptors>
+			<interceptor name="requestParamsInfo" class="thaisamut.commons.struts2.interceptor.RequestParamsInfoInterceptor" />
+			<interceptor name="auditTrail" class="thaisamut.commons.struts2.interceptor.AuditTrailInterceptor" />
+			<interceptor name="authorization" class="thaisamut.commons.struts2.interceptor.AuthorizationInterceptor" />
+			<interceptor name="accessPermitTime" class="thaisamut.commons.struts2.interceptor.AccessPermitTimeInterceptor" />
+			<interceptor name="credentialFilter" class="thaisamut.commons.struts2.interceptor.UserCredentialInterceptor" />
+            <interceptor name="timerMetricsInterceptor" class="thaisamut.commons.struts2.interceptor.TimerMetricsInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="requestParamsInfo" />
+				<interceptor-ref name="auditTrail" />
+				<!--interceptor-ref name="authorization" / -->
+				<interceptor-ref name="accessPermitTime" />
+				<interceptor-ref name="credentialFilter" />
+			</interceptor-stack>
+			<interceptor-stack name="existsBranchStack">
+				<interceptor-ref name="credentialFilter">
+					<param name="credential">Branch Code</param>
+					<param name="pattern">\d{4}</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="secureStack" />
+
+		<action name="home" class="thaisamut.nbs.struts.action.MainAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="redirectAction">
+				<param name="namespace">/secure/member/personal</param>
+				<param name="actionName">info</param>
+			</result>
+		</action>
+
+		<action name="logout" class="thaisamut.nbs.struts.action.AuthAction" method="logout">
+			<result type="redirectAction">
+				<param name="namespace">/secure</param>
+				<param name="actionName">home</param>
+			</result>
+		</action>
+		
+		<action name="changepassword" class="thaisamut.nbs.publicpage.action.ActivateUserAction" method="changePassword">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/auth/change-password.ftl</result>
+		</action>
+		
+		<action name="checkuser" class="thaisamut.nbs.publicpage.action.ChangePasswordAction" method="checkuser">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="resetpassword" class="thaisamut.nbs.publicpage.action.ChangePasswordAction" method="secureResetpassword">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="activatedUser" class="thaisamut.nbs.publicpage.action.ActivateUserAction" method="activatedAccount">
+			<interceptor-ref name="secureStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/auth/activated-user.ftl</result>
+		</action>
+		
+		<action name="performActive" class="thaisamut.nbs.publicpage.action.ActivateUserAction" method="performActivatedAccount">
+			<interceptor-ref name="secureStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="getEmailExist" class="thaisamut.nbs.publicpage.action.ActivateUserAction" method="getEmailExist">
+			<interceptor-ref name="secureStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+
+	</package>
+ 	<include file="struts-config/struts-public-page.xml" />
+ 	<include file="struts-config/struts-policy-detail.xml" />
+ 	<include file="struts-config/struts-member-personal.xml" />
+ 	<include file="struts-config/struts-request-change.xml" />
+ 	<include file="struts-config/struts-payment.xml" />
+ 	<include file="struts-config/struts-ocean-care-card.xml" />
+ 	<include file="struts-config/struts-ocean-club.xml" />
+ 	<include file="struts-config/struts-claim.xml" />
+ 	<include file="struts-config/struts-easyloan.xml" />
+	<package name="serveAll" namespace="" extends="struts-default">
+	        <action name="*">
+				<result name="none" type="redirectAction">
+					<param name="namespace">/secure</param>
+					<param name="actionName">home</param>
+				</result>
+	        </action>
+	</package>
+</struts>

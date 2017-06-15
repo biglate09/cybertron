@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="easyloan" extends="secure" namespace="/secure/easyloan">
+		<action name="easyloanindex" class="thaisamut.nbs.css.easyloan.action.EasyLoanInfoAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/easyloan/easyloan-info.ftl
+			</result>
+		</action>
+		<action name="confOtp" class="thaisamut.nbs.css.easyloan.action.EasyLoanInfoAction" method="confOtp">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/easyloan/easyloan-otp.ftl
+			</result>
+		</action>
+		<action name="validateOtpStatusN" class="thaisamut.nbs.css.easyloan.action.EasyLoanInfoAction" method="validateOtpStatusN">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/easyloan/easyloan-otp.ftl
+			</result>
+		</action>
+		<action name="successOtp" class="thaisamut.nbs.css.easyloan.action.EasyLoanInfoAction" method="successOtp">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/easyloan/easyloan-success-otp.ftl
+			</result>
+		</action>
+		<action name="*" class="thaisamut.nbs.css.easyloan.action.EasyLoanInfoAction" method="{1}">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+			<result name="pdf" type="stream">
+                 <param name="contentType">application/pdf</param>
+                 <param name="inputStream">inputStream</param>
+                 <param name="contentDisposition">inline;filename="report.pdf"</param>
+                 <param name="bufferSize">4096</param>
+            </result>
+            <result name="excel" type="stream">
+                  <param name="contentType">application/vnd.ms-excel</param>
+                  <param name="inputStream">inputStream</param>
+                  <param name="contentDisposition">inline;filename="report.xls"</param>
+                  <param name="bufferSize">4096</param>
+            </result>
+		</action>
+	</package>
+</struts>

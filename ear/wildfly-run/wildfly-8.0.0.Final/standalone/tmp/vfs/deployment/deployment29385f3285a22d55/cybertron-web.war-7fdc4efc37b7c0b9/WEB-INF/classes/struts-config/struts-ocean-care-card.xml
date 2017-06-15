@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="ocean-care-card" extends="secure" namespace="/secure/ocean/care/card">
+		<action name="index" class="thaisamut.nbs.css.oceancarecard.action.OceanCareCardAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceancarecard/oceancarecard-main.ftl
+			</result>
+		</action>
+		
+		<action name="checkOceanCareCard" class="thaisamut.nbs.css.oceancarecard.action.OceanCareCardAction" method="checkOceanCareCard">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="report" class="thaisamut.nbs.css.oceancarecard.action.OceanCareCardAction" method="report">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="jpeg" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputStream">inputStream</param>
+				<param name="contentDisposition">attachment;filename="ocean-care-card.jpeg"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		
+		<action name="sendEmail" class="thaisamut.nbs.css.oceancarecard.action.OceanCareCardAction" method="sendEmail">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="checkEmail" class="thaisamut.nbs.css.oceancarecard.action.OceanCareCardAction" method="checkEmail">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

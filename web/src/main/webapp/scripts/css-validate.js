@@ -1,0 +1,209 @@
+var errorInvalidCredentials = "INVALID_CREDENTIALS";
+var errorAccountLocked = "ACCOUNT_LOCKED";
+var fieldInValid = [];
+CSSValidate = (function($){
+	var ALERT_MSG = "";
+	function $v(el){
+		var fn;
+		var msg = "",sep='';
+		if(el.data()){
+			for(_data in el.data()){
+				fn = null;
+				if(_data.indexOf('validate')==0){
+					try{
+						fn = eval(_data);
+						if(typeof fn === 'function'){
+							if(fn.apply(el,el)  == false ){
+								(msg+=sep+el.data(_data))&&(sep = ', ');
+								break;
+							}
+						}
+					}catch(e){}
+				}
+			}
+		}
+		
+		var isCombobox = (el.find('option').size() > 0);
+		if(isCombobox){
+			el.hasClass('rule-conflict-select')&&el.attr('placeholder',el.data('placeholder')).removeClass('rule-conflict-select');
+		}else{
+			el.hasClass('rule-conflict')&&el.attr('placeholder',el.data('placeholder')).removeClass('rule-conflict');
+		}
+		
+		if(!!msg){//check exist and not blank
+			ALERT_MSG +=msg+"<br/>";
+			fieldInValid.push(el[0].id);
+			if(el[0].id == 'email'){
+				if(el[0].value == ''){
+					msg = 'กรอกอีเมล';
+				}
+			}
+			el.data('placeholder',el.attr('placeholder'));
+			el.val('').attr('placeholder',msg).addClass(isCombobox?'rule-conflict-select':'rule-conflict');
+			if(fieldInValid.length > 1){
+				el.on('focus',function(){
+					$(this).removeClass(isCombobox?'rule-conflict-select':'rule-conflict').attr('placeholder',$(this).data('placeholder'));
+					$(this).unbind('focus');
+				})
+			}
+			return false;
+		}else{
+			return true;
+		}
+	}
+	return function($form){
+		var verify = true,
+		$form = $($form);
+		ALERT_MSG = "";
+		$.each($form.find("input,textarea,select"),function(index,object){
+			verify = $v($(object))&&verify;
+			
+		});
+		if(ALERT_MSG != ""){
+			//CSSDialog.warn(ALERT_MSG);
+		}
+		return verify;
+			
+		};
+})(jQuery);
+
+//validate email
+validateEmail = function(el) {
+	if($(el).val()){
+		return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(el).val());
+	}else return true;
+}
+validateRequired = function(el) {
+	el = $(el);
+	if(el.attr('type')==="checkbox"||el.attr('type')==="radio"){
+		return el.is(":checked");
+	}else{
+		return el.val()!='';
+	}
+}
+validateCitizenid = function(el){
+	el = $(el);
+	var val = el.val();
+	if(val == ''){
+		return true;
+	}else if (/^\d{13}$/.test(val)){
+		var chr = val.split(''),
+		sum = 0;
+		for(var i = 13; i>1;i--){
+			sum += (chr[13-i]*i);
+		}
+		return chr[12]==((11-(sum%11))%10)
+	}
+	return false;
+}
+validateMobile = function(el){
+	if($(el).val())
+		return /^0(1|6|8|9)\d{8}$/.test($(el).val());
+	else
+		return true;
+}
+validatePhone = function(el){
+	if($(el).val())
+		return /^0\d{8}$/.test($(el).val());
+	else
+		return true;
+}
+////////-----
+ONLY_RULES = {
+	"number" :/\d/ ,
+	"comma" :/,/,
+	"numcomma" : /[0-9,]+/
+};
+ALL_RULES = {
+		"number" :/^\d+$/,
+		"numcomma": /^[0-9,]+$/
+	};
+!function($){
+	$(document).on('keypress','input[type=text][data-only-rule],textarea[data-only-rule]',function(e){
+			if(e.which!= 0&&e.which!= 8&&e.which!=9&&e.which!=13&&!e.ctrlKey){
+				var key = String.fromCharCode(e.which);	
+				var rules= $(this).data("onlyRule").split(",");
+				for(var r in rules){
+					if(rules[r]!=''&&ONLY_RULES[rules[r]]&&ONLY_RULES[rules[r]].test(key)){
+						return true;
+					}
+				}
+				e.preventDefault();
+				return false;
+			}
+			return true;
+	});
+	$(document).on('blur','input[type=text][data-only-rule],textarea[data-only-rule]',function(e){
+			var rules= $(this).data("onlyRule").split(",");
+			var thru = true,check;
+			for(var r in rules){
+				if(rules[r]!=''&&ALL_RULES[rules[r]]){
+					thru = false;
+					if((ALL_RULES[rules[r]].test(e.currentTarget.value))){
+						check =  true||check;
+					}else{
+						check = false||check;
+					}
+				}
+			}
+			if(!thru&&!check){
+				e.currentTarget.value = '';
+				return false;
+			}
+	});
+}(jQuery);
+
+/// password difficult
+!function($){
+	var	strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!"#$%&'()*+,-./:;<=>?@[\\\]^_`{|}~])(?=.{8,})/,
+	mediumRegex = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/;
+	$(document).ready(function(e){
+		$(".diff-password").size()>0&&$(".diff-password")
+		.after('<div class="password-diff"></div><div class="notic center">ความยากของรหัสผ่าน</div>');
+		
+		
+$(".diff-password").on('keyup',function(e){
+		var val = $(this).val();
+		if(strongRegex.test(val)){
+			$(".password-diff").addClass("strong").removeClass("medium weak");
+		}else if(mediumRegex.test(val)){
+			$(".password-diff").addClass("medium").removeClass("strong weak");
+		}else if(val.length>=8){
+			$(".password-diff").addClass("weak").removeClass("strong medium");
+		}else{
+			$(".password-diff").removeClass("strong medium weak");
+		}
+	});
+	})
+window.validateDiffPassword = function(el){
+	var val = $(el).val();
+	if(val!='') return strongRegex.test(val);
+	else return true;
+}
+}(jQuery);
+/// password hint
+(function($){
+	$.each($(".password-hint"),function(index,hintObj){
+		var _ = $(hintObj);
+		_.css("position","relative");
+		_.after('<span class="hint-container" onclick="void(0)"> ? '+
+		'<div class="hint"><p>รหัสผ่านจะต้องมีความยาวอย่างน้อย 8 ตัวอักขระ โดยประกอบด้วย</p><ul>'+
+				'<li>อักษรตัวพิมพ์ใหญ่ เช่น A,B,C....</li>'+
+				'<li>อักษรตัวพิมพ์เล็ก เช่น a, b, c....</li>'+
+				'<li>ตัวเลข เช่น 1, 2, 3.....</li>'+
+				'<li>อักขระพิเศษ เช่น @, #, &, ! </li>'+
+			'</ul></div></span>');
+	});
+	$(document)/*.on('mouseover',".hint-container",function(){ $(".hint-container").addClass("active") })
+			   .on('mouseout',".hint-container",function(){ $(".hint-container").removeClass("active") })*/
+			   .on('click',".hint-container",function(){ $(".hint-container").toggleClass("active") });
+})(jQuery);
+
+(function($){
+	$.each($(".replace-currency"),function(index,hintObj){
+		var _ = $(hintObj);
+		if(_.text().indexOf('.')>0){
+			_.html(_.text().replace(/([\d,]+\.)(\d{2})(.*)/,'$1<span class="mini-dec">$2</span>$3'))
+		}
+	});
+})(jQuery);

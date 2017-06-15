@@ -1,0 +1,1029 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="alter-table-css_address_send-18082016-01" author="bundit.ra">
+		<preConditions onFail="MARK_RAN">
+			<columnExists tableName="css_address_send" columnName="policy_no"/>
+		</preConditions>
+		<renameColumn tableName="css_address_send" oldColumnName="policy_no" newColumnName="pol_no"/>
+		<renameColumn tableName="css_address_send" oldColumnName="zip_code" newColumnName="zipcode"/>
+	</changeSet>
+	<changeSet id="alter-table-css_address_send-18082016-02" author="bundit.ra">
+		<preConditions onFail="MARK_RAN">
+			<columnExists tableName="css_address_send" columnName="send_status"/>
+		</preConditions>
+		<renameColumn tableName="css_address_send" oldColumnName="send_status" newColumnName="status"/>
+	</changeSet>
+	<changeSet id="create-table-bank-18082016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="bank" />
+			</not>
+		</preConditions>
+		<createTable tableName="bank">
+			<column name="bank_code" type="varchar(10)" />
+			<column name="bank_name" type="varchar(255)" />
+			<column name="status" type="varchar(1)" />
+			<column name="bank_no" type="varchar(10)" />
+			<column name="creditcard" type="varchar(1)" />
+			<column name="transfer" type="varchar(1)" />
+			<column name="code_as400" type="varchar(10)" />
+		</createTable>
+		<sql>
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'CTB','ธนาคารซิตี้แบงก์','A','017','Y','Y','17');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'005','ธ. เดอะรอยัลแบงก์อ๊อฟสกอตแลนด์ เอ็น.วี.','A','005','Y','Y','77');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'008','ธ. เจพีมอร์แกน เชส 	','A','008','Y','Y','76');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'009','ธ. โอเวอร์ซี-ไชนีสแบงกิ้งคอร์ปอเรชั่น จำกัด ','A','009','Y','Y','75');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'029','ธ. อินเดียนโอเวอร์ซีส์ ','A','029','N','Y','74');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'045','ธ. บีเอ็นพี พารีบาส์ 	','A','045','N','Y','72');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'052','ธ. แห่งประเทศจีน จำกัด ','A','052','Y','Y','71');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'068','ธ. เอไอจี เพื่อรายย่อย จำกัด (มหาชน)','A','068','N','Y','70');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'070','ธ. ไอซีบีซี (ไทย) จำกัด (มหาชน) ','A','070','Y','Y','69');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'098','ธ. พัฒนาวิสาหกิจขนาดกลางและขนาดย่อมแห่งประเทศไทย ','A','098','N','Y','68');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'ABN','ธนาคารเอบีเอ็น แอมโร เอ็นวี','A',NULL,'Y','Y','5');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'AEON','บริษัท อิออน ธนสินทรัพย์ จำกัด (มหาชน)','A',NULL,'Y','N','67');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'AirAsia','บัตรเครดิตแอร์เอเชีย','A',NULL,'Y','N','66');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BAAC','ธนาคารเพื่อการเกษตรและสหกรณ์','A','034','N','Y','34');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BAY','ธนาคารกรุงศรีอยุธยา','A','025','Y','Y','25');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BBL','ธนาคารกรุงเทพ จำกัด (มหาชน)','A','002','Y','Y','2');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BMB','ธนาคารศรีนคร','A',NULL,'N','N','21');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BOA','ธนาคารเอเซีย','A',NULL,'N','Y','65');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BOB','ธนาคารภารตโอเวอร์ซีร์ จำกัด','A',NULL,'Y','Y','64');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BOT','ธนาคารแห่งประเทศไทย','A','001','N','N','63');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BTH','ธนาคารไทยธนาคาร','A',NULL,'N','Y','22');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'BTM','ธนาคารโตเกียว','A',NULL,'Y','Y','62');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'CAI','ธนาคารอินโดสุเอช','A',NULL,'Y','Y','61');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'CCC','เซ็นทรัล เครดิตคาร์ด','A',NULL,'Y','N','60');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'CIMB','ธนาคารซีไอเอ็มบี','A','022','Y','Y','9');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'DB','ธนาคารดอยซ์แบงค์','A','032','Y','Y','32');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'DBS','ธนาคารดีบีเอส ไทยทนุ','A',NULL,'N','Y','12');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'DNB','ธนาคารเดรสด์เนอร์ เอ จี','A',NULL,'Y','Y','59');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'GHB','ธนาคารอาคารสงเคราะห์','A',NULL,'N','Y','58');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'GSB','ธนาคารออมสิน','A','030','Y','Y','30');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'HSBC','ธนาคารฮ่องกง-เซี่ยงไฮ้','A',NULL,'Y','Y','31');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'IOB','ธนาคารอินเดียน โอเวอร์ซีส์','A',NULL,'Y','Y','57');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'KBANK','ธนาคารกสิกรไทย จำกัด (มหาชน)','A','004','Y','Y','4');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'SCIB','ธนาคารนครหลวงไทย','A','015','Y','Y','15');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'010','ธ. แห่งโตเกียว-มิตซูบิชิ ยูเอฟเจ จำกัด	','A','010','Y','Y','10');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'026','ธ. เมกะ สากลพาณิชย์ จำกัด (มหาชน) 	','A','026','N','Y','47');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'027','ธ. แห่งอเมริกาเนชั่นแนลแอสโซซิเอชั่น','A','027','Y','Y','27');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'028','ธ. เครดิต อะกริกอล คอร์ปอเรทแอนด์อินเวสเมนท์แบงก์','A','028','N','Y','28');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'031','ธ. ฮ่องกงและเซี่ยงไฮ้แบงกิ้งคอร์ปอเรชั่น จำกัด','A','031','Y','Y','31');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'033','ธ. อาคารสงเคราะห์ ','A','033','N','Y','33');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'035','ธ. เพื่อการส่งออกและนำเข้าแห่งประเทศไทย ','A','035','N','Y','46');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'066','ธ. อิสลามแห่งประเทศไทย 	','A','066','N','Y','50');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'071','ธ. ไทยเครดิต เพื่อรายย่อย จำกัด (มหาชน)','A','071','N','Y','44');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'100','ธนาณัติ','A','100','Y','N','98');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'101','ตั๋วแลกเงิน','A','101','Y','N','99');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'102','ธนาคารสินเอเชีย จำกัด','A','102','Y','Y','49');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'103','ธนาคารจีอี มันนี่ เพื่อรายย่อย','A','103','Y','Y','42');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'104','ธนาคารไดอิจิ คังเงียว จำกัด','A','104','Y','Y','39');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'105','ธนาคารสากลพาณิชย์แห่งประเทศจีน','A','105','Y','Y','26');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'106','ธ.กรุงเทพฯ พาณิชย์การ','A','106','Y','Y','3');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'107','ธ.มหานคร','A','107','Y','Y','13');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'108','ธนาคารเอเชีย จำกัด(มหาชน)','A','108','Y','Y','24');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'109','ธนาคารรัตนสิน จำกัด(มหาชน)','A','109','Y','Y','19');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'110','ธนาคารเชสแมนแฮตตัน','A','110','Y','Y','8');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'KK','ธนาคารเกียรตินาคิน','A','069','N','Y','40');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'KTB','ธนาคารกรุงไทย จำกัด (มหาชน)','A','006','Y','Y','6');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'LH','ธนาคารแลนด์ แอนด์ เฮ้าส์','A','073','Y','Y','73');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'MZH','ธนาคารมิซูโฮ่','A','039','Y','Y','56');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'RSB','ธ. อาร์ เอช บี จำกัด','A','023','N','Y','55');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'SAKU','ธนาคารซากุระ','A',NULL,'Y','Y','18');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'SCB','ธนาคารไทยพาณิชย์ จำกัด (มหาชน)','A','014','Y','Y','14');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'SCNB','ธนาคารนครธน','A',NULL,'N','Y','20');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'SMBC','ธนาคารซูมิโตโม มิตซุย','A','018','Y','Y','54');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'SME','ธนาคารพัฒนาวิสาหกิจ','A',NULL,'N','Y','51');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'STCB','ธนาคารสแตนดาร์ดชาร์เตอร์','A','020','Y','Y','7');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'TBANK','ธนาคารธนชาต','A','065','Y','Y','45');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'TESCO','เทสโก้ คาร์ด เซอร์วิสเซส','A',NULL,'Y','N','53');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'TISCO','ธนาคารทิสโก้','A','067','Y','Y','43');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'TMB','ธนาคารทหารไทย','A','011','Y','Y','11');
+INSERT INTO public.bank (bank_code,bank_name,status,bank_no,creditcard,transfer,code_as400) VALUES (
+'UOB','ธนาคารยูโอบี จำกัด (มหาชน)','A','024','Y','Y','52');
+		</sql>
+	</changeSet>
+	
+	<changeSet id="insert-table-css_map_rider_group-23082016" author="bundit.ra">
+		<preConditions onFail="MARK_RAN">
+			 <sqlCheck expectedResult="0">select count(*) from CSS_MAP_RIDER_GROUP where rider_code in ('DAB', 'FUR', 'ADD', 'HOL', 'MED', 'MOT', 'MUR', 'PUB') and rider_group='A2' and policy_type='P'</sqlCheck>
+		</preConditions>
+		<sql>
+INSERT INTO CSS_MAP_RIDER_GROUP
+(id,rider_code,rider_group,policy_type) VALUES
+(nextval('seq_css_map_rider_group'),'DAB','A2','P') ,
+(nextval('seq_css_map_rider_group'),'FUR','A2','P') ,
+(nextval('seq_css_map_rider_group'),'ADD','A2','P') ,
+(nextval('seq_css_map_rider_group'),'HOL','A2','P') ,
+(nextval('seq_css_map_rider_group'),'MED','A2','P') ,
+(nextval('seq_css_map_rider_group'),'MOT','A2','P') ,
+(nextval('seq_css_map_rider_group'),'MUR','A2','P') ,
+(nextval('seq_css_map_rider_group'),'PUB','A2','P')
+		</sql>
+	</changeSet>
+	<changeSet id="alter-table-css_member-16092016-01" author="bundit.ra">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<columnExists tableName="css_member" columnName="cust_code"/>
+			</not>
+		</preConditions>
+		<addColumn tableName="css_member">
+			<column name="cust_code" type="VARCHAR(10)" />
+		</addColumn>
+	</changeSet>
+		<changeSet id="create-table-css_petition_policy-16092016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_petition_policy" />
+			</not>
+		</preConditions>
+		<sql>
+CREATE TABLE "css_petition_policy"
+(
+      "id" bigint PRIMARY KEY NOT NULL
+    , "petition_id" bigint
+    , "policy_type" varchar(1)
+    , "policy_no" varchar(15)
+    , "plan_code" varchar(10)
+    , "plan_name" varchar(255)
+    , "create_date" timestamptz(35)
+);
+COMMENT ON COLUMN "css_petition_policy"."id" IS 'รหัสตารางกรมธรรม์';
+COMMENT ON COLUMN "css_petition_policy"."petition_id" IS 'รหัสอ้างอิงตารางใบคำร้อง';
+COMMENT ON COLUMN "css_petition_policy"."policy_type" IS 'ประเภทกรมธรรม์';
+COMMENT ON COLUMN "css_petition_policy"."policy_no" IS 'เลขที่กรมธรรม์';
+COMMENT ON COLUMN "css_petition_policy"."plan_code" IS 'แบบประกัน';
+COMMENT ON COLUMN "css_petition_policy"."plan_name" IS 'ชื่อแบบประกัน';
+COMMENT ON COLUMN "css_petition_policy"."create_date" IS 'วันทีทำรายการ';
+		</sql>
+		<createSequence sequenceName="seq_css_petition_policy" incrementBy="1" startValue="1" />
+	</changeSet>
+	
+	<changeSet id="create-table-css_petition_request-16092016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_petition_request" />
+			</not>
+		</preConditions>
+		<sql>
+CREATE TABLE "css_petition_request"
+(
+      "id" bigint PRIMARY KEY NOT NULL
+    , "request_no" varchar(15)
+    , "request_type" varchar(10)
+    , "customer_id" varchar(10)
+    , "customer_card_no" varchar(50)
+    , "customer_title" varchar(50)
+    , "customer_name" varchar(100)
+    , "customer_sname" varchar(100)
+    , "create_date" timestamptz(35)
+);
+COMMENT ON COLUMN "css_petition_request"."id" IS 'รหัสตารางใบคำร้อง';
+COMMENT ON COLUMN "css_petition_request"."request_no" IS 'เลขที่ใบคำขอ';
+COMMENT ON COLUMN "css_petition_request"."request_type" IS 'ประเภทใบคำร้อง';
+COMMENT ON COLUMN "css_petition_request"."customer_id" IS 'รหัสลูกค้า';
+COMMENT ON COLUMN "css_petition_request"."customer_card_no" IS 'เลขประจำตัวลูกค้า';
+COMMENT ON COLUMN "css_petition_request"."customer_title" IS 'คำนำหน้าชื่อ';
+COMMENT ON COLUMN "css_petition_request"."customer_name" IS 'ชื่อลูกค้า';
+COMMENT ON COLUMN "css_petition_request"."customer_sname" IS 'นามสกุลลูกค้า';
+COMMENT ON COLUMN "css_petition_request"."create_date" IS 'วันที่ทำรายการ';
+		</sql>
+		<createSequence sequenceName="seq_css_petition_request" incrementBy="1" startValue="1" />
+	</changeSet>
+	
+	<changeSet id="create-table-css_txn_sequence-19092016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_txn_sequence" />
+			</not>
+		</preConditions>
+		<createSequence sequenceName="seq_css_txn_sequence" incrementBy="1" startValue="1" />
+		<createTable tableName="css_txn_sequence">
+			<column name="txn_sequence_id" type="INT8" defaultValueSequenceNext="seq_css_txn_sequence">
+				<constraints nullable="false" />
+			</column>
+			<column name="mode" type="VARCHAR(20)" remarks="ประเภทเอกสาร ได้แก่ : PAYMENT_CARD" />
+			<column name="key" type="VARCHAR(10)" remarks="ประเภทเอกสาร ที่ run ตามปี และเดือน ได้แก่ : PAYMENT_CARD: 201609" />
+			<column name="seq" type="INT8" remarks="เลขที่เอกสารล่าสุด" />
+			<column name="timestamp" type="TIMESTAMP WITH TIME ZONE" remarks="วันและเวลาที่สร้าง" />
+		</createTable>
+		<addPrimaryKey tableName="css_txn_sequence" columnNames="txn_sequence_id" constraintName="css_txn_sequence_pkey" />
+	</changeSet>
+	
+	<changeSet id="create-table-branches-19092016" author="patcharapol.ki">	
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="branches" />
+			</not>
+		</preConditions>
+			<sql>
+				CREATE TABLE "public"."branches"
+				(
+  				 brn_no varchar(4) PRIMARY KEY NOT NULL,
+   				 brn_name varchar(255),
+   				 status varchar(1) NOT NULL
+				);
+			</sql>	
+	</changeSet>
+	<changeSet id="insert-into-table-branches" author="patcharapol.ki">	
+			<sql>
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ฝ่ายปฎิบัติการ ฯ','0001','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ส่วนกลาง','0100','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พระโขนง','0109','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อโศก','0116','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('รามอินทรา','0118','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ประชาชื่น','0119','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บางนา','0171','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('วิภาวดี','0172','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ลาดพร้าว','0184','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ธนบุรี','0200','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ภาษีเจริญ','0206','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('วงเวียนใหญ่','0287','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปทุมธานี','0300','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นนทบุรี','0400','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปากเกร็ด','0406','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พระนครศรีอยุธยา','0500','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ภาชี','0502','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ท่าเรือ(อ)','0505','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บางปะหัน','0507','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ผักไห่','0510','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เสนา','0516','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ลาดบัวหลวง','0519','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นครปฐม','0600','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บางเลน','0607','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สามพราน','0608','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กำแพงแสน','0609','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ลพบุรี','0700','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('โคกสำโรง','0702','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านหมี่','0703','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชัยบาดาล','0707','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สระบุรี','0800','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แก่งคอย','0805','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หินกอง','0870','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กาญจนบุรี','0900','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ท่ามะกา','0905','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สำนักงานใหญ่ *','1','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ราชบุรี','1000','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('จอมบึง','1006','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ดำเนินสะดวก','1007','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านโป่ง','1009','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('โพธาราม','1010','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปากท่อ','1011','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เพชรบุรี','1100','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านแหลม','1103','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชะอำ','1104','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ท่ายาง','1106','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เขาย้อย','1107','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สุพรรณบุรี','1200','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ดอนเจดีย์','1202','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สองพี่น้อง','1204','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เดิมบางนางบวช','1206','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สามชุก','1207','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อู่ทอง','1208','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ด่านช้าง','1209','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ศรีประจันต์','1210','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อ่างทอง','1300','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ป่าโมก','1304','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('โพธิ์ทอง','1305','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('วิเศษชัยชาญ','1306','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชัยนาท','1400','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หันคา','1402','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สรรคบุรี','1403','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สรรพยา','1405','I');
+  				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สิงห์บุรี','1500','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อินทร์บุรี','1502','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปราจีนบุรี','1600','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กบินทร์บุรี','1604','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สระแก้ว','1605','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อรัญประเทศ','1608','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นครนายก','1700','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ฉะเชิงเทรา','1800','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พนมสารคาม','1808','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บางคล้า','1809','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชลบุรี','1900','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พัทยา','1902','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พนัสนิคม','1906','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ศรีราชา','1908','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สัตหีบ','1911','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านบึง','1912','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชลบุรี','1970','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ระยอง','2000','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แกลง','2002','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('จันทบุรี','2100','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ขลุง','2104','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('มะขาม','2105','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ตราด','2200','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สมุทรปราการ','2300','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สมุทรสาคร','2400','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านแพ้ว','2404','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อ้อมน้อย','2470','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สมุทรสงคราม','2500','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หนองคาย','2600','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('โพนพิสัย','2603','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บึงกาฬ','2604','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เลย','2700','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เอราวัณ','2713','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นครพนม','2800','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ธาตุพนม','2804','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('มุกดาหาร','2805','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สกลนคร','2900','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('วานรนิวาส','2903','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สว่างแดนดิน','2904','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พังโคน','2910','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ขอนแก่น','3000','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('น้ำพอง','3007','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านไผ่','3010','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชุมแพ','3011','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ภูเวียง','3016','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เมืองพล','3017','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อุดรธานี','3100','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กุมภวาปี','3103','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หนองบัวลำภู','3105','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านผือ','3107','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านดุง','3109','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นากลาง','3110','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('น้ำโสม','3112','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นครราชสีมา','3200','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปากช่อง','3203','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('โชคชัย','3207','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปักธงชัย','3208','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ด่านขุนทด','3211','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ครบุรี','3213','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พิมาย','3214','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เสิงสาง','3218','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('โพธิ์กลาง','3274','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชัยภูมิ','3300','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('จัตุรัส','3303','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ภูเขียว','3304','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ร้อยเอ็ด','3400','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เกษตรวิสัย','3403','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เสลภูมิ','3406','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('โพนทอง','3408','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('มหาสารคาม','3500','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บรบือ','3503','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('วาปีปทุม','3504','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พยัคฆภูมิพิสัย','3507','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เชียงยืน','3508','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สุรินทร์','3600','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ศรีสะเกษ','3700','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อุทุมพรพิสัย','3702','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กันทรลักษ์','3708','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ขุขันธ์','3709','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บุรีรัมย์','3800','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อุบลราชธานี','3900','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พิบูลมังสาหาร','3905','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ยโสธร','3906','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เลิงนกทา','3909','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อำนาจเจริญ','3910','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('มหาชนะชัย','3913','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เดชอุดม','3914','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เขื่องใน','3915','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กาฬสินธุ์','4000','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กุฉินารายณ์','4005','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชุมพร','4100','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หลังสวน','4105','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สุราษฎร์ธานี','4200','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นาสาร','4207','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กาญจนดิษฐ์','4209','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เกาะสมุย','4210','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ไชยา','4216','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ระนอง','4300','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พังงา','4400','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ภูเก็ต','4500','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นครศรีธรรมราช','4600','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปากพนัง','4607','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ร่อนพิบูลย์','4609','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ทุ่งสง','4610','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('จันดี','4612','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สิชล','4614','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ชะอวด','4620','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กระบี่','4700','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('คลองท่อม','4704','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พัทลุง','4800','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แม่ขรี','4809','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หาดใหญ่','4900','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สงขลา','4901','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ระโนด','4907','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นาทวี','4909','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สะเดา','4910','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สะบ้าย้อย','4914','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ตรัง','5000','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ห้วยยอด','5003','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สตูล','5100','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปัตตานี','5200','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('โคกโพธิ์','5205','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สายบุรี','5210','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ยะลา','5300','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เบตง','5302','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นราธิวาส','5400','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สุไหงโกลก','5407','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ประจวบคีรีขันธ์','5500','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บางสะพาน','5503','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ทับสะแก','5509','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปราณบุรี','5510','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หัวหิน','5511','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สามร้อยยอด','5570','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เชียงราย','5600','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พาน','5602','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แม่จัน','5604','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เทิง','5607','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พะเยา','5609','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เวียงป่าเป้า','5611','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('จุน','5612','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แม่ฮ่องสอน','5700','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปาย','5703','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แม่สะเรียง','5704','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เชียงใหม่','5800','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เชียงดาว','5811','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ฝาง','5812','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สันป่าตอง','5815','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พร้าว','5816','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('จอมทอง','5817','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ลำพูน','5900','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านโฮ่ง','5904','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ลำปาง','6000','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('งาว','6003','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เกาะคา','6006','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เถิน','6008','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แจ้ห่ม','6010','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แพร่','6100','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สอง','6105','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ลอง','6106','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('น่าน','6200','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ปัว','6204','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พิษณุโลก','6300','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บางกระทุ่ม','6306','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('วังทอง','6307','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บางระกำ','6308','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สุโขทัย','6400','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สวรรคโลก','6404','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ศรีสัชนาลัย','6406','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กงไกรลาศ','6407','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ตาก','6500','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บ้านตาก','6502','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('แม่สอด','6504','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อุตรดิตถ์','6600','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พิชัย','6605','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บรมอาสน์','6670','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('พิจิตร','6700','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ตะพานหิน','6706','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บางมูลนาก','6708','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('กำแพงเพชร','6800','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('คลองขลุง','6803','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สลกบาตร','6871','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('นครสวรรค์','6900','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ท่าตะโก','6907','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ตาคลี','6909','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ลาดยาว','6910','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('บรรพตพิสัย','6911','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('อุทัยธานี','7000','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หนองฉาง','7004','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('เพชรบูรณ์','7100','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('หล่มสัก','7103','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('วิเชียรบุรี','7105','I');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('ศูนย์บริการลูกค้า','9000','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('-ไม่มีสาขา-','9999','A');
+				INSERT INTO branches (brn_name,brn_no,status) VALUES ('สาขาส่วนบริการลูกค้าชั้นG','0999','A');		
+			</sql>	
+	</changeSet>
+	
+	<changeSet id="create-table-css_payment-card-temp-21092016" author="patcharapol.ki">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_payment_card_temp" />
+			</not>
+		</preConditions>
+		<createSequence sequenceName="css_payment_card_sequence" incrementBy="1" startValue="1" />
+		<createTable tableName="css_payment_card_temp">
+			<column name="id" type="INT8" defaultValueSequenceNext="css_payment_card_sequence">
+				<constraints nullable="false" />
+			</column>
+			<column name="request_no" type="VARCHAR(20)" remarks="REQ+ ปีค.ศ.ปัจจุบัน + เดือนปัจจุบัน + เลข running number ที่อ่านมาจาก table: css_txn_sequence" />
+			<column name="policy_no" type="VARCHAR(20)" remarks="เลขที่กรมธรรม์ (ห้ามซ้ำ)" />
+			<column name="policy_type" type="VARCHAR(1)" remarks="ประเภทกรมธรรม์" />
+			<column name="plan_name" type="VARCHAR(100)" remarks="ชื่อแปลน" />
+			<column name="title" type="VARCHAR(100)" remarks="คำนำหน้า" />
+			<column name="first_name" type="VARCHAR(50)" remarks="ชื่อ" />
+			<column name="last_name" type="VARCHAR(50)" remarks="นามสกุล" />
+			<column name="send_address_no" type="VARCHAR(200)" remarks="ที่อยู่" />
+			<column name="send_sub_district" type="VARCHAR(100)" remarks="ตำบล" />
+			<column name="send_district" type="VARCHAR(50)" remarks="อำเภอ" />
+			<column name="send_province" type="VARCHAR(50)" remarks="จังหวัด" />
+			<column name="send_zip_code" type="VARCHAR(5)" remarks="รหัสไปรษณีย์" />
+			<column name="send_branch_name" type="VARCHAR(255)" remarks="ชื่อสาขา" />
+			<column name="tel_no" type="VARCHAR(20)" remarks="หมายเลขโทรศัพท์บ้าน" />
+			<column name="mobile" type="VARCHAR(10)" remarks="หมายเลขโทรศัพท์ในการรับ SMS" />
+			<column name="payment_channel" type="VARCHAR(1)" remarks="วิธีการชำระเบี้ยปัจจุบัน" />
+			<column name="send_type" type="VARCHAR(1)" remarks="ประเภทที่อยู่ที่จัดส่ง" />
+			<column name="send_status" type="VARCHAR(1)" remarks="สถานะ" />
+			<column name="remark" type="VARCHAR(500)" remarks="หมายเหตุของการยกเลิก" />
+			<column name="create_date" type="TIMESTAMP WITH TIME ZONE" remarks="วันที่สร้าง" />
+			<column name="create_by" type="VARCHAR(50)" remarks="ชื่อผู้สร้าง" />
+			<column name="update_date" type="TIMESTAMP WITH TIME ZONE" remarks="วันที่แก้ไข" />
+			<column name="update_by" type="VARCHAR(50)" remarks="ชื่อผู้แก้ไข " />
+		</createTable>
+		<addPrimaryKey tableName="css_payment_card_temp" columnNames="id" constraintName="css_payment_card_temp_sequence_pkey" />
+	</changeSet>
+	
+	<changeSet id="alter-table-css_payment-card-temp-23092016" author="patcharapol.ki">	
+			<sql>
+			ALTER TABLE css_payment_card_temp
+			DROP COLUMN remark
+			</sql>	
+	</changeSet>
+	
+	<changeSet id="alter-table-css_petition_request-22092016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<columnExists tableName="css_petition_request" columnName="request_by"/>
+			</not>
+		</preConditions>
+		<addColumn tableName="css_petition_request">
+			<column name="request_by" type="VARCHAR(255)" remarks="ชื่อ-สกุลผู้ยื่นคำร้อง" />
+		</addColumn>
+	</changeSet>
+	
+	<changeSet id="create-table-css_payment-06102016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_payment" />
+			</not>
+		</preConditions>
+		<sql>
+CREATE TABLE "css_payment"
+(
+      "id" bigint PRIMARY KEY NOT NULL
+    , "order_no" varchar(15) NOT NULL
+    , "invoice_no" varchar(15) NOT NULL
+    , "customer_id" varchar(10) NOT NULL
+    , "customer_id_no" varchar(50) NOT NULL
+    , "customer_title" varchar(50) NOT NULL
+    , "customer_name" varchar(100) NOT NULL
+    , "customer_sname" varchar(100) NOT NULL
+    , "customer_tel" varchar(50) NOT NULL
+    , "customer_email" varchar(255) NULL
+    , "payment_amount" float(19) NOT NULL
+    , "payment_fee" float(19) NULL
+    , "payment_discount" float(19) NULL
+    , "net_payment" float(19) NOT NULL
+    , "send_2c2p_status" varchar(1) NOT NULL
+    , "send_hydra_status" varchar(1) NULL
+    , "policy_no" varchar(15) NOT NULL
+    , "policy_type" varchar(1) NOT NULL
+    , "policy_year" int NOT NULL
+    , "plan_code" varchar(10) NOT NULL
+    , "plan_name" varchar(255) NOT NULL
+    , "plan_description" varchar(255) NULL
+    , "policy_branch_code" varchar(10) NULL
+    , "policy_branch_name" varchar(255) NULL
+    , "policy_branch_tel" varchar(50) NULL
+    , "policy_branch_code7" varchar(10) NULL
+    , "premium" float(19) NULL
+    , "premium_per_month" float(19) NULL
+    , "agent_code7" varchar(7) NULL
+    , "agent_code5" varchar(5) NULL
+    , "version" varchar(5) NULL
+    , "request_timestamp" timestamptz(35) NULL
+    , "merchant_id" varchar(25) NULL
+    , "payment_channel" int NULL
+    , "payment_status" int NULL
+    , "channel_response_code" varchar(2) NULL
+    , "channel_response_desc" varchar(255) NULL
+    , "approval_code" varchar(6) NULL
+    , "eci" int NULL
+    , "transaction_datetime" varchar(22) NULL
+    , "transaction_ref" varchar(15) NULL
+    , "masked_pan" varchar(16) NULL
+    , "paid_agent" varchar(30) NULL
+    , "paid_channel" varchar(30) NULL
+    , "amount" varchar(12) NULL
+    , "currency" varchar(3) NULL
+    , "user_defined_1" varchar(255) NULL
+    , "user_defined_2" varchar(255) NULL
+    , "user_defined_3" varchar(255) NULL
+    , "user_defined_4" varchar(255) NULL
+    , "user_defined_5" varchar(255) NULL
+    , "browser_info" varchar(50) NULL
+    , "stored_card_unique_id" varchar(20) NULL
+    , "backend_invoice" varchar(12) NULL
+    , "recurring_unique_id" bigint NULL
+    , "ippPeriod" varchar(2) NULL
+    , "ippInterestType" varchar(1) NULL
+    , "ippInterestRate" varchar(5) NULL
+    , "ippMerchantAbsorbRate" varchar(5) NULL
+    , "hash_value" varchar(40) NULL
+    , "create_date" timestamptz(35) NOT NULL
+    , "create_by" varchar(255) NOT NULL
+    , "create_system" varchar(255) NOT NULL
+    , "update_date" timestamptz(35) NULL
+    , "update_by" varchar(255) NULL
+    , "update_system" varchar(255) NULL
+);
+COMMENT ON COLUMN "css_payment"."id" IS 'System Auto Increment';
+COMMENT ON COLUMN "css_payment"."order_no" IS 'เลขที่ใบสั่งซื้อ เช่น 201609000001';
+COMMENT ON COLUMN "css_payment"."invoice_no" IS 'เลขที่ใบแจ้งหนี้ เช่น INV201609000001';
+COMMENT ON COLUMN "css_payment"."customer_id" IS 'รหัสลูกค้า เช่น 0000666280';
+COMMENT ON COLUMN "css_payment"."customer_id_no" IS 'เลขประจำตัว เช่น 1104300067845';
+COMMENT ON COLUMN "css_payment"."customer_title" IS 'คำนำหน้าชื่อ';
+COMMENT ON COLUMN "css_payment"."customer_name" IS 'ชื่อผู้เอาประกัน';
+COMMENT ON COLUMN "css_payment"."customer_sname" IS 'นามสกุลผู้เอาประกัน';
+COMMENT ON COLUMN "css_payment"."customer_tel" IS 'เบอร์โทรลูกค้า';
+COMMENT ON COLUMN "css_payment"."customer_email" IS 'อีเมลลูกค้า';
+COMMENT ON COLUMN "css_payment"."payment_amount" IS 'จำนวนที่ชำระต่อกรมธรรม์';
+COMMENT ON COLUMN "css_payment"."payment_fee" IS 'ค่าธรรมเนียม';
+COMMENT ON COLUMN "css_payment"."payment_discount" IS 'ส่วนลด';
+COMMENT ON COLUMN "css_payment"."net_payment" IS 'จำนวนที่ชำระจริง';
+COMMENT ON COLUMN "css_payment"."send_2c2p_status" IS 'สถานะการส่งข้อมูล 2c2p (S=Send R=Received)';
+COMMENT ON COLUMN "css_payment"."send_hydra_status" IS 'สถานะการส่งข้อมูล hydra (S=Send R=Received)';
+COMMENT ON COLUMN "css_payment"."policy_no" IS 'เลขที่กรมธรรม์';
+COMMENT ON COLUMN "css_payment"."policy_type" IS 'ประเภทกรมธรรม์';
+COMMENT ON COLUMN "css_payment"."policy_year" IS 'ปีที่กรมธรรม์';
+COMMENT ON COLUMN "css_payment"."plan_code" IS 'รหัสแบบประกัน';
+COMMENT ON COLUMN "css_payment"."plan_name" IS 'ชื่อแบบประกัน';
+COMMENT ON COLUMN "css_payment"."plan_description" IS 'รายละเอียดแบบประกัน';
+COMMENT ON COLUMN "css_payment"."policy_branch_code" IS 'รหัสสาขา';
+COMMENT ON COLUMN "css_payment"."policy_branch_name" IS 'ชื่อสาขา';
+COMMENT ON COLUMN "css_payment"."policy_branch_tel" IS 'เบอร์โทรสาขา';
+COMMENT ON COLUMN "css_payment"."policy_branch_code7" IS 'รหัสสาขา 7 หลัก';
+COMMENT ON COLUMN "css_payment"."premium" IS 'เบี้ยประกันภัย';
+COMMENT ON COLUMN "css_payment"."premium_per_month" IS 'เบี้ยรายเดือน(สำหรับอุตสาหกรรม)';
+COMMENT ON COLUMN "css_payment"."agent_code7" IS 'รหัสตัวแทน 7 หลัก';
+COMMENT ON COLUMN "css_payment"."agent_code5" IS 'รหัสตัวแทน 5 หลัก';
+COMMENT ON COLUMN "css_payment"."version" IS 'Version Current version value: 6.9';
+COMMENT ON COLUMN "css_payment"."request_timestamp" IS 'Timestamp of the time when message is sent Format: yyyy-MM-dd HH:mm:ss';
+COMMENT ON COLUMN "css_payment"."merchant_id" IS 'Merchant ID from 2C2P';
+COMMENT ON COLUMN "css_payment"."payment_channel" IS 'Payment channel codes: 001 = Credit and debit cards 002 = Cash payment channel 003 = Direct Debit 004 = Others 005 = IPP transaction';
+COMMENT ON COLUMN "css_payment"."payment_status" IS 'Payment status response code: 000 = Success using credit/debit card (Authorized) or Success when paid with cash channel (Paid) 001 = Pending (Waiting customer to pay) 002 = Rejected (Failed payment) 003 = User cancel (Failed payment) 999 = Error (Failed payment)';
+COMMENT ON COLUMN "css_payment"."channel_response_code" IS '(Optional) channel response code. See Appendix B for more information';
+COMMENT ON COLUMN "css_payment"."channel_response_desc" IS '(Optional) response description from different channel.';
+COMMENT ON COLUMN "css_payment"."approval_code" IS '(Optional) Authorization code from issuing bank. Field only applicable when customer pay with credit or debit card.';
+COMMENT ON COLUMN "css_payment"."eci" IS '(Optional) ECI value. Field only applicable when customer pay with credit or debit card';
+COMMENT ON COLUMN "css_payment"."transaction_datetime" IS 'transaction processed date time value in format yyyy-MM-dd HH:mm:ss';
+COMMENT ON COLUMN "css_payment"."transaction_ref" IS '(Optional) reference number from different channel.';
+COMMENT ON COLUMN "css_payment"."masked_pan" IS '(Optional) This field is only applicable when pay with credit or debit card. First 6 and last 4 digits of the credit card. Example: 444321XXXXXX3212.';
+COMMENT ON COLUMN "css_payment"."paid_agent" IS '(Optional) This field is only applicable to 123 Cash Payment Channel and IPP transaction channel. 123: Agent Code that customer made payment with. IPP: IPP bank’s name.';
+COMMENT ON COLUMN "css_payment"."paid_channel" IS '(Optional) 123 Channel Code that customer make payment. Field is only applicable to 123 Cash Payment Channel.';
+COMMENT ON COLUMN "css_payment"."amount" IS 'Leading zero amount (000000000100) without any decimal. Decimal place depends on the payment currency minor unit.Example: THB (764) 000000199900 represent 1,999.00 Example: JPY (392) 000000199900 represent 199,9900';
+COMMENT ON COLUMN "css_payment"."currency" IS 'Currency ISO code for specific transaction.';
+COMMENT ON COLUMN "css_payment"."user_defined_1" IS '(Optional) 2C2P system will response back to merchant whatever information include in request message';
+COMMENT ON COLUMN "css_payment"."user_defined_2" IS '(Optional) 2C2P system will response back to merchant whatever information include in request message';
+COMMENT ON COLUMN "css_payment"."user_defined_3" IS '(Optional) 2C2P system will response back to merchant whatever information include in request message';
+COMMENT ON COLUMN "css_payment"."user_defined_4" IS '(Optional) 2C2P system will response back to merchant whatever information include in request message';
+COMMENT ON COLUMN "css_payment"."user_defined_5" IS '(Optional) 2C2P system will response back to merchant whatever information include in request message';
+COMMENT ON COLUMN "css_payment"."browser_info" IS 'Client Browser information. Eg. Type=Firefox28,Name=Firefox,Ver=28.0';
+COMMENT ON COLUMN "css_payment"."stored_card_unique_id" IS '(Optional) When enabled store card and card holder consent to save the stored card.';
+COMMENT ON COLUMN "css_payment"."backend_invoice" IS '(Optional) Invoice no sent to 1-2-3 system';
+COMMENT ON COLUMN "css_payment"."recurring_unique_id" IS '(Optional) The unique id of recurrent payment cycle generated by 2C2P.';
+COMMENT ON COLUMN "css_payment"."ippPeriod" IS 'IPP period in month';
+COMMENT ON COLUMN "css_payment"."ippInterestType" IS 'IPP Interest Type.  M – Merchant Pay Interest Option ONLY C – Customer Pay Interest Option ONLY A – All available options';
+COMMENT ON COLUMN "css_payment"."ippInterestRate" IS 'IPP interest rate';
+COMMENT ON COLUMN "css_payment"."ippMerchantAbsorbRate" IS 'IPP merchant absorb rate';
+COMMENT ON COLUMN "css_payment"."hash_value" IS 'For 6.9, HMACSHA1 cryptographic hash value of and use the secret_key provided by 2C2P as salt.';
+COMMENT ON COLUMN "css_payment"."create_date" IS 'วันที่ทำรายการ';
+COMMENT ON COLUMN "css_payment"."create_by" IS 'ผู้ทำรายการ';
+COMMENT ON COLUMN "css_payment"."create_system" IS 'ผู้ทำรายการ';
+COMMENT ON COLUMN "css_payment"."update_date" IS 'วันที่ทำรายการ update';
+COMMENT ON COLUMN "css_payment"."update_by" IS 'ผู้ทำรายการ update';
+COMMENT ON COLUMN "css_payment"."update_system" IS 'ผู้ทำรายการ update';
+		</sql>
+		<createSequence sequenceName="seq_css_payment" incrementBy="1" startValue="1" />
+	</changeSet>
+	
+	<changeSet id="alter-table-css_payment-10102016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+				<tableExists tableName="css_payment" />
+		</preConditions>
+		<renameColumn tableName="css_payment" oldColumnName="ippPeriod" newColumnName="ipp_period"/>
+		<renameColumn tableName="css_payment" oldColumnName="ippInterestType" newColumnName="ipp_interest_type"/>
+		<renameColumn tableName="css_payment" oldColumnName="ippInterestRate" newColumnName="ipp_interest_rate"/>
+		<renameColumn tableName="css_payment" oldColumnName="ippMerchantAbsorbRate" newColumnName="ipp_merchant_absorb_rate"/>
+	</changeSet>
+	<changeSet id="create-table-css_constant-12102016" author="bundit.ra">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_constant" />
+			</not>
+		</preConditions>
+		<createTable tableName="css_constant">
+			<column name="key" type="VARCHAR(20)">
+				<constraints nullable="false" />
+			</column>
+			<column name="value1" type="VARCHAR(50)"  />
+			<column name="value2" type="VARCHAR(50)"  />
+			<column name="remark" type="VARCHAR(255)"  />
+			
+		</createTable>
+		<addPrimaryKey tableName="css_constant" columnNames="key" constraintName="css_constant_key_pkey" />
+		<sql>
+		insert into css_constant (key,value1,remark) values('HISTORY_PART_YEAR','1','ระบุปีที่ query ประวัติการชำระย้อนหลังจำนวนกี่ปี (จำนวนเต็ม)');
+		</sql>
+	</changeSet>
+	<changeSet id="alter-table-css_payment-21102016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<columnExists tableName="css_payment" columnName="letter_type"/>
+			</not>
+		</preConditions>
+		<addColumn tableName="css_payment">
+			<column name="letter_type" type="VARCHAR(4)" remarks="ประเภทจดหมายแจ้งเตือน (LP51=สามัญ, LP52=อุตสาหกรรม, LP53=อุบัติเหตุ)" />
+			<column name="payment_due_date" type="TIMESTAMP WITH TIME ZONE" remarks="วันที่กำหนดชำระเบี้ยประกัน" />
+		</addColumn>
+	</changeSet>
+	
+	<changeSet id="create-table-css_common_data-24112016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_common_data" />
+			</not>
+		</preConditions>
+		<sql>
+		CREATE TABLE "css_common_data"
+(
+    "id" bigint PRIMARY KEY NOT NULL
+    , "key_group" varchar(50) NOT NULL
+    , "key_code" varchar(50) NOT NULL
+    , "key_value_text" varchar(255) NULL
+    , "key_value_number" numeric(10,2) NULL
+    , "status" varchar(1) NOT NULL
+    , "create_date" timestamptz(35) NOT NULL
+    , "create_by" varchar(255) NOT NULL
+    , "update_date" timestamptz(35) NULL
+    , "update_by" varchar(255) NULL
+);
+COMMENT ON COLUMN "css_common_data"."id" IS 'รหัสตารางข้อมูล';
+COMMENT ON COLUMN "css_common_data"."key_group" IS 'รหัสกลุ่มข้อมูล';
+COMMENT ON COLUMN "css_common_data"."key_code" IS 'รหัสข้อมูล';
+COMMENT ON COLUMN "css_common_data"."key_value_text" IS 'ข้อมูลตัวหนังสือ';
+COMMENT ON COLUMN "css_common_data"."key_value_number" IS 'ข้อมููลตัวเลข';
+COMMENT ON COLUMN "css_common_data"."status" IS 'สถานะ(A=Active I=Inactive)';
+COMMENT ON COLUMN "css_common_data"."create_date" IS 'วันที่ทำรายการ';
+COMMENT ON COLUMN "css_common_data"."create_by" IS 'ผู้ทำรายการ';
+COMMENT ON COLUMN "css_common_data"."update_date" IS 'วันที่ทำรายการ';
+COMMENT ON COLUMN "css_common_data"."update_by" IS 'ผู้ทำรายการ';
+		</sql>
+		<createSequence sequenceName="seq_css_common_data" incrementBy="1" startValue="1" />
+	</changeSet>
+	
+	<changeSet id="insert-table-css_common_data-24112016" author="jaturong.td">
+		<sql>
+-- Initial Data
+insert into css_common_data (id,key_group,key_code,key_value_text,status,create_date,create_by)values(
+nextval('seq_css_common_data'),'EFORM_MAIL','EFORM_MAIL_GROUP01','wilailuk.ku@ocean.co.th','A', now() ,'c.thanachoet'
+);
+insert into css_common_data (id,key_group,key_code,key_value_text,status,create_date,create_by)values(
+nextval('seq_css_common_data'),'EFORM_MAIL','EFORM_MAIL_GROUP02','wilailuk.ku@ocean.co.th','A', now() ,'c.thanachoet'
+);
+insert into css_common_data (id,key_group,key_code,key_value_text,status,create_date,create_by)values(
+nextval('seq_css_common_data'),'EFORM_MAIL','EFORM_MAIL_GROUP03','wilailuk.ku@ocean.co.th','A', now() ,'c.thanachoet'
+);
+insert into css_common_data (id,key_group,key_code,key_value_text,status,create_date,create_by)values(
+nextval('seq_css_common_data'),'EFORM_MAIL','EFORM_MAIL_GROUP04','wilailuk.ku@ocean.co.th','A', now() ,'c.thanachoet'
+);
+insert into css_common_data (id,key_group,key_code,key_value_text,status,create_date,create_by)values(
+nextval('seq_css_common_data'),'EFORM_MAIL','EFORM_MAIL_GROUP01_CC','sarintip.kh@ocean.co.th','A', now() ,'c.thanachoet'
+);
+insert into css_common_data (id,key_group,key_code,key_value_text,status,create_date,create_by)values(
+nextval('seq_css_common_data'),'EFORM_MAIL','EFORM_MAIL_GROUP02_CC','sarintip.kh@ocean.co.th','A', now() ,'c.thanachoet'
+);
+insert into css_common_data (id,key_group,key_code,key_value_text,status,create_date,create_by)values(
+nextval('seq_css_common_data'),'EFORM_MAIL','EFORM_MAIL_GROUP03_CC','sarintip.kh@ocean.co.th','A', now() ,'c.thanachoet'
+);
+insert into css_common_data (id,key_group,key_code,key_value_text,status,create_date,create_by)values(
+nextval('seq_css_common_data'),'EFORM_MAIL','EFORM_MAIL_GROUP04_CC','sarintip.kh@ocean.co.th','A', now() ,'c.thanachoet'
+);
+		</sql>
+	</changeSet>
+	<changeSet id="alter-table-css_payment-28112016" author="jaturong.td">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<columnExists tableName="css_payment" columnName="from_year"/>
+			</not>
+		</preConditions>
+		<addColumn tableName="css_payment">
+			<column name="from_year" type="VARCHAR(50)"/>
+			<column name="from_period" type="VARCHAR(50)"/>
+			<column name="to_year" type="VARCHAR(50)"/>
+			<column name="to_period" type="VARCHAR(50)"/>
+		</addColumn>
+	</changeSet>
+	<changeSet id="alter-table-css_address_temp-28112016" author="bundit.ra">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<primaryKeyExists tableName="css_address_temp" />
+			</not>
+		</preConditions>
+		<addPrimaryKey tableName="css_address_temp" columnNames="id" />
+	</changeSet>
+	<changeSet id="css-table-css_notify_limit-15122016" author="bundit.ra">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_notify_limit"/>
+			</not>
+		</preConditions>
+		<createTable tableName="css_notify_limit">
+			<column name="username" type="VARCHAR(50)" remarks="ชื่อผู้ใช้งาน"/>
+			<column name="email" type="VARCHAR(50)"/>
+			<column name="mobile" type="VARCHAR(50)"/>
+			<column name="sms_counter" type="INT8" />
+			<column name="sms_daily_counter" type="INT8" />
+			<column name="email_counter" type="INT8" />
+			<column name="email_daily_counter" type="INT8" />
+			<column name="sms_last_send_date" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="email_last_send_date" type="TIMESTAMP WITH TIME ZONE" />
+		</createTable>
+		<sql>
+			insert into css_constant (key,value1,value2,remark) values('LIMIT_SMS','10','20','จำนวน sms จำกัด value1=ต่อชั่วโมง value2=ต่อวัน');
+			insert into css_constant (key,value1,value2,remark) values('LIMIT_EMAIL','10','20','จำนวน email จำกัด value1=ต่อชั่วโมง value2=ต่อวัน');
+		</sql>
+	</changeSet>
+	<changeSet id="add-constant-css_constant-13012017" author="bundit.ra">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="0">select count(*) from css_constant where key = 'ALLOW_DOWNLOAD'</sqlCheck>
+		</preConditions>
+		<sql>
+			insert into css_constant (key,value1,value2,remark) values('ALLOW_DOWNLOAD','Y','Y','อนุญาตให้ download(Y,N) value1=หนังสือรับรอง value2=หนังสือแจ้งเตือน');
+		</sql>
+	</changeSet>
+	<changeSet id="css-create-table-cssloan-20170412.01" author="sirisak.se">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="css_loan" />
+			</not>
+		</preConditions>
+		<sql>
+			CREATE TABLE "css_loan"
+			(
+				"loan_id"	bigint	PRIMARY KEY NOT NULL
+				,"request_no"	varchar(20)	NOT NULL
+				,"policy_no"	varchar(15)	NOT NULL
+				,"policy_type"	varchar(1)	NOT NULL
+				,"plan_code"	varchar(15)	NOT NULL
+				,"plan_name"	varchar(255)	NOT NULL
+				,"request_date"	timestamptz(35)	NOT NULL
+				,"loan_amount"	numeric(10, 2)	NOT NULL
+				,"net_balance"	numeric(10, 2)	NOT NULL
+				,"customer_card_no"	varchar(50)	NOT NULL
+				,"customer_title"	varchar(50)	NOT NULL
+				,"customer_name"	varchar(100)	NOT NULL
+				,"customer_sname"	varchar(100)	NOT NULL
+				,"create_date"	timestamptz(35)	NOT NULL
+			);
+			COMMENT ON COLUMN "css_loan"."loan_id" IS 'Running number';
+			COMMENT ON COLUMN "css_loan"."request_no" IS 'เลขที่ใบคำขอ';
+			COMMENT ON COLUMN "css_loan"."policy_no" IS 'เลขที่กรมธรรม์';
+			COMMENT ON COLUMN "css_loan"."policy_type" IS 'ประเภทกรมธรรม์';
+			COMMENT ON COLUMN "css_loan"."plan_code" IS 'แบบประกัน';
+			COMMENT ON COLUMN "css_loan"."plan_name" IS 'ชื่อแบบประกัน';
+			COMMENT ON COLUMN "css_loan"."request_date" IS 'วันที่ทำรายการ(วันที่ขอกู้)';
+			COMMENT ON COLUMN "css_loan"."loan_amount" IS 'จำนวนเงินที่ขอกู้';
+			COMMENT ON COLUMN "css_loan"."net_balance" IS 'คงเหลือสุทธิ';
+			COMMENT ON COLUMN "css_loan"."customer_card_no" IS 'เลขประจำตัวลูกค้า';
+			COMMENT ON COLUMN "css_loan"."customer_title" IS 'คำนำหน้าชื่อ';
+			COMMENT ON COLUMN "css_loan"."customer_name" IS 'ชื่อลูกค้า';
+			COMMENT ON COLUMN "css_loan"."customer_sname" IS 'นามสกุลลูกค้า';
+			COMMENT ON COLUMN "css_loan"."create_date" IS 'วันที่ทำรายการ';
+		</sql>
+		<createSequence sequenceName="seq_css_loan_sequence" incrementBy="1" startValue="1" />
+	</changeSet>
+	<changeSet id="css-alter-table-cssloan-20170424.01" author="sirisak.se">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="css_loan" />
+		</preConditions>
+		<sql>
+			ALTER TABLE css_loan ADD branch_code varchar(5) NOT NULL;
+			ALTER TABLE css_loan ADD branch_name varchar(255) NOT NULL;
+			ALTER TABLE css_loan ADD request_by varchar(255) NOT NULL;
+			ALTER TABLE css_loan ADD birth_date timestamptz(35) NULL;
+			ALTER TABLE css_loan ADD address  varchar(255)	NULL;
+			ALTER TABLE css_loan ADD sub_district varchar(50) NULL;
+			ALTER TABLE css_loan ADD district varchar(50) NULL;
+			ALTER TABLE css_loan ADD province varchar(50) NULL;
+			ALTER TABLE css_loan ADD postcode varchar(5) NULL;
+			ALTER TABLE css_loan ADD mobile_no varchar(20) NULL;
+			ALTER TABLE css_loan ADD email varchar(100) NULL;
+			ALTER TABLE css_loan ADD loan_rate numeric(10, 2) NOT NULL;
+			ALTER TABLE css_loan ADD interest_amount numeric(10, 2) NOT NULL;
+			ALTER TABLE css_loan ADD duty numeric(10, 2) NOT NULL;
+			ALTER TABLE css_loan ADD account varchar(255) NULL;
+			ALTER TABLE css_loan ADD account_no varchar(50) NULL;
+			ALTER TABLE css_loan ADD bank_name varchar(255) NULL;
+			ALTER TABLE css_loan ADD branch varchar(255) NULL;
+			ALTER TABLE css_loan ADD file_name_id_card varchar(255) NOT NULL;
+			ALTER TABLE css_loan ADD file_name_other1 varchar(255) NULL;
+			ALTER TABLE css_loan ADD file_name_other2 varchar(255) NULL;
+			ALTER TABLE css_loan ADD file_name_book_bank varchar(255) NULL;
+			ALTER TABLE css_loan ADD status varchar(1) NOT NULL;
+			
+			COMMENT ON COLUMN css_loan.branch_code IS 'โค้ดสาขา';
+			COMMENT ON COLUMN css_loan.branch_name IS 'ชื่อสาขา';
+			COMMENT ON COLUMN css_loan.request_by IS 'ชื่อ-สกุลผู้ยื่นคำร้อง';
+			COMMENT ON COLUMN css_loan.birth_date IS 'วัน/เดือน/ปีเกิด';
+			COMMENT ON COLUMN css_loan.address  IS 'ที่อยู่';
+			COMMENT ON COLUMN css_loan.sub_district IS 'ตำบล/แขวง';
+			COMMENT ON COLUMN css_loan.district IS 'อำเภอ/เขต';
+			COMMENT ON COLUMN css_loan.province IS 'จังหวัด';
+			COMMENT ON COLUMN css_loan.postcode IS 'รหัสไปรษณีย์';
+			COMMENT ON COLUMN css_loan.mobile_no IS 'เบอร์โทรศัพท์';
+			COMMENT ON COLUMN css_loan.email IS 'E-mail';
+			COMMENT ON COLUMN css_loan.loan_rate IS 'อัตราดอกเบี้ย';
+			COMMENT ON COLUMN css_loan.interest_amount IS 'ดอกเบี้ยต่อปี';
+			COMMENT ON COLUMN css_loan.duty IS 'อากรเงินกู้';
+			COMMENT ON COLUMN css_loan.account IS 'ชื่อบัญชี';
+			COMMENT ON COLUMN css_loan.account_no IS 'เลขที่บัญชี';
+			COMMENT ON COLUMN css_loan.bank_name IS 'ชื่อธนาคาร';
+			COMMENT ON COLUMN css_loan.branch IS 'สาขา';
+			COMMENT ON COLUMN css_loan.file_name_id_card IS 'path ที่เก็บไฟล์ข้อมูล1';
+			COMMENT ON COLUMN css_loan.file_name_other1 IS 'path ที่เก็บไฟล์ข้อมูล2';
+			COMMENT ON COLUMN css_loan.file_name_other2 IS 'path ที่เก็บไฟล์ข้อมูล3';
+			COMMENT ON COLUMN css_loan.file_name_book_bank IS 'path ที่เก็บไฟล์ข้อมูล4';
+			COMMENT ON COLUMN css_loan.status IS 'สถานะ ได้แก่';
+		</sql>
+	</changeSet>
+	<changeSet author="sirisak.se" id="drop-request-no-constraint-20170526.01">
+		<preConditions onFail="MARK_RAN">
+			<columnExists columnName="request_no" tableName="css_loan"/>
+		</preConditions>
+		<dropNotNullConstraint
+            columnDataType="varchar(20)"
+            columnName="request_no"
+            tableName="css_loan"/>
+	</changeSet>
+	<changeSet author="sirisak.se" id="drop-request-no-constraint-20170602.01">
+		<preConditions onFail="MARK_RAN">
+			<columnExists columnName="file_name_id_card" tableName="css_loan"/>
+		</preConditions>
+		<dropNotNullConstraint
+            columnDataType="varchar(255)"
+            columnName="file_name_id_card"
+            tableName="css_loan"/>
+	</changeSet>
+</databaseChangeLog>

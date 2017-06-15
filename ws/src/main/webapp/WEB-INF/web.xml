@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+  <display-name>cybertronws</display-name>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath*:spring-*.xml
+      classpath:/META-INF/spring-pantheonjobexec.xml
+      classpath:/META-INF/spring-pantheonjasper.xml
+      classpath:/META-INF/spring-pantheonjmx.xml
+    </param-value>
+  </context-param>
+
+  <!-- Listeners -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <!-- Servlet declarations -->
+  <servlet>
+    <servlet-name>AdminPing</servlet-name>
+    <servlet-class>thaisamut.adminping.servlet.AdminPingServlet</servlet-class>
+    <init-param>
+      <param-name>thaisamut.adminping.servlet.pingImplClass</param-name>
+      <param-value>thaisamut.adminping.servlet.DefaultPingImpl</param-value>
+    </init-param>
+    <load-on-startup>99</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminPing</servlet-name>
+    <url-pattern>/apiadmin/ping</url-pattern>
+  </servlet-mapping>
+
+  <!-- Welcome files -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

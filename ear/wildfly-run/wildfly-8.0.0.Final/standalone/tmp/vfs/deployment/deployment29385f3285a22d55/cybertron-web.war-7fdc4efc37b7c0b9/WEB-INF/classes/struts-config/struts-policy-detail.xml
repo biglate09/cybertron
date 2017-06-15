@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="policy-info" extends="secure" namespace="/secure/member/policy">
+		<action name="policyinfo" class="thaisamut.nbs.css.policy.action.PolicyInfoAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/policyinfo.ftl
+			</result>
+		</action>
+	</package>
+	<package name="policy-detail" extends="secure" namespace="/secure/member/policy">
+		<action name="policydetail" class="thaisamut.nbs.css.policy.action.PolicyDetailAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/policydetail.ftl
+			</result>
+		</action>
+	</package>
+	<package name="document" extends="secure" namespace="/secure/member/document">
+		<action name="index" class="thaisamut.nbs.css.document.action.DocumentAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/document.ftl
+			</result>
+		</action>
+		<action name="eform" class="thaisamut.nbs.css.document.action.DocumentAction" method="eform">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/document-eform.ftl
+			</result>
+		</action>
+
+		<action name="bookcertificate" class="thaisamut.nbs.css.document.action.DocumentAction" method="bookCertificate">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/bookcertificate.ftl
+			</result>
+		</action>
+
+		<action name="bookCertificateSuccess" class="thaisamut.nbs.css.document.action.DocumentAction" method="bookCertificateSuccess">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/bookcerificateSuccess.ftl
+			</result>
+		</action>
+
+		<action name="bookCertificateReceive" class="thaisamut.nbs.css.document.action.DocumentAction" method="bookCertificateReceive">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/secure/bookcerificateReceive.ftl
+			</result>
+		</action>
+		
+		<action name="downloadnotify" class="thaisamut.nbs.css.document.action.DocumentAction" method="notifyDownload">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment; filename="${fileName}"</param>
+			  <param name="bufferSize">1024</param>
+<!-- 			  <param name="contentLength">${fileLength}</param> -->
+			  <param name="allowCaching">false</param>
+			</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/secure/download-fail.ftl</result>
+		</action>
+		
+		<action name="downloadcertify" class="thaisamut.nbs.css.document.action.DocumentAction" method="certifyDownload">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment; filename="${fileName}"</param>
+			  <param name="bufferSize">1024</param>
+<!-- 			  <param name="contentLength">${fileLength}</param> -->
+			  <param name="allowCaching">false</param>
+			</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/secure/download-fail.ftl</result>
+		</action>
+		
+		<action name="emailcertify" class="thaisamut.nbs.css.document.action.DocumentAction" method="certifyEmail">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="emailnotify" class="thaisamut.nbs.css.document.action.DocumentAction" method="notifyEmail">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="available" class="thaisamut.nbs.css.document.action.DocumentAction" method="checkAvailable">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+	</package>
+</struts>

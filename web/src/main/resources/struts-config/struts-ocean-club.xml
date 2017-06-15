@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="ocean-club" extends="secure" namespace="/secure/ocean/club">
+		
+		<action name="listdiscount" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="checkOceanClubCampaign">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-campaign-all.ftl
+			</result>
+		</action>
+		
+		<action name="discountdetail" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="checkOceanClubCampaignDetail">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-campaign-detail.ftl
+			</result>
+		</action>
+		
+		<action name="listplace" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="checkOceanClubPlace">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-privilege-all.ftl
+			</result>
+		</action>
+		
+		<action name="placedetail" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="checkOceanClubPlaceDetail">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-privilege-detail.ftl
+			</result>
+		</action>
+		
+		<action name="editprofile" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="setMarkChoices">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-edit-info.ftl
+			</result>
+		</action>
+		
+		<action name="oceanBranch" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="oceanBranch">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-branch.ftl
+			</result>
+		</action>
+		
+		<action name="branchDetail" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="branchDetail">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-branch-detail.ftl
+			</result>
+		</action>
+		
+		<action name="viewhistory" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-view-history.ftl
+			</result>
+		</action>
+		
+		<action name="index" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-main.ftl
+			</result>
+		</action>
+		
+		<action name="checkOceanClub" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="checkOceanClub">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="register" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="register">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-register.ftl
+			</result>
+		</action>
+		
+		<action name="member" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="member">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-member.ftl
+			</result>
+		</action>
+		
+		<action name="preMember" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="preMember">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-pre-member.ftl
+			</result>
+		</action>
+		
+		<action name="saveRegister" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="saveRegister">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-success.ftl
+			</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-fail.ftl
+			</result>
+		</action>
+
+		<action name="editMember" class="thaisamut.nbs.css.oceanclub.action.OceanClubAction" method="editMember">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/oceanclub/oceanclub-edit-info.ftl
+			</result>
+		</action>
+		
+	</package>
+</struts>

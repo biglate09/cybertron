@@ -1,0 +1,130 @@
+@CHARSET "UTF-8";
+
+.ct-series-a .ct-bar {
+/* 	stroke: #B2E9F0 !important; */
+		stroke: #F79728 !important; 
+	stroke-width: 15px !important;
+	/*   	stroke-dasharray: 2; */
+}
+
+.ct-series-b .ct-bar {
+/* 	stroke: #03AF40 !important; */
+	stroke: #00B5CC !important;
+/* 	stroke: #B2E9F0 !important; */
+	stroke-width: 15px !important;
+}
+
+.ct-series-c .ct-bar {
+	/* stroke: #3FEF05 !important; */
+	stroke: #00B5CC !important;
+	stroke-width: 25px !important;
+}
+
+.ct-series-d .ct-bar {
+	/* stroke: #E2DB0B !important; */
+	stroke: #00B5CC !important;
+	stroke-width: 25px !important;
+}
+
+.ct-series-e .ct-bar {
+	/* stroke: #EF6503 !important; */
+	stroke: #00B5CC !important;
+	stroke-width: 25px !important;
+}
+
+.ct-series-f .ct-bar {
+/* 	stroke: #EF0303 !important; */
+	stroke: #00B5CC !important;
+	stroke-width: 25px !important;
+}
+
+.ct-barlabel {
+	font-size: 16px !important;
+	z-index: 10;
+}
+
+.ct-series-a .ct-barlabel {
+	font-size: 12px;
+}
+
+.ct-label {
+	font-size: 1rem;
+}
+
+.ct-grid {
+	stroke-dasharray: 0;
+	stroke: #F79728;
+/* 	stroke: #00B5CC !important */
+/* 	stroke: #B2E9F0 !important; */
+}
+.ct-grid.ct-vertical{
+	stroke: none;
+}
+
+.cart-label-box {
+	border: 1px solid #F79728;
+	color: #666;
+	text-align: center;
+	padding-left: 0px;
+	list-style: none;
+	display: inline;
+	display: inline-block;
+	-webkit-flex-flow: row wrap;
+}
+
+.cart-label-box-noborder {
+	color: #666;
+	text-align: center;
+	padding-left: 0px;
+	list-style: none;
+	display: inline;
+	display: inline-block;
+	-webkit-flex-flow: row wrap;
+}
+
+.chart-lbl h3 {
+	display: inline !important;
+}
+
+.chart-lbl-hold {
+	display: inline;
+	display: inline-block;
+	white-space: nowrap;
+	margin: 2px 6px;
+}
+
+.chart-lbl {
+	display: inline;
+	display: inline-block;
+	white-space: nowrap;
+	margin: 2px 16px;
+}
+
+.chart-lbl-hold:before {
+	content: '▬ ';
+	color: black;
+}
+
+.chart-lbl-hold.a:before {
+	color: #00B5CC;
+}
+
+.chart-lbl-hold.b:before {
+	color: #F79728;
+}
+
+.chart-lbl-hold.c:before {
+	color: #3FEF05;
+}
+
+.chart-lbl-hold.d:before {
+	color: #E2DB0B;
+}
+
+.chart-lbl-hold.e:before {
+	color: #EF6503;
+}
+
+.chart-lbl-hold.f:before {
+	color: #EF0303;
+}

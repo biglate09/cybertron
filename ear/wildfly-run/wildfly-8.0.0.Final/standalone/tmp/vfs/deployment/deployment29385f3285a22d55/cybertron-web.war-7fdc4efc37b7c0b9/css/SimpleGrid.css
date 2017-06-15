@@ -1,0 +1,46 @@
+/* @author chalermpong.ch@ocean.co.th */
+
+.yui3-pagview-bar { font-size: 12px; padding: 4px 0; }
+
+.yui3-pagview-bar img.pgControls {
+    width:          auto;
+    height:         12px;
+    padding:        0 0px;
+    border:         none;
+    vertical-align: middle;
+    cursor:         pointer;
+}
+
+.yui3-pagviewbar img.yui3-pagview-disabled { cursor: default; }
+
+.yui3-pagview-bar {
+    padding:    3px 0 0 2px;
+    width:      99.5% !important;
+    height:     23px;
+}
+
+.yui3-pagview-input-page { width: 30px !important; }
+
+.yui3-pagview-container { text-align: left !important; }
+
+.yui3-pagview-container span { margin-right: 3px !important; margin-top: -2px !important; }
+
+.yui3-pagview-bar a.yui3-pagview-link-page {
+    color:            black;
+    background-color: #f0f0f0;
+    border:           1px solid #d3d3d3;
+    text-decoration:  none;
+    padding:          4px;
+    margin:           0 10px 0 0;
+}
+
+
+.yui3-pagview-bar img .yui3-pagview-link-page .pgControls {
+    width:          auto;
+    background:     none;
+    height:         12px;
+    padding:        0 4px;
+    border:         none;
+    vertical-align: middle;
+    cursor:         pointer;
+}

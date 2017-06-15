@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cybertron-web:war">
+    <output-path>$PROJECT_DIR$/web/target</output-path>
+    <root id="archive" name="cybertron-web-0.13.2-SNAPSHOT.war">
+      <element id="artifact" artifact-name="cybertron-web:war exploded" />
+    </root>
+  </artifact>
+</component>

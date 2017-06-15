@@ -1,0 +1,546 @@
+@CHARSET "UTF-8";
+body{
+	/*background-color: #B2E9F0;*/
+	margin-top:0 !important;
+}
+.main-container {
+	background: #CDEBF2;
+	background-image: url("../images/bg-main.png");
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	margin: 0;
+	width: 100%;
+	height: 430px;
+	z-index: 1;
+}
+
+.navbar-logo>img {
+    margin-top: 0px;
+    position: absolute;
+}
+@media(min-width: 5px){
+
+.navbar-logo>img {
+	width:135px;
+	display:block;
+}	
+}
+.navbar-static-top {
+    margin: 0px 0px 0px 0px;
+    display: block;
+    color: #FFF;
+    text-align: right;
+    min-height: 40px;
+    height: 40px;
+    z-index: 10;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}	
+@media(min-width: 768px){
+
+.navbar-static-top {
+    margin: 0px 0px 0px 0px;
+}	
+}
+.main-container .background {
+	content: "";
+	display: inline;
+	display: inline-block;
+	background-image: url("../images/main-banner2.png");
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	background-position: 250px bottom;
+	height: 431px;
+	float: left;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+    /* transition:background-position .1s; */
+}
+
+.float-right {
+	float: right;
+	z-index: 5;
+}
+
+#loginForm {
+	width: 400px;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	background: rgba(255,255,255,0.85);
+	padding: 16px;
+	height: 320px;
+}
+
+.oli-login-button {
+	background: #F79728;
+	color: #FFF;
+	text-decoration: none;
+	padding: 2px 24px;
+	font-size: 1.5em;
+	line-height: 1.2em;
+	width: 100%;
+	border: none;
+}
+
+.oli-login-button:HOVER, .oli-login-button:FOCUS {
+	background: #FF8900;
+	color: #FFF;
+}
+
+.oli-register-button {
+	background: #AAA;
+	color: #FFF;
+	text-decoration: none;
+	padding: 2px 24px;
+	font-size: 1.5em;
+	line-height: 1.2em;
+	width: 100%;
+	border: none;
+}
+
+.oli-register-button:HOVER, .oli-register-button:FOCUS {
+	background: #999;
+	color: #FFF;
+}
+
+.bottom-menu {
+	margin-top: 24px;
+}
+
+.bottom-menu a {
+	color: #000;
+	font-size: .8em;
+	text-decoration: none;
+}
+/*.bottom-menu a:BEFORE {
+	content: "> ";
+	color: #FF8900;
+}
+.bottom-menu a:AFTER {
+	content: " <";
+	color: #FF8900;
+}*/
+
+.bottom-menu a:HOVER, .bottom-menu a:FOCUS {
+	color: #FF8900;
+}
+
+.previllage-content {
+	background: #FFF;
+	position:relative;
+	width: 100%;
+	margin: 0px;
+	padding: 24px 100px;
+	text-align: center;
+	box-shadow: 0 0px 2px 2px rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+	z-index: 10;
+}
+.previllage-content h1{
+    color: #00B5CC;
+}
+.previllage-detail {
+	margin: 24px 80px
+}
+
+.ico {
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	background-position: center top;
+	height: 60px;
+}
+
+.ico.mag {
+/* 	background-image: url("../images/ico-mag.png"); */
+	background-image: url("../images/ico-mag-2.png");
+}
+
+.ico.person {
+/* 	background-image: url("../images/ico-person.png"); */
+	background-image: url("../images/ico-person-2.png");
+}
+
+.ico.wallet {
+/* 	background-image: url("../images/ico-wallet.png"); */
+	background-image: url("../images/ico-wallet-2.png");
+}
+
+.ico.paper {
+/* 	background-image: url("../images/ico-paper.png"); */
+	background-image: url("../images/ico-paper-2.png");
+}
+
+.ico.noti {
+/* 	background-image: url("../images/ico-noti-paper.png"); */
+	background-image: url("../images/ico-noti-paper-2.png");
+}
+
+.ico.gift {
+/* 	background-image: url("../images/ico-gift.png"); */
+	background-image: url("../images/ico-gift-2.png");
+}
+
+.ico.doc {
+/* 	background-image: url("../images/ico-doc.png"); */
+	background-image: url("../images/ico-doc-2.png");
+}
+
+.prev-grid {
+	padding: 60px 8px 4px 8px;
+	width: 200px;
+	height: 100%;
+	display: inline;
+	display: inline-block;
+	color: #00B5CC;
+	margin: 16px 8px;
+	vertical-align: top;
+
+}
+
+.prev-grid h3 {
+	font-size: 1.3em;
+}
+
+.contract-content {
+/* 	background: #00B5CC; */
+	width: 100%;
+	margin: 0px;
+	padding: 24px;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+    /* transition: top 0.1s; */
+}
+
+.contract-grid {
+	width: 380px;
+	height: 124px;
+	display: inline;
+	display: inline-block;
+	padding: 8px;
+}
+
+.contract-grid.subscript {
+	display: none;
+}
+.contract-grid a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.contract-grid.tel a:BEFORE {
+	background-image: url(../images/contact1-5.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: auto 90%;
+	display: block; content : "";
+	width: 100%;
+	height: 100%;
+	content: "";
+}
+
+.contract-grid.mail a:BEFORE {
+	background-image: url(../images/info.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: auto 86%;
+	display: block; content : "";
+	width: 100%;
+	height: 100%;
+	content: "";
+}
+
+.contract-grid.fax a:BEFORE {
+	background-image: url(../images/contact3-5.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: auto 90%;
+	display: block; content : "";
+	width: 100%;
+	height: 100%;
+	content: "";
+}
+
+.contract-grid.ocean-club a:BEFORE {
+	background-image: url(../images/contact4-5_0.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: auto 90%;
+	display: block;
+	content: "";
+	width: 100%;
+	height: 100%;
+}
+
+.contract-grid.facebook a:BEFORE {
+	background-image: url(../images/contact6-5_0.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: auto 90%;
+	display: block;
+	content: "";
+	width: 100%;
+	height: 100%;
+}
+.heart-background{
+	background-color: #00B5CC;
+	 background-image: url("../images/Heart_HomePage_950x335px.jpg"); 
+}
+.footer-content {
+	text-align: center;
+	color: #FFF;
+	background-color: #15A8BC;
+	padding: 12px 20px;
+    position: relative;
+    z-index:10;
+	box-shadow: 0 1px 2px 2px rgba(0,0,0,.14),0 1px 2px -2px rgba(0,0,0,.2),0 1px 2px 0 rgba(0,0,0,.12);
+}
+.footer-darker {
+	text-align:right;
+	color: #B2E9F0;
+	text-transform: uppercase;
+	/* background-color:#00B5CC; */
+	padding: 0px 20px;
+	font-size: .67em;
+}
+.footer-content h2 {
+	font-size: 1.025em;
+	line-height: 1.025em;
+	margin: 0px;
+	color: #FFF;
+}
+
+@media (max-width: 1584px){
+	.contract-grid.subscript {
+		display: inline;
+		display: inline-block;
+	}
+}
+@media ( max-width : 1200px) {
+	.contract-grid {
+		width: 290px;
+		height: 100px;
+		display: inline;
+		display: inline-block;
+		padding: 8px;
+	}
+	.previllage-content{
+		padding: 24px 60px;
+	}
+	.previllage-detail{
+   	 	margin: 24px 16px;
+	}
+}
+@media ( min-width : 1600px) {
+	.main-container .background {
+	background-position: right bottom;
+	width: 50%;
+	}
+}
+@media ( max-width : 1600px) {
+	.main-container .background {
+	background-position: 0px bottom;
+	}
+}
+@media ( max-width : 992px) {
+	.contract-grid {
+		width: 250px;
+		height: 80px;
+		display: inline;
+		display: inline-block;
+		padding: 8px;
+	}
+	.main-container {
+	height: 430px;
+}
+	.main-container .background {
+	height: 430px;
+	background-position: 0px bottom;
+	}
+	#loginForm {
+		margin-top: 50px;
+	}
+	.bottom-menu{
+		margin-top:16px;
+	}
+	/*.footer-content h2 {
+		font-size: .9em;
+		line-height: .9em;
+	}*/
+.ico {
+	background-repeat: no-repeat;
+	background-size: 48px 48px;
+	background-position: center top;
+	height: 48px;
+}
+
+.prev-grid {
+	padding: 48px 8px 4px 8px;
+	width: 150px;
+	height: 100%;
+	display: inline;
+	display: inline-block;
+	color: #00B5CC;
+	margin: 16px 8px;
+	vertical-align: top;
+}
+.prev-grid h3 {
+	font-size: 1.0em;
+}
+}
+
+@media ( max-width : 835px) {
+	.contract-grid {
+		width: 200px;
+		height: 80px;
+		display: inline;
+		display: inline-block;
+		padding: 8px;
+	}
+	/*.footer-content h2 {
+		font-size: .9em;
+		line-height: 1em;
+	}*/
+	.previllage-content{
+		padding: 24px 24px;
+	}
+	
+}
+
+@media ( max-width : 768px) {
+	.contract-grid {
+		width: 180px;
+		height: 80px;
+		display: inline;
+		display: inline-block;
+		padding: 8px;
+	}
+	.previllage-content{
+		padding: 24px 24px;
+	}
+	.float-right {
+		width: 100%;
+	}
+	#loginForm{
+	margin: auto;
+	 margin-top: 100px;
+	}
+	.bottom-menu{
+		margin: auto;
+    	margin-top: 20px;
+	}
+	.main-container .background {    
+		/*background-position: center;*/
+	}
+}
+
+@media ( max-width : 598px) {
+	.contract-grid {    
+		width: 133px;
+		height: 60px;
+		display: inline;
+		display: inline-block;
+		padding: 8px;
+	}
+	.oli-register-button{
+		padding:0px;
+		text-align: center;
+	}
+	.float-right{
+		font-size: .9em;
+	}
+	#loginForm{
+	 width:100%;
+	}
+	.bottom-menu a {
+    font-size: 0.68em;
+	}
+	.frame-area {
+	  max-width: 598px;
+	}
+}
+
+@media ( max-width : 508px) {
+	.previllage-content h1{
+	    font-size:1.5em;
+	}
+	.contract-grid.subscript {
+		display: none;
+	}
+	.main-container {
+		height: 430px;
+	}
+	.ico {
+		background-repeat: no-repeat;
+		background-size: 48px 48px;
+		background-position: left center;
+		height: 48px;
+	}
+	/*.ico:nth-child(even) {
+		background-repeat: no-repeat;
+		background-size: 48px 48px;
+		background-position: right center;
+		height: 48px;
+	}*/
+	.prev-grid{
+		padding: 8px 8px 4px 50px;
+		width: 100%;
+		height: 100%;
+		display: inline;
+		display: inline-block;
+		color: #00B5CC;
+		margin: 4px 8px;
+		vertical-align: top;
+		text-align: left;
+	}
+	/*.prev-grid:nth-child(even) {
+		padding: 8px 50px 4px 50px;
+		width: 100%;
+		height: 100%;
+		display: inline;
+		display: inline-block;
+		color: #00B5CC;
+		margin: 4px 8px;
+		vertical-align: top;
+		text-align: right;
+	}*/
+	.prev-grid h3 {
+		font-size: 1.0em;
+		margin: 16px ;
+	}
+}
+
+.link-manual {
+  background-image: url(../images/manual.png);
+  background-size: cover;
+  display: block;
+  margin: 0 auto;
+  text-indent: -9999px;
+  height: 35px;
+}
+.div-link-manual {
+	padding-right: 0px;
+    padding-left: 26px;
+    background-size: cover;
+      display: block;
+      margin: 0 auto;
+
+      height: 35px;
+}
+.div-heart-bg {
+    height: 60px;
+    background-repeat: repeat-x;
+    background-image: url("../images/Heart_HomePage_950x155px.jpg");
+}
+ .userManual :hover{
+    opacity: 0.7;
+
+}
+
+a #imgClick{
+    width: 100%;
+    height: auto;
+
+}
+
+

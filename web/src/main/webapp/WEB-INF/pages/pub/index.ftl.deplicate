@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+</head>
+<body>
+<br/>
+	<div class="container">
+		<div class="row ">
+			<div class="container">
+			<div class="col-md-4 col-sm-5   col-xs-12 jumbotron primary-color">
+				<form action="#">
+				<div class="form-group"></div>
+					<div class="form-group">
+					    <input type="text" class="form-control" name="user" id="userName" placeholder="บัญชีผู้ใช้งาน">
+				  </div>
+				  <div class="form-group">
+				    <input type="password" class="form-control" name="user" id="password" placeholder="รหัสผ่าน">
+				  </div>
+				  <div class="row">
+				  	<div class="col-xs-4">
+				  		<bunton class="btn btn-default oli-default-button oli-arrow-right">เข้าระบบ</bunton>
+				  	</div>
+				  </div>
+				  </br>
+				  <div class="center">
+				  	<a href="${contextPath}/pub/page/forgetpassword.html">ลืมบัญชีผู้ใช้และรหัสผ่าน</a>
+				 	 <a href="${contextPath}/pub/page/changepassword.html">เปลี่ยนรหัสผ่าน</a>
+				  </div>
+				  
+				  
+				</form>
+				</div>
+			<div class="col-md-8 col-sm-7">
+					<h2>ประโยชน์ของการเป็นสมาชิก Ocean I-Service</h2>
+					<ul class="notify">
+						<li>สามารถตรวจสอบกรมธรรม์ได้</li>
+						<li>แก้ไขข้อมูลส่วนตัวสำหรับการติดต่อ</li>
+						<li>ดาวน์โหลดเอกสารหนังสือรับรองการชำระเบี้ย</li>
+						<li>สมัครเป็นสมาชิก Ocean Club</li>
+					</ul>
+			</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

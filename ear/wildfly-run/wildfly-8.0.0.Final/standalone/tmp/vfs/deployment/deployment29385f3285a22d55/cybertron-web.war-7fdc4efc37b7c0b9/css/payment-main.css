@@ -1,0 +1,180 @@
+@CHARSET "UTF-8";
+
+/* layout config */
+.pay-option-block {
+	padding: 30px 16px;
+	cursor: pointer;
+	background: #FFF;
+}
+.pay-option-block.info {
+	cursor: default;
+}
+
+.pay-option-block+.pay-option-block {
+	border-top: 1px solid gray;
+}
+
+.pay-option-block:hover {
+	background: #ECECEC;
+}
+
+.pay-option-block.info:hover {
+	background: #FFF;
+}
+
+.pay-option-block ul {
+	list-style: none;
+}
+
+.pay-option-block ul>li:before {
+	content: '- ';
+}
+
+.pay-option-block>.icon {
+	direction: ltr;
+	width: 25%;
+	display: inline;
+	display: inline-block;
+	vertical-align: top;
+}
+.pay-option-block.disabled{
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.pay-option-block>.icon img {
+	display: block;
+	width: 64px;
+}
+
+.pay-option-block>.icon>img {
+	width: 100%;
+}
+
+.pay-option-block>.header {
+	direction: ltr;
+	width: 72%;
+	display: inline;
+	display: inline-block;
+}
+
+@media ( min-width :768px) {
+	.pay-option-block>.icon img {
+		width: 150px;
+	}
+	.pay-option-block:nth-child(even) {
+		direction: rtl;
+	}
+	.pay-option-block>.icon {
+		width: 25%;
+	}
+	.pay-option-block>.header {
+		width: 72%;
+	}
+}
+
+@media ( min-width :992px) {
+	.pay-option-block>.icon>a {
+		width: 180px;
+	}
+}
+
+@media ( min-width :1200px) {
+}
+
+.gi-2x {
+	font-size: 2em;
+}
+
+.gi-3x {
+	font-size: 3em;
+}
+
+.gi-4x {
+	font-size: 4em;
+}
+
+.gi-5x {
+	font-size: 5em;
+}
+
+.big-btn {
+	height: 180px;
+	width: 180px;
+	border-radius: 90px;
+	color: #FFF;
+	background: #00B5CC;
+	text-align: center;
+	line-height: 180px;
+	text-decoration: none;
+}
+
+.big.title {
+	color: #00B5CC;
+	background: #FFF;
+}
+
+.big:HOVER, .big:FOCUS {
+	color: #000;
+	text-decoration: none;
+}
+
+.font-head {
+	font-size: 40px;
+	color: #F89728;
+}
+
+.font-sub-head {
+	font-size: 21px;
+	color: black;
+}
+
+.register-table {
+	width: 100%;
+	background: #00B5CC;
+	color: #FFF;
+	text-align: left;
+	font-size: 22px;
+	padding: 16px;
+}
+
+.register-head-text {
+	color: white;
+}
+
+.register-head-text-big{
+	color: white;
+	font-weight: 1000;
+}
+.register-text {
+	color: white;
+}
+.bottom-gap{
+	margin-bottom: 4px;	
+}
+.register-yellow-text {
+	color: yellow;
+}
+
+.padding-bottom {
+	padding: 0;
+	padding-bottom: 10px;
+}
+.address-option-block{
+	background:none;
+	margin-top: 4px;
+	padding: 6px inherid;
+	
+}
+.address-option-block.active{
+	background:#0194a6;
+	
+}
+.payment-option-block{
+	background:none;
+	
+}
+.payment-option-block.active{
+	background:#0194a6;
+	
+}

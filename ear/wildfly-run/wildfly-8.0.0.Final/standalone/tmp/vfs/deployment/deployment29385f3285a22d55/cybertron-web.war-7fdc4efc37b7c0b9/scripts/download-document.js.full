@@ -1,0 +1,207 @@
+!function($){
+var df = /\d{1,2}\/\d{1,2}\/\d{4}/;
+var topBlock = function(mode, type, name, no, email,checker){
+	return '<div class="download-content">'+
+	'<h1>'+(mode == 0?'ดาวน์โหลด':'ส่งอีเมล')+(type=='notify'?'หนังสือแจ้งเตือนกรมธรรม์':'หนังสือรับรองการชำระเบี้ยประกันภัย')+' <span>'+name+'</span> </h1>'+
+	'<h2>กรมธรรม์เลขที่ <span>'+no+'</span> </h2>'+
+	(mode == 1 && email?'<div id="dalog-email" class="input-group"   style="margin-bottom:8px;">'+
+			'<span class="input-group-addon bigger" id="sizing-addon1">อีเมล</span>'+
+			(checker != '0' && !email?
+			'<input type="text" class="form-control bigger" id="txt-email" value="" data-value="" maxlength="50" data-validate-required="กรอกอีเมล" data-validate-email="รูปแบบอีเมลไม่ถูกต้อง" >'
+			:'<input type="text" class="form-control bigger" id="txt-email" value="'+email+'" data-value="'+email+'" disabled>')
+			+
+			'</div>'+
+			'<br/>':'')+
+	'<div class="row">';
+};
+var notiButton = function(mode, no ,certDate,type,checker){
+	var rtkey = '<div class="col-xs-6 col-xs-offset-3 col-md-4 col-md-offset-4">';
+	if(checker!='0'){
+		if(mode === 'email'){
+			rtkey += '<button class="dialog-button '+mode+'" data-click-'+mode+'="'+no+','+certDate+','+type+'">'+
+			"งวดล่าสุด ที่ไม่เกินกำหนดชำระ"+
+			'</button>';
+		}else{
+			var url = REPORT_URLS.download[type]+"?policyNo="+no;
+			rtkey += '<a target="_blank" class="dialog-button '+mode+'" href="'+url+'">'+
+				"งวดล่าสุด ที่ไม่เกินกำหนดชำระ"+
+				'</a>';
+		}
+	}else{
+		rtkey += '<button class="dialog-button '+mode+' disabled" disabled>'+
+		"งวดล่าสุด ที่ไม่เกินกำหนดชำระ"+
+		'</button>';
+		
+	}
+	rtkey +='</div>';
+	if(checker=='0'){
+		rtkey +='<div class="col-xs-12 disabled text-dark">ขออภัย ไม่สามารถดาวน์โหลดหนังสือแจ้งเตือนการชำระเบี้ยประกันภัยได้<br/>เนื่องจากไม่อยู่ในรอบกำหนดการชำระเบี้ยประกันภัย<br/>กรุณาติดต่อสาขาไทยสมุทรฯ หรือศูนย์ลูกค้าสัมพันธ์</div>';
+	}
+	return rtkey
+}
+var certButton = function(mode,no,certDate,type,years,offset){
+	var rtkey =  '<div class="col-xs-6 col-md-4 '+(offset?'col-md-offset-2':'')+'">';
+//	if(years.indexOf("-")>=0){
+//		rtkey += '<button class="dialog-button '+mode+' disabled" disabled>'+
+//					'งวดปี พ.ศ. '+years.replace("-","")+
+//					'</button>';
+//	}else{
+		years = years.replace("-","")||year;
+		if(mode === 'email'){
+			rtkey += '<button class="dialog-button '+mode+'" data-click-'+mode+'="'+no+','+years+','+type+'">'+
+			'งวดปี พ.ศ. '+years.replace("-","")+
+			'</button>';
+		}else{
+			var url = REPORT_URLS.download[type]+"?policyNo="+no+"&taxYear="+years;
+			rtkey +='<a target="_blank" href="'+url+'" class="dialog-button '+mode+'">'+
+					'งวดปี พ.ศ. '+years.replace("-","")+
+					'</a>';
+		}
+//	}
+	
+	rtkey +='</div>';
+	return rtkey;
+}
+var notiMsg = function(){
+	return '<div class="col-xs-12 col-md-12" style="margin-top:50px;">'+
+	'<p><span class="form-label-notice-popup">หนังสือรับรองการชำระเบี้ยประกันภัยงวดปีการชำระปัจจุบัน จะเปิดให้ดาวน์โหลดตั้งแต่วันที่ 15 มกราคม ของปีถัดไป</span></p>'+
+	'<p><span class="form-label-notice-popup">การดาวน์โหลดหนังสือรับรองการชำระเบี้ยประกันต้องเป็นแบบประกันที่สามารถนำไปลดหย่อนภาษีได้</span></p>'+
+	'</div>';
+}
+if($){
+	var loadDoc=function(e){
+		if(e.target){
+			var data = "";
+			var dlel = $(e.target);
+			while(!dlel.data('download')){
+				dlel = dlel.parent();
+			}
+			var data = dlel.data('download').split(","),
+			type = data[0]||'',name=data[1]||'',no = data[2]||0,
+			checker = df.test(data[3])&&data[3].split('/')[2]||data[3]||'',defaultDate = (new Date().getFullYear()+542);
+			var now = new Date();
+			defaultDate -= (now.getMonth()==0&&now.getDate()<15)?1:0;
+			var certDate = defaultDate;
+			
+			var template  =  topBlock(0,type, name, no,null,checker);
+			if(type=='notify'){
+				template  += notiButton('download',no,certDate,type,checker);
+				
+			}else{
+				var years = checker.split("|");
+				var offset = true;
+				for(var y in years){
+					if(/\d{4}\-?/.test(years[y])){
+						template+=certButton('download',no,certDate-1,type,years[y],offset);
+						offset = false;
+					}
+				}
+				template+=notiMsg();
+			}
+			
+			template+='</div></div>';
+			
+			CSSDialog.custom(template,{label:"ปิดหน้าจอ"},'dialog-box-white');
+		}
+	};
+	var downlaod =function(e){
+		if(e.target){
+			var data = $(e.target).data('clickDownload').split(","),
+			no = data[0]||'',year = data[1]||'',type= data[2]||'';
+			var url = REPORT_URLS.download[type]+"?policyNo="+no+"&taxYear="+year;
+			openWindow(url);
+		}
+	}
+	$(document).on('click','[data-download]',loadDoc);
+	$(document).on('click','[data-click-download]',downlaod);
+	
+	
+	
+	var mailDoc=function(e){
+		if(e.target){
+			var data = $(e.target).data('email').split(","),
+			type=data[0]||'',name=data[1]||'',no=data[2]||'',email=data[3]||'',
+			checker = df.test(data[4])&&data[4].split('/')[2]||data[4]||'',defaultDate = (new Date().getFullYear()+542);
+			var now = new Date();
+			defaultDate -= (now.getMonth()==0&&now.getDate()<15)?1:0;
+			var certDate = defaultDate;
+				var template  = topBlock(1,type, name, no, email,checker);
+					if(email){
+						if(type=='notify'){
+							template  += notiButton('email',no,certDate,type,checker);
+						}else{
+							var years = checker.split("|");
+							var offset = true;
+							for(var y in years){
+								if(/\d{4}\-?/.test(years[y])){
+									template+=certButton('email',no,certDate-1,type,years[y],offset);
+									offset =false;
+								}
+							}
+							template+=notiMsg();
+						}
+					}else{
+						template+="<h3 class=\"text-hilight\">ขออภัยค่ะ ไม่พบอีเมลในระบบ กรุณาเพิ่มอีเมลในข้อมูลที่อยู่ติดต่อของท่าน  โดยทำการคลิก </h3>" +
+								"<a href=\""+MENU_LINK.editAddress+"?policyNo="+no+"\" class=\"btn btn-default\" >เพิ่มอีเมล</a>";
+					}
+				template+='</div></div>';
+
+			CSSDialog.custom(template,{label:"ปิดหน้าจอ",event:'cancel'},'dialog-box-white');
+		}
+	};
+	var sendMail =function(e){
+		if(e.target){
+			if(CSSValidate($("#dalog-email"))){
+				var data = $(e.target).data('clickEmail').split(","),
+				no=data[0]||'',year=data[1]||'',type=data[2]||'',
+				url = REPORT_URLS.email[type];
+				var email = $("#txt-email").val();
+				var oldMail = $("#txt-email").data('value');
+				var check = $("#_flag").is(":checked")||false;
+					//console.log(no,year,email);
+//					CSSDialog.dismiss();
+					$.ajax({
+						  method: "POST",
+						url : url,
+						data : {
+							email: email,
+							policyNo:no,
+							taxYear: year,
+							update: check
+						},
+						success : function(json) {
+							if (json.data.SUCCESS) {
+								if(json.data.message)
+									//if(oldMail == email){
+										CSSDialog.alert(json.data.message).on('ok',function(){window.location = window.location;});
+									//}else{
+									//	var msg = json.data.message + "</br> <h2 style='color:white'>ต้องการเปลี่ยนแปลงข้อมูลอีเมล เป็น "+email+" หรือไม่</h2>";
+									//	CSSDialog.confirmWarn(msg).on('confirm',function(){window.location = URL_EDIT_POL+"?policyNo="+no;});
+									//}
+								
+							} else {
+								CSSDialog.warn('<h1>'+json.data.error+'</h1><p>กรุณาติดต่อศูนย์ลูกค้าสัมพันธ์ 02 207 8888</p><p>เปิดทำการทุกวัน วันจันทร์-วันศุกร์</p><p>เวลา 8.00-18.00 น.</p>').on('ok',function(){CSSDialog.dismiss()});;
+							} 
+						},
+						error : function(xhr, desc, exceptionobj) {
+							/*$( "#ajax-loading" ).hide();
+							CSSDialog.warn('The server is currently busy. Please wait ...').on('ok', function(){
+								$( "#ajax-loading" ).show();
+								setTimeout(function(){
+									window.location = "/cybertron/secure/member/personal/info.html";
+								},3000);
+							});*/
+						},
+						complete:function(){
+						}
+					});
+			}
+		}
+	}
+	$(document).on('click','[data-email]',mailDoc);
+	$(document).on('click','[data-click-email]',sendMail);
+}
+	var openWindow = function(url){
+		window.open(url, "OceanLife iService", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no');
+	}
+}(jQuery);

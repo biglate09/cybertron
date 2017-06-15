@@ -1,0 +1,287 @@
+/***
+ * 
+ * [[ HOW TO ]]
+ * 
+ * {{ Function list }}
+ * 		1. alert with green background
+ * 		[EX]> CSSDialog.alert('message');
+ * 
+ * 		2. alert with orange background
+ * 		[EX]> CSSDialog.warn('message');
+ * 
+ * 		3. confirm with green background
+ * 		[EX]> CSSDialog.confirm(message');
+ * 
+ * 		4. confirm with orange background
+ * 		[EX]> CSSDialog.confirmWran('message');
+ * 
+ * {{ Event subscription }}
+ * 		you can add a event subscription by add the function .on(event_to_subscript , callback_function) afterward.
+ * 		[EX]> CSSDialog.alert('message').on('ok',function(){})
+ * 		[EVENTS]
+ * 			1. ok -> Dialogs[alert, warn] when the ok button is clicked
+ * 			2. confirm -> Dialog[confirm, confirmWarn] when the confirm button is clicked.
+ * 			3. confirm-email Dialog[email ] when the confirm button is clicked return with parameters {email:'',flag:[true|false]}.
+ * 			4. cancel -> Dialog[confirm, confirmWarn, email] when the cancel button is clicked.
+ * 
+ * {{ Custom dialog }}
+ * 		CSSDialog.custom(dialogBody,buttons)
+ *  		dialogBody = string or string of HTML DOM(s).
+ *  		buttons object or list of  {label:'<button label>',event:'<event_to_subscript>',className:'<button_class_name>'} 
+ * 				-> <button class="btn btn-default [button_class_name]">[button label]</button>
+ * 				->	event_to_subscript use in .on(event_to_subscript,function(){});
+ * 
+ *  	[EX]> CSSDialog.custom( '<h1>What do your feel?</h1>',
+ *  					[
+ *  						{label:'บ้าบอ',event:'crazy',className:'oli-default-button'},
+ *  						{label:'สบายๆ',event:'chill'}
+ *  					])
+ *					.on('crazy',function(){console.log('I\'m going crazy.');})
+ *					.on('chill',function(){console.log('I\'m so chil. :)');});
+ *
+ * {{ Custom validation }}
+ * 		<input data-validate-someval="validate fail message" ></input>
+ * 		
+ * 		function validateSomeval(element){ }  
+ * 				return true|false , 
+ * 				data-validate-someval = function validateSomeval {{ data-val-som = valSom, data-a-value = aValue }}
+ * 				function must in window scope
+ * 
+ */
+
+CSSDialog = (function($){
+		// initial modal 
+		var Dialog = this;
+		var $document = $(document.body);
+		// append modal to body
+		createModel();
+		// end initial modal 
+		var modelDialog,modelContent,msgBody,btnContainer;
+		//event handler
+		var EVENT_SUBSCRIPT = {
+			on:function(message,_fng){
+				typeof message === 'string' && 
+				typeof _fng ==='function'&&
+				(EVENT_TRIGGER.$fn[message]||(EVENT_TRIGGER.$fn[message]=[]))&&
+				(EVENT_TRIGGER.$fn[message].push(_fng));
+				return this;
+			},
+			
+		},
+		EVENT_TRIGGER = {
+				 $fn:{},
+				trigger:function(modes,st){
+				try{
+					modes = [].concat(modes);
+					var params  = /(cancel|no|negative|error)/.test(modes.join(","))&&{}||readParams();
+					$('#alert-model').off('hidden.bs.modal').on('hidden.bs.modal', function (modes,params) {
+						$.each(modes,function(params,i,mode){
+							if(this.$fn[mode]){
+								var fns = [].concat(this.$fn[mode].shift());
+								$.each(fns,function(i,fn){
+									typeof fn ==='function' && fn(params);
+								});
+							}
+						}.bind(this,params));
+					}.bind(this,modes,params)).modal('hide');
+					
+				}catch(e){
+					try{console.log(e)}catch(x){};
+				}
+			}
+		};
+		//prepare dialog
+		function createModel(){
+			Dialog.model = $("<div>").attr({'class':'modal fade','role':'dialog','id':'alert-model','data-backdrop':'static','data-keyboard': 'false'}).appendTo($document),
+			Dialog.modelDialog = $("<div>").attr({'class':'modal-dialog'}).appendTo(Dialog.model),
+			Dialog.modelContent = $("<div>").attr({'class':'modal-content  dialog-primary'}).appendTo(Dialog.modelDialog),
+			Dialog.msgBody = $("<div>").attr({'class':'modal-body','id':'msg-body'}).css({"word-break": "break-word"}).appendTo(Dialog.modelContent),	
+			Dialog.btnContainer = $("<div>").attr({'class':'modal-footer'}).appendTo(Dialog.modelContent);
+			
+		}
+		// create button element
+		function createButton(label,stamp, subscript,cls){
+			var button = $("<button>").text(label).attr('class','btn btn-default');
+			if(!!subscript){
+				button.on('click',EVENT_TRIGGER.trigger.bind(EVENT_TRIGGER,subscript.split(','),stamp));
+			}else{
+				button.on('click',EVENT_TRIGGER.trigger.bind(EVENT_TRIGGER,'clear',stamp));
+			}
+			if(cls){
+				button.addClass(cls);
+			}
+			return button
+		}
+		//read input and textarea in the dialog
+		function readParams(){
+			var params = {},
+				validate = CSSValidate($('#msg-body'));
+			if(!validate)
+				throw "validate fail";
+			else
+				$.each($('#msg-body').find("input,textarea"),function(index,input){
+					input = $(input);
+					if(input.attr('type')=='checkbox'){
+						params[input.attr('name')] = input.is(':checked');
+					}else{
+						params[input.attr('name')] = input.val();
+					}
+				});
+				return params;
+		}
+		
+		// check message
+		function setMessage(args){
+			var message;
+			if(typeof args === 'string'){
+				message = args;
+			}else if(args&&typeof args.message === 'string'){
+				message = args.message;
+			}
+			return message;
+		}
+		function setMessageError(args){
+			var message;
+			if(typeof args === 'string'){
+				message = args;
+			}else if(args&&typeof args.message === 'string'){
+				message = args.message;
+			}
+			return translateMsg(message);
+		}
+		function translateMsg(message){
+			//add messages translation here
+			return !message?"":
+				message.toLowerCase().indexOf("invalid")!=-1?"ท่านใส่บัญชีผู้ใช้งาน หรือ รหัสผ่าน ไม่ถูกต้อง":
+					message.toLowerCase().indexOf("lock")!=-1?"user โดนล๊อค ระบบจะปลดล๊อคให้อัตโนมัติ กรุณาลองใหม่ ภายใน 15 นาที":
+					message;
+		}
+		$('#alert-model').on('show.bs.modal', function () {
+			setTimeout(function(){
+			if($( window ).height()<$('.modal-content').height()){
+				var hdk = 10;
+				try{hdk = parseInt($(".modal-dialog").css("margin-bottom").replace("px",""))}catch (e){}
+				$('.modal-body>*:not(:empty)').css('height',$( window ).height()-105-(hdk*2));
+			}
+			$(".modal-body p").css({width: ($(".modal-body").width()-16)+"px","white-space": "normal"});
+			},300);
+		});
+		
+		return {
+				alert : function(args,clsName){
+					var message;
+					var stamp = new Date().getTime();
+					if(!(message = setMessage(args))) return ;
+					EVENT_TRIGGER.$fn={};
+					Dialog.msgBody.html("<p>"+message+"</p>");
+					Dialog.stamp = stamp;
+					$(Dialog.modelContent).removeClass();
+					$(Dialog.modelContent).addClass('modal-content '+(!clsName?'dialog-primary':clsName));
+					Dialog.btnContainer.html('');
+					Dialog.btnContainer.append(createButton('ตกลง',stamp,'ok,confirm',(!clsName?'oli-default-button':'')));
+					$('#alert-model').modal('show');
+					
+					return EVENT_SUBSCRIPT;
+			
+				},
+				warn : function(args){
+					return this.alert(args,'dialog-warn');
+				},
+				error : function(args){
+					var message;
+					var stamp = new Date().getTime();
+					if(!(message = setMessageError(args))) return ;
+					EVENT_TRIGGER.$fn={};
+					Dialog.msgBody.html("<p>"+message+"</p>");
+					Dialog.stamp = stamp;
+					$(Dialog.modelContent).removeClass();
+					$(Dialog.modelContent).addClass('modal-content dialog-warn');
+					Dialog.btnContainer.html('');
+					Dialog.btnContainer.append(createButton('ตกลง',stamp,'ok,confirm',''));
+					$('#alert-model').modal('show');
+					
+					return EVENT_SUBSCRIPT;
+				},
+				confirm : function(args,clsName){
+					var message;
+					var stamp = new Date().getTime();
+					if(!(message = setMessage(args))) return ;
+					EVENT_TRIGGER.$fn={};
+					Dialog.msgBody.html("<p>"+message+"</p>");
+					Dialog.stamp = stamp;
+					$(Dialog.modelContent).removeClass('dialog-warn dialog-primary');
+					$(Dialog.modelContent).addClass('modal-content '+(!clsName?'dialog-primary':clsName));
+					Dialog.btnContainer.html('');
+					Dialog.btnContainer.append(createButton('ยกเลิก',stamp,'cancel'));
+					Dialog.btnContainer.append(createButton('ตกลง',stamp,'confirm',(!clsName?'oli-default-button':'')));
+					$('#alert-model').modal('show');
+					
+					return EVENT_SUBSCRIPT;
+			
+				},
+				confirmWarn : function(args){
+					return this.confirm(args,'dialog-warn');
+				},
+				email :function(args){
+					var message;
+					var stamp = new Date().getTime();
+					if(!(message = setMessage(args))) return ;
+					EVENT_TRIGGER.$fn={};
+					Dialog.stamp = stamp;
+					Dialog.msgBody.html("<h2>"+message+"</h2>"
+					+'<div><input type="email" data-validate-io="hell" data-validate-email="รูปแบบ email ไม่ถูกต้อง" data-validate-required="กรอกอีเมล" id="email" style="color:#666;width:100%;font-size:1.2em;" name="email"/></div>'
+					+'<div><input type="checkbox" id="_flag" name="flag"><label for="_flag">ต้องการจัดเก็บอีเมลของผู้เอาประกัน</label></div>')
+					
+					$(Dialog.modelContent).removeClass('dialog-warn dialog-primary');
+					$(Dialog.modelContent).addClass('modal-content dialog-primary');
+					Dialog.btnContainer.html('');
+					Dialog.btnContainer.append(createButton('ยกเลิก',stamp,'cancel'));
+					Dialog.btnContainer.append(createButton('ตกลง',stamp,'confirm-email', 'oli-default-button'));
+					$('#alert-model').modal('show');
+					
+					return EVENT_SUBSCRIPT;
+					
+				},
+				
+				custom: function(body,buttons,clsName){
+					if(!body)return;
+					var stamp = new Date().getTime();
+					EVENT_TRIGGER.$fn={};
+					Dialog.msgBody.html(body);
+					Dialog.stamp = stamp;
+					$(Dialog.modelContent).removeClass('dialog-warn dialog-primary');
+					$(Dialog.modelContent).addClass('modal-content '+(!clsName?'dialog-primary':clsName));
+					Dialog.btnContainer.html('');
+					if(buttons){
+						if(buttons.length){
+							for(var i = 0 ;i< buttons.length;i++){
+								Dialog.btnContainer.append(createButton(buttons[i].label,stamp,buttons[i].event,buttons[i].className||'oli-default-button'));
+							}
+						}else if(buttons.label){
+							Dialog.btnContainer.append(createButton(buttons.label,stamp,buttons.event,buttons.className||'oli-default-button'));
+						}
+					}
+					$('#alert-model').modal('show');
+					return EVENT_SUBSCRIPT;
+				},
+				dismiss: function(){
+					$('#alert-model').modal('hide');
+					$(".modal-backdrop").remove();
+				}
+			};
+})(jQuery);
+
+// ajax load and complete
+!function($){
+	$("<div>").attr("id","ajax-loading").addClass("ajax-loading").hide().appendTo(document.body);
+	
+	$( document ).ajaxStart(function() {
+		  $( "#ajax-loading" ).show();
+		});
+	$( document ).ajaxComplete(function() {
+		  $( "#ajax-loading" ).hide();
+		});
+}(jQuery);
+goHome = function(){
+	window.location = "/";
+}

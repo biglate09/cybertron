@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bom/bom.iml" filepath="$PROJECT_DIR$/bom/bom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bom-provided/bom-provided.iml" filepath="$PROJECT_DIR$/bom-provided/bom-provided.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cybertron.iml" filepath="$PROJECT_DIR$/.idea/cybertron.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assembly/cybertron-assembly.iml" filepath="$PROJECT_DIR$/assembly/cybertron-assembly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ear/cybertron-ear.iml" filepath="$PROJECT_DIR$/ear/cybertron-ear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ejbweb/cybertron-ejbweb.iml" filepath="$PROJECT_DIR$/ejbweb/cybertron-ejbweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/cybertron-web.iml" filepath="$PROJECT_DIR$/web/cybertron-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws/cybertron-ws.iml" filepath="$PROJECT_DIR$/ws/cybertron-ws.iml" />
+    </modules>
+  </component>
+</project>

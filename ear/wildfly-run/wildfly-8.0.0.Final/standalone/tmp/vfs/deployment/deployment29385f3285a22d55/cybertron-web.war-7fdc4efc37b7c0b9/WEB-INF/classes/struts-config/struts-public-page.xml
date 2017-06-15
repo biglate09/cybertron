@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="public-page" extends="public" namespace="/pub/page">
+		<action name="index" class="thaisamut.nbs.publicpage.action.PublicAction" method="index">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/index.ftl
+			</result>
+		</action>
+
+		<action name="changepassword" class="thaisamut.nbs.publicpage.action.PublicAction" method="changepassword">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/changepassword.ftl
+			</result>
+		</action>
+		
+		<action name="generatecaptcha" class="thaisamut.css.struts.action.CssJsonAction" method="generatecaptcha">
+			<interceptor-ref name="publicStack" />
+		</action>
+		
+		<action name="isvalidcaptcha" class="thaisamut.css.struts.action.CssJsonAction" method="isvalidcaptcha">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="isduplicateoldpassword" class="thaisamut.css.struts.action.CssJsonAction" method="isduplicateoldpassword">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="isvalidatepassword" class="thaisamut.css.struts.action.CssJsonAction" method="isvalidatepassword">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="signup" class="thaisamut.nbs.publicpage.action.PublicAction" method="signup">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/signup.ftl
+			</result>
+		</action>
+
+		<action name="confirmOtp" class="thaisamut.nbs.publicpage.action.PublicAction" method="confirmotp">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/confirm-otp.ftl
+			</result>
+		</action>
+		
+		<action name="confirmSignup" class="thaisamut.nbs.publicpage.action.PublicAction" method="confirmsignup">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="checkuser" class="thaisamut.nbs.publicpage.action.ChangePasswordAction" method="checkuser">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="resetpassword" class="thaisamut.nbs.publicpage.action.ChangePasswordAction" method="resetpassword">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="public-forget-user-password" extends="public" namespace="/pub/page/forget">
+		<action name="index" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="index">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/forget.ftl
+			</result>
+		</action>
+		
+		<action name="confirmByIdCard" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="confirmByIdCard">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/forget-cardid.ftl
+			</result>
+		</action>
+		
+		<action name="validateByIdCard" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="validateByIdCard">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="confirmByEmail" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="confirmByEmail">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/forget-email.ftl
+			</result>
+			<result name="forwardOtp" type="chain">
+				<param name="namespace">/pub/page/forget</param>
+				<param name="actionName">confirmByOtp</param>
+			</result>
+		</action>
+		
+		<action name="validateByEmail" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="validateByEmail">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="confirmByOtp" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="confirmByOtp">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/forget-otp.ftl
+			</result>
+		</action>
+		
+		<action name="confirmByOtpSuccess" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="confirmByOtpSuccess">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/forget-otp-success.ftl
+			</result>
+		</action>
+		
+		<action name="processConfirmByOtp" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="processConfirmByOtp">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="processResetOtp" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="processResetOtp">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+		<action name="resetPasswordByOtp" class="thaisamut.nbs.publicpage.action.ForgotUserPasswordAction" method="resetPasswordByOtp">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		
+	</package>
+	
+	<package name="public-complete-signup-page" extends="public" namespace="/pub/page/complete">
+		<action name="index" class="thaisamut.nbs.publicpage.action.CompleteSignupAction" method="index">
+			<interceptor-ref name="publicStack" />
+			<result name="success" type="freemarker">/WEB-INF/pages/pub/complete-signup.ftl
+			</result>
+		</action>
+		
+		<action name="completesignup" class="thaisamut.nbs.publicpage.action.CompleteSignupAction" method="completesignup">
+			<interceptor-ref name="publicStack" />
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+	</package>
+</struts>

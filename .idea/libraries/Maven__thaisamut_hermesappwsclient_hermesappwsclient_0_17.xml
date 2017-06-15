@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: thaisamut.hermesappwsclient:hermesappwsclient:0.17">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/hermesappwsclient/hermesappwsclient/0.17/hermesappwsclient-0.17.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/hermesappwsclient/hermesappwsclient/0.17/hermesappwsclient-0.17-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/hermesappwsclient/hermesappwsclient/0.17/hermesappwsclient-0.17-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="initial-db-create-table-place" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="place" />
+            </not>
+        </preConditions>
+        <createTable tableName="place">
+            <column name="place_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="place_name" type="varchar(255)" />
+            <column name="place_desc" type="text" />
+            <column name="place_contact" type="varchar(255)" />
+            <column name="department" type="varchar(1)" />
+            <column name="province_id" type="varchar(3)" />
+            <column name="place_type_id" type="int8" />
+            <column name="place_address" type="text" />
+            <column name="place_conditions" type="text" />
+            <column name="status" type="varchar(1)" />
+            <column name="start_date" type="timestamp with time zone" />
+            <column name="end_date" type="timestamp with time zone" />
+            <column name="latitude" type="float(10)"/>
+            <column name="longitude" type="float(10)"/>
+        </createTable>
+        <addPrimaryKey columnNames="place_id" constraintName="place_pkey" tableName="place"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-place-type" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="place_type" />
+            </not>
+        </preConditions>
+        <createTable tableName="place_type">
+            <column name="place_type_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="place_type_name" type="varchar(255)" />
+        </createTable>
+        <addPrimaryKey columnNames="place_type_id" constraintName="place_type_pkey" tableName="place_type"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-choices" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="choices" />
+            </not>
+        </preConditions>
+        <createTable tableName="choices">
+            <column name="choices_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="choices_no" type="int8" />
+            <column name="choices_name" type="varchar(500)" />
+            <column name="choices_type" type="varchar(20)" />
+            <column name="status" type="varchar(1)" />
+            <column name="question_id" type="bigint" />
+        </createTable>
+        <addPrimaryKey columnNames="choices_id" constraintName="choices_pkey" tableName="choices"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-mark-choices" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="mark_choices" />
+            </not>
+        </preConditions>
+        <createTable tableName="mark_choices">
+            <column name="id_no" type="varchar(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="choices_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="id_no,choices_id" constraintName="mark_choices_pkey" tableName="mark_choices"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-campaign" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="campaign" />
+            </not>
+        </preConditions>
+        <createTable tableName="campaign">
+            <column name="campaign_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="campaign_name" type="varchar(255)" />
+            <column name="campaign_place" type="varchar(255)" />
+            <column name="province_id" type="varchar(3)" />
+            <column name="campaign_desc" type="varchar(255)" />
+            <column name="start_date" type="timestamp with time zone" />
+            <column name="end_date" type="timestamp with time zone" />
+            <column name="event_start_date" type="timestamp with time zone" />
+            <column name="event_end_date" type="timestamp with time zone" />
+            <column name="status" type="varchar(1)" />
+            <column name="quota_total" type="int8" />
+            <column name="quota_used" type="int8" />
+            <column name="quota_remain" type="int8" />
+            <column name="campaign_remark" type="text" />
+        </createTable>
+        <addPrimaryKey columnNames="campaign_id" constraintName="campaign_pkey" tableName="campaign"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-campaign-reserve" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="campaign_reserve" />
+            </not>
+        </preConditions>
+        <createTable tableName="campaign_reserve">
+            <column name="reserve_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="reserve_date" type="timestamp with time zone" />
+            <column name="reserve_no" type="int8" />
+            <column name="right_date" type="timestamp with time zone" />
+            <column name="right_status" type="varchar(1)" />
+            <column name="campaign_id" type="int8" />
+            <column name="id_no" type="varchar(20)" />
+        </createTable>
+        <addPrimaryKey columnNames="reserve_id" constraintName="campaign_reserve_pkey" tableName="campaign_reserve"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-branch" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="branch" />
+            </not>
+        </preConditions>
+        <createTable tableName="branch">
+            <column name="branch_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="branch_name" type="varchar(255)" />
+            <column name="status" type="varchar(1)" />
+            <column name="latitude" type="float(10)" />
+            <column name="longitude" type="float(10)" />
+        </createTable>
+        <addPrimaryKey columnNames="branch_id" constraintName="branch_pkey" tableName="branch"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-question" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="question" />
+            </not>
+        </preConditions>
+        <createTable tableName="question">
+            <column name="question_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="question_big_name" type="varchar(255)" />
+            <column name="question_name" type="varchar(255)" />
+        </createTable>
+        <addPrimaryKey columnNames="question_id" constraintName="question_pkey" tableName="question"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-place-choices" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="place_choices" />
+            </not>
+        </preConditions>
+        <createTable tableName="place_choices">
+            <column name="place_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="choices_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="place_id,choices_id" constraintName="place_choices_pkey" tableName="place_choices"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-table-campaign-choices" author="bighead">
+        <preConditions onFail="WARN">
+            <not>
+                <tableExists tableName="campaign_choices" />
+            </not>
+        </preConditions>
+        <createTable tableName="campaign_choices">
+            <column name="campaign_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+            <column name="choices_id" type="int8">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="campaign_id,choices_id" constraintName="campaign_choices_pkey" tableName="campaign_choices"/>
+    </changeSet>
+
+    <changeSet id="initial-db-add-auto-increment" author="bighead">
+        <addAutoIncrement columnDataType="int8" columnName="place_id" incrementBy="1" startWith="1" tableName="place"/>
+        <addAutoIncrement columnDataType="int8" columnName="place_type_id" incrementBy="1" startWith="1" tableName="place_type"/>
+        <addAutoIncrement columnDataType="int8" columnName="choices_id" incrementBy="1" startWith="1" tableName="choices"/>
+        <addAutoIncrement columnDataType="int8" columnName="campaign_id" incrementBy="1" startWith="1" tableName="campaign"/>
+        <addAutoIncrement columnDataType="int8" columnName="reserve_id" incrementBy="1" startWith="1" tableName="campaign_reserve"/>
+        <addAutoIncrement columnDataType="int8" columnName="branch_id" incrementBy="1" startWith="1" tableName="branch"/>
+        <addAutoIncrement columnDataType="int8" columnName="question_id" incrementBy="1" startWith="1" tableName="question"/>
+    </changeSet>
+
+    <changeSet id="initial-db-create-foreign-key" author="bighead">
+        <addUniqueConstraint tableName="css_member" columnNames="card_no" />
+        <addForeignKeyConstraint baseTableName="campaign_reserve" baseColumnNames="campaign_id" referencedTableName="campaign" referencedColumnNames="campaign_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_reserve_campaign_campaign"/>
+        <addForeignKeyConstraint baseTableName="campaign_reserve" baseColumnNames="id_no" referencedTableName="css_member" referencedColumnNames="card_no"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_reserve_campaign_member"/>
+        <addForeignKeyConstraint baseTableName="mark_choices" baseColumnNames="choices_id" referencedTableName="choices" referencedColumnNames="choices_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_mark_choices_choices"/>
+        <addForeignKeyConstraint baseTableName="mark_choices" baseColumnNames="id_no" referencedTableName="css_member" referencedColumnNames="card_no"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_mark_choices_member"/>
+        <addForeignKeyConstraint baseTableName="place" baseColumnNames="place_id" referencedTableName="place_type" referencedColumnNames="place_type_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_place_place_type"/>
+        <addForeignKeyConstraint baseTableName="choices" baseColumnNames="question_id" referencedTableName="question" referencedColumnNames="question_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_choices_question"/>
+        <addForeignKeyConstraint baseTableName="place_choices" baseColumnNames="place_id" referencedTableName="place" referencedColumnNames="place_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_place_choices_place"/>
+        <addForeignKeyConstraint baseTableName="place_choices" baseColumnNames="choices_id" referencedTableName="choices" referencedColumnNames="choices_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_place_choices_choices"/>
+        <addForeignKeyConstraint baseTableName="campaign_choices" baseColumnNames="campaign_id" referencedTableName="campaign" referencedColumnNames="campaign_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_campaign_choices_campaign"/>
+        <addForeignKeyConstraint baseTableName="campaign_choices" baseColumnNames="choices_id" referencedTableName="choices" referencedColumnNames="choices_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE" constraintName="fk_campaign_choices_choices"/>
+    </changeSet>
+
+    <changeSet id="insert-data-into-question" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="question" />
+        </preConditions>
+        <sql>
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(1,'ท่านใช้โทรศัพท์มือถือของผู้ให้บริการเครือข่ายใด',NULL);
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(2,'ท่านใช้บริการโทรศัพท์มือถือเป็นแพ็กเกจประเภทใด',NULL);
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(3,'โทรศัพท์มือถือของท่านเป็นประเภทใด',NULL);
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(4,'ปกติแล้วคุณชอบท่องเที่ยวหรือไม่',NULL);
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(5,NULL,'คุณชอบท่องเที่ยวสถานที่ท่องเที่ยวประเภทใด');
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(6,'ปกติแล้วคุณออกกำลังกายหรือไม่',NULL);
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(7,NULL,'คุณออกกำลังกายประมาณกี่ครั้งต่อสัปดาห์');
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(8,NULL,'คุณออกกำลังกายประเภทใด');
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(9,'ปกติแล้วคุณชอบฟังเพลงหรือไม่',NULL);
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(10,NULL,'แนวเพลงใดที่คุณชอบฟัง');
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(11,'คุณชื่นชอบอาหารประเภทใด',NULL);
+            INSERT INTO question(question_id,question_big_name,question_name) VALUES(12,'ปกติแล้วคุณซื้อสินค้าอุปโภคบริโภคที่ใช้ในชีวิตประจำวันจากสถานที่ใด',NULL);
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-choices" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="choices" />
+        </preConditions>
+        <sql>
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(1,1,'AIS','checkbox','O',1);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(2,2,'DTAC','checkbox','O',1);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(3,3,'TRUEMOVE-H','checkbox','O',1);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(4,4,'ไม่ทราบ','checkbox','O',1);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(5,1,'แบบรายเดือน','checkbox','O',2);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(6,2,'แบบเติมเงิน','checkbox','O',2);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(7,3,'ไม่ทราบ','checkbox','O',2);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(8,1,'Smart Phone','checkbox','O',3);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(9,2,'Basic Phone','checkbox','O',3);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(10,3,'ไม่ทราบ','checkbox','O',3);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(11,1,'ชอบท่องเที่ยว','radio','O',4);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(12,2,'ไม่ชอบท่องเที่ยว','radio','O',4);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(13,1,'ทะเล','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(14,2,'ภูเขา','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(15,3,'น้ำตก','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(16,4,'พิพิธภัณฑ์','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(17,5,'วัด/โบราณสถาน','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(18,6,'ต่างประเทศ','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(19,7,'สวนสนุก','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(20,8,'สวนสัตว์','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(21,9,'ห้างสรรพสินค้า','checkbox','O',5);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(22,1,'ไม่ออกกำลังกาย','radio','O',6);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(23,2,'ออกกำลังกาย','radio','O',6);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(24,1,'1 ครั้งต่อสัปดาห์','radio','O',7);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(25,2,'2 ครั้งต่อสัปดาห์','radio','O',7);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(26,3,'3 ครั้งต่อสัปดาห์','radio','O',7);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(27,4,'4 ครั้งต่อสัปดาห์','radio','O',7);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(28,5,'มากกว่า 4 ครั้งต่อสัปดาห์','radio','O',7);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(29,1,'กระโดดเชือก','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(30,2,'กอล์ฟ','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(31,3,'กายบริหาร','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(32,4,'เครื่องออกกำลังกาย','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(33,5,'เดิน','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(34,6,'ตะกร้อ','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(35,7,'เต้นรำ','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(36,8,'เทนนิส','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(37,9,'ไท่เก็ก','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(38,10,'บาสเกตบอล','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(39,11,'แบดมินตัน','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(40,12,'ปั่นจักรยาน','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(41,13,'ปิงปอง','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(42,14,'เปตอง','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(43,15,'ฟิตเนส','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(44,16,'ฟุตบอล','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(45,17,'มวย','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(46,18,'ไม้พลอง','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(47,19,'โยคะ','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(48,20,'วอลเล่ย์บอล','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(49,21,'ว่ายน้ำ','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(50,22,'วิ่ง','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(51,23,'แอโรบิค','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(52,24,'ฮูลาฮูป','checkbox','O',8);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(53,1,'ไม่ชอบฟัง','radio','O',9);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(54,2,'ชอบฟัง','radio','O',9);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(55,1,'เพลงไทยสากล แนวป๊อป','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(56,2,'เพลงไทยสากล แนวร็อก','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(57,3,'เพลงไทยสากล แนวแดนซ์','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(58,4,'เพลงลูกทุ่ง','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(59,5,'เพลงลูกกรุง','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(60,6,'เพลงหมอลำ','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(61,7,'เพลงเพื่อชีวิต','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(62,8,'เพลงไทยเดิม','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(63,9,'เพลงคลาสสิก','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(64,10,'เพลงแจ๊ส','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(65,11,'เพลงเกาหลี','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(66,12,'เพลงญี่ปุ่น','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(67,13,'เพลงจีน','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(68,14,'เพลงฝรั่ง','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(69,15,'เพลงเด็ก/การ์ตูน','checkbox','O',10);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(70,1,'อาหารไทย-ภาคเหนือ','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(71,2,'อาหารไทย-ภาคอีสาน','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(72,3,'อาหารไทย-ภาคกลาง','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(73,4,'อาหารไทย-ภาคใต้','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(74,5,'อาหารเกาหลี','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(75,6,'อาหารจีน','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(76,7,'อาหารญี่ปุ่น','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(77,8,'อาหารฝรั่ง','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(78,9,'อาหารทะเล/ซีฟู๊ด','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(79,10,'อาหารเจ','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(80,11,'มังสวิรัติ','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(81,12,'อาหารเพื่อสุขภาพ/ชีวจิต','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(82,13,'อาหารอิสลาม','checkbox','O',11);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(83,1,'ร้านโชห่วย/ร้านขายของชำ','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(84,2,'ตลาดสด','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(85,3,'ตลาดนัด','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(86,4,'ขายตรง','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(87,5,'ห้าง/ซุปเปอร์ในพื้นที่','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(88,6,'7-11 (เซเว่นอีเลฟเว่น)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(89,7,'Family Mart (แฟมิลี่มาร์ท)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(90,8,'Lawson 108 (ลอว์สัน ร้อยแปด)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(91,9,'Lotus Express (โลตัสเอกซ์เพรส)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(92,10,'Big C Mini (บิ๊กซีมินิ)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(93,11,'Tops Supermarket (ท๊อปส์ ซูเปอร์มาร์เก็ต)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(94,12,'Gourmet Market (กูร์เมต์ มาร์เก็ต)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(95,13,'Home Fresh Mart (โฮมเฟรชมาร์ท)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(96,14,'Villa Market (วิลล่า มาร์เก็ต)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(97,15,'Max Value (แม็กซ์แวลู)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(98,16,'Top Daily (ท็อปเดลี่)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(99,17,'Tesco Lotus (เทสโก้ โลตัส)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(100,18,'Big C (บิ๊กซี)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(101,19,'Makro (แมคโคร)','checkbox','O',12);
+            INSERT INTO choices(choices_id,choices_no,choices_name,choices_type,status,question_id) VALUES(102,20,'สถานที่ซื้อสินค้าอื่นๆ','checkbox','C',12);
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-place-type" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="place_type" />
+        </preConditions>
+        <sql>
+            INSERT INTO place_type(place_type_id,place_type_name) VALUES(1,'ร้านอาหาร');
+            INSERT INTO place_type(place_type_id,place_type_name) VALUES(2,'บ้านพัก/โรงแรม');
+            INSERT INTO place_type(place_type_id,place_type_name) VALUES(3,'ยา/คลินิก/โรงพยาบาล');
+            INSERT INTO place_type(place_type_id,place_type_name) VALUES(4,'ร้านเสริมสวย');
+            INSERT INTO place_type(place_type_id,place_type_name) VALUES(5,'คาร์แคร์');
+            INSERT INTO place_type(place_type_id,place_type_name) VALUES(6,'การเดินทาง');
+            INSERT INTO place_type(place_type_id,place_type_name) VALUES(7,'ร้านขายสินค้าอื่นๆ');
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-branch" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="branch" />
+        </preConditions>
+        <sql>
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('พระโขนง','0109','I',13.7277777,100.5314868);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('อโศก','0116','A',13.742847,100.5598373);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('รามอินทรา','0118','I',13.8519666,100.6303875);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('บางนา','0171','A',13.6531376,100.6730141);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('วิภาวดี','0172','A',13.8519565,100.5691012);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('ลาดพร้าว','0184','I',13.788933,100.5583929);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('ธนบุรี','0200','A',13.7541435,100.4875618);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('ภาษีเจริญ','0206','I',13.7128265,100.445302);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('วงเวียนใหญ่','0287','I',13.7128216,100.445302);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('ปทุมธานี','0300','A',14.015835,100.5223693);
+            INSERT INTO branch (branch_name,branch_id,status,latitude,longitude) VALUES ('นนทบุรี','0400','A',13.7786249,100.4893949);
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-mark-choices" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="mark-choices" />
+        </preConditions>
+        <sql>
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',1);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',2);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',5);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',8);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',11);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',13);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',14);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',15);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',19);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',21);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',22);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',53);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',70);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',71);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',76);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',77);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',78);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',83);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',88);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',90);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',95);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',98);
+            INSERT INTO mark_choices(id_no,choices_id) VALUES('1720400101175',102);
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-place" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="place" />
+        </preConditions>
+        <sql>
+            INSERT INTO place(place_id,place_name,place_desc,place_contact,department,province_id,place_type_id,place_address,place_conditions,
+            status,start_date,end_date,latitude,longitude) VALUES(1,'ร้านนำสมัย','10% สำหรับค่าชุดนักเรียน อุปกรณ์ต่างๆในร้าน','Tel : 075-612-053','S',2,7,
+            '62 ถ.มหาราช อ.เมืองกระบี่ จ.กระบี่','ส่วนลด','O',TO_DATE('2017-05-03','YYYY-MM-DD'),TO_DATE('2017-12-31','YYYY-MM-DD'),8.0855103,98.9042749);
+            INSERT INTO place(place_id,place_name,place_desc,place_contact,department,province_id,place_type_id,place_address,place_conditions,
+            status,start_date,end_date,latitude,longitude) VALUES(2,'ร้านกัญชา','10% สำหรับส่วนลด เมื่อทานอาหารครบ 500 บาทขึ้นไป','Tel : 088-555-6666','N',1,1,
+            '35/50 ถ.พุทธบูชา อ.ทุ่งครุ จ.กรุงเทพ','ส่วนลด','O',TO_DATE('2017-07-18','YYYY-MM-DD'),TO_DATE('2017-12-31','YYYY-MM-DD'),13.5408408,100.4590995);
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-place-choices" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="place_choices" />
+        </preConditions>
+        <sql>
+            INSERT INTO place_choices(place_id,choices_id) VALUES(2,30);
+            INSERT INTO place_choices(place_id,choices_id) VALUES(2,37);
+            INSERT INTO place_choices(place_id,choices_id) VALUES(2,39);
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-campaign" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="campaign" />
+        </preConditions>
+        <sql>
+            INSERT INTO campaign(campaign_id,campaign_name,campaign_place,province_id,campaign_desc,start_date,end_date,event_start_date,
+            event_end_date,status,quota_total,quota_used,quota_remain,campaign_remark) VALUES(1,'ดูหนังรอบปฐมทัศน์อนิเมชั่นญี่ปุ่นเรื่อง HiruneHine',
+            'โรงภาพยนตร์ในเครือ Major สยามพารากอน',1,'บลาๆๆๆๆๆๆๆ อันนี้ description',TO_DATE('2017-07-10','YYYY-MM-DD'),
+            TO_DATE('2017-07-31','YYYY-MM-DD'), TO_DATE('2017-08-01','YYYY-MM-DD'),TO_DATE('2017-08-01','YYYY-MM-DD'),'O',150,98,52,'อันนี้ Remark นะ');
+
+            INSERT INTO campaign(campaign_id,campaign_name,campaign_place,province_id,campaign_desc,start_date,end_date,event_start_date,
+            event_end_date,status,quota_total,quota_used,quota_remain,campaign_remark) VALUES(2,'เที่ยวงานวัดพุทธฟรี รับคูปองซื้อของท่านละ 200 บาท',
+            'วัดพุทธบูชา',1,'บลาๆๆๆๆๆๆๆ อันนี้ description',TO_DATE('2017-07-10','YYYY-MM-DD'),TO_DATE('2017-07-25','YYYY-MM-DD'),
+            TO_DATE('2017-08-15','YYYY-MM-DD'),TO_DATE('2017-08-17','YYYY-MM-DD'),'O',100,47,53,'อันนี้ Remark นะ');
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-campaign-choices" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="campaign_choices" />
+        </preConditions>
+        <sql>
+            INSERT INTO campaign_choices(campaign_id,choices_id) VALUES(1,1);
+            INSERT INTO campaign_choices(campaign_id,choices_id) VALUES(1,10);
+            INSERT INTO campaign_choices(campaign_id,choices_id) VALUES(2,4);
+            INSERT INTO campaign_choices(campaign_id,choices_id) VALUES(2,11);
+            INSERT INTO campaign_choices(campaign_id,choices_id) VALUES(2,15);
+            INSERT INTO campaign_choices(campaign_id,choices_id) VALUES(2,17);
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-data-into-campaign-reserve" author="bighead">
+        <preConditions onFail="WARN">
+            <tableExists tableName="campaign_reserve" />
+        </preConditions>
+        <sql>
+            INSERT INTO campaign_reserve(reserve_id,reserve_date,reserve_no,right_date,right_status,campaign_id,id_no)
+            VALUES(1,TO_DATE('2017-07-10 15:32:48','YYYY-MM-DD HH24:MI:SS'),20,NULL,'R',1,'1720400101175');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

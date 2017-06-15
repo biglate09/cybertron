@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="payment" extends="secure" namespace="/secure/payment">
+		<action name="paymentinfo" class="thaisamut.nbs.css.payment.action.PaymentInfoAction" method="index">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/payment/payment-info.ftl
+			</result>
+		</action>
+		<action name="paymentmain" class="thaisamut.nbs.css.payment.action.PaymentInfoAction" method="main">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/payment/payment-main.ftl
+			</result>
+		</action>
+		<action name="paymentcreditcard" class="thaisamut.nbs.css.payment.action.PaymentInfoAction" method="paymentcreditcard">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/payment/payment-credit-card.ftl
+			</result>
+		</action>
+		<action name="paymentCardAuthority" class="thaisamut.nbs.css.payment.action.PaymentInfoAction" method="paymentCardAuthority">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		<action name="paymentpaymentcard" class="thaisamut.nbs.css.payment.action.PaymentRegiterCardAction" method="paymentpaymentcard">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/payment/payment-payment-card.ftl</result>
+			<result name="fail" type="freemarker">/WEB-INF/pages/payment/payment-main.ftl</result>
+		</action>
+		<action name="paymentsuccess" class="thaisamut.nbs.css.payment.action.PaymentInfoAction" method="paymentsuccess">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/payment/payment-success.ftl
+			</result>
+		</action>
+		<action name="registerpaymentcardsuccess" class="thaisamut.nbs.css.payment.action.PaymentRegiterCardAction" method="registerpaymentcardsuccess">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/pages/payment/register-payment-card-success.ftl</result>
+			<result name="cancel" type="freemarker">/WEB-INF/pages/payment/payment-main.ftl</result>
+		</action>
+		<action name="paymentgeneratedata" class="thaisamut.nbs.css.payment.action.PaymentInfoAction" method="paymentgeneratedata">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		<action name="recalculatepaymentcreditcard" class="thaisamut.nbs.css.payment.action.PaymentInfoAction" method="recalculatepaymentcreditcard">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+		<action name="paymentValidate" class="thaisamut.nbs.css.payment.action.PaymentInfoAction" method="paymentValidate">
+			<interceptor-ref name="secureStack" />
+			<interceptor-ref name="authorization">
+				<param name="anyPermissionsBeneath">0</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">result</param>
+				<param name="wrapWithComments">false</param>
+				<param name="noCache">true</param>
+				<param name="enableGZIP">true</param>
+				<param name="defaultEncoding">UTF-8</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">.*</param>
+				<param name="excludeProperties"></param>
+			</result>
+		</action>
+	</package>
+</struts>

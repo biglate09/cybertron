@@ -1,0 +1,72 @@
+.oli-gallery-container{
+  position: relative;
+  max-width: 2047px;
+  max-height: 952px;
+  margin: auto;
+}
+.oli-image__slider{
+  position: relative;
+  margin:0;
+  padding:0;
+  display: block;
+  top:0;
+  left:0;
+  right:0;
+  max-width: 2047px;
+  max-height: 952px;
+}
+.oli-image__slider .slide img{
+  width: 100%;
+}
+.oli-image__slider .slide{
+  position: relative;
+  max-width: 2047px;
+  max-height: 952px;
+  bottom:0;
+  display: none;
+  z-index: 0;
+  -webkit-transition: left .7s ease-in; /* Safari */
+  transition: left .7s ease-in;
+}
+.oli-image__slider .slide.prev{
+  display: inline-block;
+  display: inline;
+  left:-100%;
+}
+
+.oli-image__slider .slide.active{
+  position: inherit;
+  display: inline-block;
+  display: inline;
+  left:0;
+  z-index: 10;
+}
+.oli-image__slider .slide.next{
+  display: inline-block;
+  display: inline;
+  left:100%;
+
+}
+.oli-slider_indicator_container{
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  height: 20px;
+  padding:2px;
+  z-index: 11;
+}
+.oli-slider_indicator_container span.indicator{
+  position: relative;
+  display: inline;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #AAA;
+  background-color: none;
+  border-radius: 100%;
+  margin: auto 4px;
+  cursor: pointer;
+}
+.oli-slider_indicator_container span.indicator.active{
+  background-color: #AAA;
+}

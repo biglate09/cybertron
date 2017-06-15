@@ -1,0 +1,82 @@
+var stickyHeaders = (function() {
+
+  var $window = $(window),
+      $stickies,$container,$marker;
+
+  var load = function(stickies) {
+
+    if ( stickies instanceof jQuery && stickies.length > 0) {
+    	$container = $("#sticky-container");
+    	
+      $stickies = stickies.each(function() {
+
+        var parent = $(this).offsetParent();
+        var $thisSticky = $(this).wrap('<div class="followWrap" />');
+  
+        $thisSticky
+            .data('originalPosition', $thisSticky.offset().top)
+            .data('originalHeight', $thisSticky.outerHeight())
+            .data('originalWidth',$thisSticky.width())
+            .data("parent",parent)
+              .parent()
+              .width($thisSticky.width()); 	
+
+        $thisSticky.width($thisSticky.outerWidth());
+      });
+
+      $window.off("scroll.stickies").on("scroll.stickies", function() {
+		  _whenScrolling();		
+      });
+
+      $(window).on('resize', function(){
+    	  $.each(stickies,function(i,o){
+    		  if($(o).data('parent')){
+    			  $(o).width($(o).data('parent').width()-32);
+    		  }
+    		  
+    	  });
+      });
+    }
+  };
+
+  var _whenScrolling = function() {
+
+    $stickies.each(function(i) {			
+
+      var $thisSticky = $(this),
+          $stickyPosition = $thisSticky.data('originalPosition'),
+          $stickyWidth = $thisSticky.data('originalWidth'),
+          parentW = $thisSticky.data('parent').width();
+      if ($stickyPosition <= $window.scrollTop()) {     
+        var $nextSticky = $stickies.eq(i + 1),
+            $nextStickyPosition = $nextSticky.data('originalPosition') - $thisSticky.data('originalHeight');
+
+        $thisSticky.addClass("fixed");
+        $thisSticky.parent().css("margin-top",$thisSticky.height());
+        if ($nextSticky.length > 0 && $thisSticky.offset().top >= $nextStickyPosition) {
+
+          $thisSticky.addClass("absolute").css("top", $nextStickyPosition);
+        }
+
+      } else {
+        var $prevSticky = $stickies.eq(i - 1);
+
+        $thisSticky.removeClass("fixed");
+        $thisSticky.parent().css("margin-top","");
+
+        if ($prevSticky.length > 0 && $window.scrollTop() <= $thisSticky.data('originalPosition') - $thisSticky.data('originalHeight')) {
+
+          $prevSticky.removeClass("absolute").removeAttr("style");
+        }
+      }
+      $thisSticky.width(parentW-32);
+    });
+  };
+  return {
+    load: load
+  };
+})();
+
+$(document).ready(function() {
+  stickyHeaders.load($(".followMeBar"));
+});

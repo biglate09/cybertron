@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="bom" />
+        <module name="bom-provided" />
+        <module name="cybertron-ear" />
+        <module name="cybertron-ejbweb" />
+        <module name="cybertron-web" />
+        <module name="cybertron-ws" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bom" target="1.7" />
+      <module name="bom-provided" target="1.7" />
+      <module name="cybertron" target="1.5" />
+      <module name="cybertron-assembly" target="1.5" />
+      <module name="cybertron-ear" target="1.5" />
+      <module name="cybertron-ejbweb" target="1.7" />
+      <module name="cybertron-web" target="1.7" />
+      <module name="cybertron-ws" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

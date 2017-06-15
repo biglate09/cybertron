@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="cybertron-ear:ear exploded">
+    <output-path>$PROJECT_DIR$/ear/target/cybertron-ear-0.13.2-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="cybertron-ear/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/ear/target/cybertron-ear-0.13.2-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/ear/src/main/application" />
+      <element id="archive" name="cybertron-ejbweb.war">
+        <element id="artifact" artifact-name="cybertron-ejbweb:war exploded" />
+      </element>
+      <element id="archive" name="cybertron-web.war">
+        <element id="artifact" artifact-name="cybertron-web:war exploded" />
+      </element>
+      <element id="archive" name="cybertron-ws.war">
+        <element id="artifact" artifact-name="cybertron-ws:war exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>

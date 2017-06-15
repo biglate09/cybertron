@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: thaisamut.pantheonconf-dev:pantheonconf-dev:0.100-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/pantheonconf-dev/pantheonconf-dev/0.100-SNAPSHOT/pantheonconf-dev-0.100-20170608.025929-99.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/pantheonconf-dev/pantheonconf-dev/0.100-SNAPSHOT/pantheonconf-dev-0.100-20170608.025929-99-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/thaisamut/pantheonconf-dev/pantheonconf-dev/0.100-SNAPSHOT/pantheonconf-dev-0.100-20170608.025929-99-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

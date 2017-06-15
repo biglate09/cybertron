@@ -1,0 +1,12 @@
+
+--This line, and those below, will be ignored--
+
+M    ejbweb/src/main/java/thaisamut/cybertron/ejbweb/impl/MarkChoicesServiceImpl.java
+M    ejbweb/src/main/java/thaisamut/cybertron/ejbweb/model/MarkChoicesEntity.java
+M    ejbweb/src/main/java/thaisamut/cybertron/ejbweb/remote/MarkChoicesService.java
+M    ejbweb/src/main/resources/dbchangelog/db-changelog-0.3.xml
+M    web/src/main/java/thaisamut/nbs/css/oceanclub/action/OceanClubAction.java
+M    web/src/main/resources/spring-beans.xml
+M    web/src/main/resources/struts-config/struts-ocean-club.xml
+M    web/src/main/webapp/WEB-INF/pages/oceanclub/oceanclub-edit-info.ftl
+M    web/src/main/webapp/scripts/ocean-club/ocean-club.js

@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="cybertron-web:war exploded">
+    <output-path>$PROJECT_DIR$/web/target/cybertron-web-0.13.2-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="cybertron-web" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="cybertron-ejbweb-0.13.2-SNAPSHOT-classes.jar">
+            <element id="module-output" name="cybertron-ejbweb" />
+          </element>
+          <element id="library" level="project" name="Maven: thaisamut.pantheon:pantheon-conf:0.63" />
+          <element id="library" level="project" name="Maven: thaisamut.nbsremoteapiwsclient:nbsremoteapiwsclient:0.54" />
+          <element id="library" level="project" name="Maven: thaisamut.nbsremoteapispring:nbsremoteapispring:0.42" />
+          <element id="library" level="project" name="Maven: org.webjars:bootstrap:3.1.0" />
+          <element id="library" level="project" name="Maven: org.webjars:jquery:2.2.3" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-csv:1.1" />
+          <element id="library" level="project" name="Maven: com.novell.ldap:jldap:2009-10-07" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/web/target/cybertron-web-0.13.2-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="cybertron-web/web/Web" />
+    </root>
+  </artifact>
+</component>

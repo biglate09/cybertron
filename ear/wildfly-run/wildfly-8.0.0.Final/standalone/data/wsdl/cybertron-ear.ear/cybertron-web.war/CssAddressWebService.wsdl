@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://address.ws.css.thaisamut/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CssAddressWebService" targetNamespace="http://address.ws.css.thaisamut/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://address.ws.css.thaisamut/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://address.ws.css.thaisamut/">
+  <xs:element name="confirmOTP" type="tns:confirmOTP"/>
+  <xs:element name="confirmOTPResponse" type="tns:confirmOTPResponse"/>
+  <xs:element name="getActiveProvince" type="tns:getActiveProvince"/>
+  <xs:element name="getActiveProvinceResponse" type="tns:getActiveProvinceResponse"/>
+  <xs:element name="prepareAddressForUpdate" type="tns:prepareAddressForUpdate"/>
+  <xs:element name="prepareAddressForUpdateResponse" type="tns:prepareAddressForUpdateResponse"/>
+  <xs:element name="queryCssAddressTempEntityWaitingStatus" type="tns:queryCssAddressTempEntityWaitingStatus"/>
+  <xs:element name="queryCssAddressTempEntityWaitingStatusResponse" type="tns:queryCssAddressTempEntityWaitingStatusResponse"/>
+  <xs:complexType name="confirmOTP">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="tns:cssAddressTempEntity"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cssAddressTempEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="addr" type="xs:string"/>
+      <xs:element minOccurs="0" name="createBy" type="xs:string"/>
+      <xs:element minOccurs="0" name="createDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dtCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="dtDesc" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="ext1" type="xs:string"/>
+      <xs:element minOccurs="0" name="ext2" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="mobile1" type="xs:string"/>
+      <xs:element minOccurs="0" name="mobile2" type="xs:string"/>
+      <xs:element minOccurs="0" name="phone1" type="xs:string"/>
+      <xs:element minOccurs="0" name="phone2" type="xs:string"/>
+      <xs:element minOccurs="0" name="polType" type="xs:string"/>
+      <xs:element minOccurs="0" name="policyNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="pvCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="pvDesc" type="xs:string"/>
+      <xs:element minOccurs="0" name="sdtDesc" type="xs:string"/>
+      <xs:element minOccurs="0" name="sendStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="token" type="xs:string"/>
+      <xs:element minOccurs="0" name="updateBy" type="xs:string"/>
+      <xs:element minOccurs="0" name="updateDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="zipCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="confirmOTPResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:confirmUpdateTransporter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="confirmUpdateTransporter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="queryCssAddressTempEntityWaitingStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="queryCssAddressTempEntityWaitingStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cssAddressTempEntity"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="prepareAddressForUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="tns:parameter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="addressLine1" type="xs:string"/>
+      <xs:element minOccurs="0" name="disDesc" type="xs:string"/>
+      <xs:element minOccurs="0" name="district" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="ext1" type="xs:string"/>
+      <xs:element minOccurs="0" name="ext2" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="followPolicy" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="mobile1" type="xs:string"/>
+      <xs:element minOccurs="0" name="mobile2" type="xs:string"/>
+      <xs:element minOccurs="0" name="phone1" type="xs:string"/>
+      <xs:element minOccurs="0" name="phone2" type="xs:string"/>
+      <xs:element minOccurs="0" name="policyNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="policyType" type="xs:string"/>
+      <xs:element minOccurs="0" name="postcode" type="xs:string"/>
+      <xs:element minOccurs="0" name="povDesc" type="xs:string"/>
+      <xs:element minOccurs="0" name="province" type="xs:string"/>
+      <xs:element minOccurs="0" name="subdistrictName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="prepareAddressForUpdateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:requestUpdateTransporter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requestUpdateTransporter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="otp" type="xs:string"/>
+      <xs:element minOccurs="0" name="otpRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="otpToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="policyNo" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="prepareupdate" nillable="true" type="tns:cssAddressTempEntity"/>
+      <xs:element minOccurs="0" name="telNo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getActiveProvince">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getActiveProvinceResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:provinceBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="provinceBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pvCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="pvDesc" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Exception" type="tns:Exception"/>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="confirmOTPResponse">
+    <wsdl:part element="tns:confirmOTPResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryCssAddressTempEntityWaitingStatusResponse">
+    <wsdl:part element="tns:queryCssAddressTempEntityWaitingStatusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiveProvinceResponse">
+    <wsdl:part element="tns:getActiveProvinceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="prepareAddressForUpdateResponse">
+    <wsdl:part element="tns:prepareAddressForUpdateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="prepareAddressForUpdate">
+    <wsdl:part element="tns:prepareAddressForUpdate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmOTP">
+    <wsdl:part element="tns:confirmOTP" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiveProvince">
+    <wsdl:part element="tns:getActiveProvince" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryCssAddressTempEntityWaitingStatus">
+    <wsdl:part element="tns:queryCssAddressTempEntityWaitingStatus" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CssAddressWebService">
+    <wsdl:operation name="confirmOTP">
+      <wsdl:input message="tns:confirmOTP" name="confirmOTP">
+    </wsdl:input>
+      <wsdl:output message="tns:confirmOTPResponse" name="confirmOTPResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="queryCssAddressTempEntityWaitingStatus">
+      <wsdl:input message="tns:queryCssAddressTempEntityWaitingStatus" name="queryCssAddressTempEntityWaitingStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:queryCssAddressTempEntityWaitingStatusResponse" name="queryCssAddressTempEntityWaitingStatusResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="prepareAddressForUpdate">
+      <wsdl:input message="tns:prepareAddressForUpdate" name="prepareAddressForUpdate">
+    </wsdl:input>
+      <wsdl:output message="tns:prepareAddressForUpdateResponse" name="prepareAddressForUpdateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveProvince">
+      <wsdl:input message="tns:getActiveProvince" name="getActiveProvince">
+    </wsdl:input>
+      <wsdl:output message="tns:getActiveProvinceResponse" name="getActiveProvinceResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CssAddressWebServiceSoapBinding" type="tns:CssAddressWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="confirmOTP">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="confirmOTP">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="confirmOTPResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="queryCssAddressTempEntityWaitingStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="queryCssAddressTempEntityWaitingStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryCssAddressTempEntityWaitingStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="prepareAddressForUpdate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="prepareAddressForUpdate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="prepareAddressForUpdateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveProvince">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getActiveProvince">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActiveProvinceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CssAddressWebService">
+    <wsdl:port binding="tns:CssAddressWebServiceSoapBinding" name="CssAddressWebServiceImplPort">
+      <soap:address location="http://jbossws.undefined.host:9058/cybertron/ws/CssAddressWebService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

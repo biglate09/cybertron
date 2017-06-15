@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cybertron-ejbweb:war">
+    <output-path>$PROJECT_DIR$/ejbweb/target</output-path>
+    <root id="archive" name="cybertron-ejbweb-0.13.2-SNAPSHOT.war">
+      <element id="artifact" artifact-name="cybertron-ejbweb:war exploded" />
+    </root>
+  </artifact>
+</component>
